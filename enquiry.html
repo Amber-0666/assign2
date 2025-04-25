@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry Form</title>
+    <link rel="icon" type="image/png" href="styles/images/websitelogo.png">
+    <link rel="stylesheet" href="styles/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="index.html"><img src="styles/images/logo.png" alt="Brew & Go Coffee logo"></a>
+        </div>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+             <span></span>
+             <span></span>
+             <span></span>
+        </label>
+        <ul class="nav-menu">
+            <li class="nav-dropdown">
+                <a href="#" class="nav-dropbtn">PRODUCTS</a>
+                <div class="nav-dropdown-content">
+                    <a href="product1.html">Basic Brew</a>
+                    <a href="product2.html">Artisan Brew</a>
+                    <a href="product3.html">Non-Coffee</a>
+                    <a href="product4.html">Hot Beverages</a>
+                </div>
+            </li>
+
+            <li class="nav-dropdown">
+                <a href="#" class="nav-dropbtn">ACTIVITIES</a>
+                <div class="nav-dropdown-content">
+                    <a href="coming_soon.html">Coming Soon</a>
+                    <a href="current.html">Current Activities</a>
+                    <a href="past_activities.html">Past Activities</a>
+                </div>
+            </li>
+
+            <li ><a href="joinus.html">JOIN US</a></li>                
+            <li><a href="enquiry.html" class="active">ENQUIRY FORM</a></li>
+            <li><a href="registration.html">MEMBERSHIP REGISTRATION</a></li>
+            <li><a href="login.html">LOGIN</a></li>  
+       </ul>
+    </nav>
+
+    <header class="enquiry-header">
+        <div class="enquiry-header-content">
+            <h1>Customer Enquiry</h1>
+            <p class="enquiry-subtitle">We're here to help with any questions about our products, services, or activities</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="enquiry-content-container">
+            <div class="enquiry-form-container enquiry-form">
+                <h2>Enquiry Form</h2>
+                
+                <form id="enquiry-form">
+                    <div class="enquiry-form-group">
+                        <div class="enquiry-form-row">
+                            <div class="enquiry-form-col">
+                                <label for="first-name">First Name*</label>
+                                <input type="text" id="first-name" name="first-name" required 
+                                       placeholder="Enter your first name"
+                                       pattern="[A-Za-z]{1,25}" 
+                                       title="Alphabetical characters only, max 25 characters"
+                                       maxlength="25">
+                            </div>
+                            <div class="enquiry-form-col">
+                                <label for="last-name">Last Name*</label>
+                                <input type="text" id="last-name" name="last-name" required 
+                                       placeholder="Enter your last name"
+                                       pattern="[A-Za-z]{1,25}"
+                                       title="Alphabetical characters only, max 25 characters"
+                                       maxlength="25">
+                            </div>
+                        </div>
+
+                        <div class="enquiry-form-row">
+                            <div class="enquiry-form-col">
+                                <label for="email">Email Address*</label>
+                                <input type="email" id="email" name="email" required 
+                                       placeholder="your.email@example.com">
+                            </div>
+                            <div class="enquiry-form-col">
+                                <label for="phone">Phone Number*</label>
+                                <input type="tel" id="phone" name="phone" required 
+                                       placeholder="0123456789"
+                                       pattern="[0-9]{10,10}"
+                                       title="10 digit phone number"
+                                       maxlength="10">
+                            </div>
+                        </div>
+
+                        <fieldset class="enquiry-fieldset">
+                            <legend>Address Information</legend>
+                            <div class="enquiry-form-row">
+                                <div class="enquiry-form-col">
+                                    <label for="street">Street Address*</label>
+                                    <input type="text" id="street" name="street" required 
+                                           placeholder="123 Coffee Street"
+                                           maxlength="40">
+                                </div>
+                            </div>
+                            <div class="enquiry-form-row">
+                                <div class="enquiry-form-col">
+                                    <label for="city">City/Town*</label>
+                                    <input type="text" id="city" name="city" required 
+                                           placeholder="Kuala Lumpur"
+                                           maxlength="20">
+                                </div>
+                                <div class="enquiry-form-col">
+                                    <label for="state">State*</label>
+                                    <select id="state" name="state" required>
+                                        <option value="">Select State</option>
+                                        <option value="Johor">Johor</option>
+                                        <option value="Kedah">Kedah</option>
+                                        <option value="Kelantan">Kelantan</option>
+                                        <option value="Melaka">Melaka</option>
+                                        <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                        <option value="Pahang">Pahang</option>
+                                        <option value="Penang">Penang</option>
+                                        <option value="Perak">Perak</option>
+                                        <option value="Perlis">Perlis</option>
+                                        <option value="Sabah">Sabah</option>
+                                        <option value="Sarawak">Sarawak</option>
+                                        <option value="Selangor">Selangor</option>
+                                        <option value="Terengganu">Terengganu</option>
+                                        <option value="Kuala Lumpur">Kuala Lumpur</option>
+                                        <option value="Putrajaya">Putrajaya</option>
+                                        <option value="Labuan">Labuan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="enquiry-form-row">
+                                <div class="enquiry-form-col">
+                                    <label for="postcode">Postcode*</label>
+                                    <input type="text" id="postcode" name="postcode" required 
+                                           placeholder="50000"
+                                           pattern="[0-9]{5}"
+                                           title="Exactly 5 digits"
+                                           maxlength="5">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <div class="enquiry-form-row">
+                            <div class="enquiry-form-col">
+                                <label for="enquiry-type">Enquiry Type*</label>
+                                <select id="enquiry-type" name="enquiry-type" required>
+                                    <option value="">Select Enquiry Type</option>
+                                    <option value="Membership">Membership</option>
+                                    <option value="Products">Products</option>
+                                    <option value="Pop-up Market activities">Pop-up Market activities</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="enquiry-form-row">
+                            <div class="enquiry-form-col">
+                                <label for="message">Your Message*</label>
+                                <textarea id="message" name="message" required 
+                                          placeholder="Please provide details about your enquiry"
+                                          rows="5"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="enquiry-form-footer">
+                            <button type="reset" class="enquiry-reset-btn">
+                                Reset Form
+                            </button>
+                            <button type="submit" class="enquiry-submit-btn">
+                                Submit Enquiry
+                            </button>
+                            <p class="enquiry-form-note">* Required fields. We'll respond to your enquiry within 2 business days.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_row">
+                <div class="footer_logo">
+                    <a href="index.html"><img src="styles/images/logo.png" alt="styles/images/logo.png"></a>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-h4">TEAM</h4>
+                    <ul class="footer_ul">
+                        <li><a href="Chua_profile.html">Chua Yong Kang</a></li>
+                        <li><a href="Roxas_profile.html">Roxas Teo Xuan Hao</a></li>
+                        <li><a href="Michelle_profile.html">Michelle Tan Mei Xuan</a></li>
+                        <li><a href="Amberlyn_profile.html">Amberlyn Lim Xi En</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-h4">PRODUCTS</h4>
+                    <ul class="footer_ul">
+                        <li><a href="product1.html">Basic Brew</a></li>
+                        <li><a href="product2.html">Artisan Brew</a></li>
+                        <li><a href="product3.html">Non-Coffee</a></li>
+                        <li><a href="product4.html">Hot Beverages</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-h4">ACTIVITIES</h4>
+                    <ul class="footer_ul">
+                        <li><a href="coming_soon.html">Coming Soon</a></li>
+                        <li><a href="current.html">Current Activities</a></li>
+                        <li><a href="past_activities.html">Past Activities</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <div class="footer-quick-links-1">
+                        <h4 class="footer-h4"><a href="joinus.html">JOIN US</a></h4>
+                        <h4 class="footer-h4"><a href="enquiry.html">ENQUIRY FORM</a></h4>
+                        <h4 class="footer-h4"><a href="registration.html">MEMBERSHIP REGISTRATION</a></h4>
+                        <h4 class="footer-h4"><a href="login.html">LOGIN</a></h4>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <div class="footer-quick-links-1">
+                    <h4 class="footer-h4"><a href="acknowledgement.html">ACKNOWLEDGEMENT</a></h4>
+                    <h4 class="footer-h4"><a href="enhancement.html">ENHANCEMENT</a></h4>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-h4">FOLLOW US</h4>
+                    <div class="footer-social-links">
+                        <a href="https://www.facebook.com/share/18M9JEQBPr/"><i class='bx bxl-facebook'></i></a>
+                        <a href="https://www.instagram.com/brewngo.coffee/"><i class='bx bxl-instagram'></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-h4">CONTACT US FOR ORDER!</h4>
+                    <div class="footer-whatsapp">
+                        <a href="https://api.whatsapp.com/send?phone=601116531886&text=Hello%2C%20I%20want%20to%20pre-order%20%F0%9F%98%84%0ADate%3A%20%0A%0A1.%20Order%3A%20%0A-%20%0A-%0A%0A2.%20Pick-up%2FDelivery%0APick-up%20Point%20%F0%9F%9B%8D%EF%B8%8F%20%0A%5B%20%5D%20Old%20KPJ%20Hospital%20(opposite%20stutong%20market)%0A%0ADelivery%20%F0%9F%9A%99%20%0A%5B%20%5D%20Jalan%20Song%0A%5B%20%5D%20BDC%20%0A%5B%20%5D%20101%20%0A%5B%20%5D%20Tabuan%20Area%20%0A%5B%20%5D%20Swinburne%20%0A%0A3.%20Time%20%E2%8F%B0%20%0A%5B%20%5D%2011.30am%20%0A%5B%20%5D%2012.30pm%20%0A%5B%20%5D%201.30pm%20%0A%5B%20%5D%202.30pm%20%0A%5B%20%5D%203.30pm%20%0A%5B%20%5D%204pm%20(last%20order)"><i class='bx bx-mobile'></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
