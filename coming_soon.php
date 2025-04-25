@@ -10,42 +10,8 @@
 </head>
 
 <body class="coming_soon-body">
-    <nav class="navbar">
-        <div class="nav-logo">
-            <a href="index.html"><img src="styles/images/logo.png"  alt="Logo"></a>
-        </div>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <label for="nav-toggle" class="nav-toggle-label">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-        <ul class="nav-menu">
-            <li class="nav-dropdown">
-                <a href="#" class="nav-dropbtn">PRODUCTS</a>
-                <div class="nav-dropdown-content">
-                    <a href="product1.html">Basic Brew</a>
-                    <a href="product2.html">Artisan Brew</a>
-                    <a href="product3.html">Non-Coffee</a>
-                    <a href="product4.html">Hot Beverages</a>
-                </div>
-            </li>
-
-            <li class="nav-dropdown">
-                <a href="#" class="nav-dropbtn">ACTIVITIES</a>
-                <div class="nav-dropdown-content">
-                    <a href="coming_soon.html" class="active">Coming Soon</a>
-                    <a href="current.html">Current Activities</a>
-                    <a href="past_activities.html">Past Activities</a>
-                </div>
-            </li>
-
-            <li ><a href="joinus.html">JOIN US</a></li>                
-            <li><a href="enquiry.html">ENQUIRY FORM</a></li>
-            <li><a href="registration.html">MEMBERSHIP REGISTRATION</a></li>
-            <li><a href="login.html">LOGIN</a></li>  
-       </ul>
-    </nav>
+    
+    <?php include 'navbar.php'; ?>
 
     <header>
         <div class="header-content">
