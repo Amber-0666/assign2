@@ -1,4 +1,3 @@
-// Footer Section
 <?php
     echo '<footer class="footer">
         <div class="footer_container">
@@ -13,9 +12,9 @@
                     <ul class="footer_ul">';
     $teamMembers = [
         'Chua Yong Kang' => 'Chua_profile.php',
-        'Roxas Teo Xuan Hao' => 'Roxas_profile.php',
-        'Michelle Tan Mei Xuan' => 'Michelle_profile.php',
-        'Amberlyn Lim Xi En' => 'Amberlyn_profile.php'
+        'Roxas Teo' => 'Roxas_profile.php',
+        'Michelle Tan' => 'Michelle_profile.php',
+        'Amberlyn Lim' => 'Amberlyn_profile.php'
     ];
     foreach ($teamMembers as $name => $link) {
         echo "<li><a href=\"$link\">$name</a></li>";
