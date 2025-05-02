@@ -63,6 +63,13 @@
                     </div>
                 </div>';
 
+    echo '<div class="footer-col">
+                    <div class="footer-quick-links-1">
+                        <h4 class="footer-h4"><a href="acknowledgement.php">ACKNOWLEDGEMENT</a></h4>
+                        <h4 class="footer-h4"><a href="enhancement.php">ENHANCEMENT</a></h4>  
+                    </div> 
+                </div>';
+
     // Social Links Section
     echo '<div class="footer-col">
                     <h4 class="footer-h4">FOLLOW US</h4>
