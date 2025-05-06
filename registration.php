@@ -38,7 +38,7 @@ ob_start();
         <div class="content-container-register">
             <div class="form-container-register">
                 <h2>MEMBER REGISTRATION</h2>
-                <form id="register-form">
+                <form id="register-form" action="membership_process.php" method="post">
                     <div class="form-register-group">
                         <div class="form-register-row">
                             <div class="form-register-col">
