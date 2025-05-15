@@ -25,7 +25,7 @@
             <div class="enquiry-form-container enquiry-form">
                 <h2>Enquiry Form</h2>
                 
-                <form id="enquiry-form">
+                <form id="enquiry-form" action="enquiry_process.php" method="post">
                     <div class="enquiry-form-group">
                         <div class="enquiry-form-row">
                             <div class="enquiry-form-col">
