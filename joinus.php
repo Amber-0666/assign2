@@ -29,7 +29,7 @@
             <div class="joinus-form-container">
                 <h2>Application Form</h2>
                 
-                <form id="join-form" action="joinus_process.php" method="get">
+                <form id="join-form" action="joinus_process.php" method="post" enctype="multipart/form-data">
                     <div class="joinus-form-group">
                         <div class="joinus-form-row">
                             <div class="joinus-form-col">
