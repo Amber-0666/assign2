@@ -23,7 +23,7 @@ $password = htmlspecialchars($_POST['register-Password'] ?? ''); // Consider has
 
 <?php include 'navbar.php'; ?>
 
-<main class="confirmation-container">
+<main id="confirmation-container">
     <h2>Registration Confirmation</h2>
     <p>Thank you, <?= $firstName ?> <?= $lastName ?>, for registering! Here's the information you submitted:</p>
 
@@ -33,7 +33,7 @@ $password = htmlspecialchars($_POST['register-Password'] ?? ''); // Consider has
         <div><strong>Password:</strong> <?= $password ?></div>
     </div>
 
-    <a href="index.php" class="back-home-btn">Back to Home</a>
+    <a href="registration.php">Back to Registration Page</a>
 </main>
 
 <?php include 'footer.php'; ?>
