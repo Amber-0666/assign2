@@ -1,17 +1,16 @@
 <?php
-// Enable error reporting for debugging
+// === Enable error reporting for debugging ===
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Retrieve and sanitize POST data
+// === Sanitize and validate input ===
 $firstName = htmlspecialchars($_POST['register-first-name'] ?? '');
 $lastName = htmlspecialchars($_POST['register-last-name'] ?? '');
-$email = htmlspecialchars($_POST['register-email'] ?? '');
+$email = filter_var($_POST['register-email'] ?? '', FILTER_VALIDATE_EMAIL);
 $loginID = htmlspecialchars($_POST['register-ID'] ?? '');
-$password = htmlspecialchars($_POST['register-Password'] ?? '');
-
-// You might hash the password or validate more, depending on your system
+$password = htmlspecialchars($_POST['register-Password'] ?? ''); // Consider hashing this before storing
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,21 +20,24 @@ $password = htmlspecialchars($_POST['register-Password'] ?? '');
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
 
-    <main class="confirmation-container">
-        <h2>Registration Confirmation</h2>
-        <p>Thank you for registering! Here's is your information:</p>
-        <ul>
-            <li><strong>First Name:</strong> <?= $firstName ?></li>
-            <li><strong>Last Name:</strong> <?= $lastName ?></li>
-            <li><strong>Email:</strong> <?= $email ?></li>
-            <li><strong>Login ID:</strong> <?= $loginID ?></li>
-            <li><strong>Password:</strong> <?= $password?></li>
-        </ul>
-        <a href="index.php" class="back-home-btn">Back to Home</a>
-    </main>
+<?php include 'navbar.php'; ?>
 
-    <?php include 'footer.php'; ?>
+<main class="confirmation-container">
+    <h2>Registration Confirmation</h2>
+    <p>Thank you, <?= $firstName ?> <?= $lastName ?>, for registering! Here's the information you submitted:</p>
+
+    <div class="info-grid">
+        <div><strong>Email:</strong> <?= htmlspecialchars($email) ?></div>
+        <div><strong>Login ID:</strong> <?= $loginID ?></div>
+        <div><strong>Password:</strong> <?= $password ?></div>
+    </div>
+
+    <a href="index.php" class="back-home-btn">Back to Home</a>
+</main>
+
+<?php include 'footer.php'; ?>
+
 </body>
 </html>
+
