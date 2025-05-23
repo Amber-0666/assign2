@@ -38,7 +38,7 @@
  			<ul>
 				<li><a href="https://youtu.be/P7drJS1vhl4?si=0DyHeP3IyP4YMm3_" target="_blank">陈雪凝 - 绿色</li>
 				<li><a href="https://youtu.be/CkvWJNt77mU?si=lVgWU7GLBv76e27D" target="_blank">Yorushika - Sunny</li>
-				<li><a href=""https://youtu.be/ony539T074w?si=dzGNis1zFeI30kQk target="_blank">King Gnu - Hakujitsu</li>
+				<li><a href="https://youtu.be/ony539T074w?si=dzGNis1zFeI30kQk" target="_blank">King Gnu - Hakujitsu</li>
 			</ul>
                 </td>
             </tr>
