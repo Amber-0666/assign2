@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include 'connection.php'; // ✅ Connect to DB
+include 'connection.php'; 
 
 // Sanitize and validate input
 $firstName = htmlspecialchars($_POST['first-name'] ?? '');
