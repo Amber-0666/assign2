@@ -15,8 +15,8 @@ if ($mysqli->connect_error) {
     die('Database connection failed: ' . $mysqli->connect_error);
 }
 
-// Adjusted query to match your 'register' table columns
-$sql = "SELECT id, fullname, email, loginid, created_at FROM register ORDER BY created_at DESC";
+// Query to fetch all membership records in ascending order by created_at
+$sql = "SELECT id, fullname, email, loginid, created_at FROM register ORDER BY created_at ASC";
 
 $result = $mysqli->query($sql);
 ?>
@@ -26,45 +26,7 @@ $result = $mysqli->query($sql);
 <head>
 <meta charset="UTF-8" />
 <title>View Memberships</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 40px;
-        background-color: #f8f9fa;
-    }
-    h1 {
-        text-align: center;
-        margin-bottom: 30px;
-        color: #333;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: white;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 12px 15px;
-        text-align: left;
-    }
-    th {
-        background-color: #007BFF;
-        color: white;
-        font-weight: 600;
-    }
-    tr:nth-child(even) {
-        background-color: #f1f3f5;
-    }
-    tr:hover {
-        background-color: #e9ecef;
-    }
-    p.no-data {
-        text-align: center;
-        font-style: italic;
-        color: #666;
-    }
-</style>
+<link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
@@ -98,7 +60,6 @@ $result = $mysqli->query($sql);
 <?php endif; ?>
 
 <?php
-// Close DB connection
 $mysqli->close();
 ?>
 
