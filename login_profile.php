@@ -36,7 +36,7 @@ if ($conn->connect_error) {
 }
 
 // Prepare and execute query to fetch user info by register-ID
-$stmt = $conn->prepare("SELECT `register-first-name`, `register-last-name`, `register-email`, `register-ID`, `created_at` FROM membership WHERE `register-ID` = ?");
+$stmt = $conn->prepare("SELECT `fullname`, `email`, `loginid`, `created_at` FROM register WHERE `loginid` = ?");
 $stmt->bind_param("s", $loginID);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -52,10 +52,9 @@ $conn->close();
     <h2>Welcome to Your Profile</h2>
 
     <?php if ($userInfo): ?>
-        <p><strong>First Name:</strong> <?= htmlspecialchars($userInfo['register-first-name']) ?></p>
-        <p><strong>Last Name:</strong> <?= htmlspecialchars($userInfo['register-last-name']) ?></p>
-        <p><strong>Email:</strong> <?= htmlspecialchars($userInfo['register-email']) ?></p>
-        <p><strong>User ID:</strong> <?= htmlspecialchars($userInfo['register-ID']) ?></p>
+        <p><strong>Name:</strong> <?= htmlspecialchars($userInfo['fullname']) ?></p>
+        <p><strong>Email:</strong> <?= htmlspecialchars($userInfo['email']) ?></p>
+        <p><strong>User ID:</strong> <?= htmlspecialchars($userInfo['loginid']) ?></p>
         <p><strong>Registration Date:</strong> <?= htmlspecialchars($userInfo['created_at']) ?></p>
     <?php else: ?>
         <p>User information not found??</p>

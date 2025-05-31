@@ -76,7 +76,7 @@
 
                         <div class="register-login-link">
                             <p>Already have an account?</p>
-                            <a href="login.html" class="login-button">Login</a>
+                            <a href="login.php" class="login-button">Login</a>
                         </div>
 
                         <div class="form-register-footer">

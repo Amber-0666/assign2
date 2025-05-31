@@ -41,10 +41,10 @@ if (!isset($_POST['register-ID'], $_POST['login-Password'])) {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $hashed_password);
+        $stmt->bind_result($id, $storedpassword);
         $stmt->fetch();
 
-        if (password_verify($loginPassword, $hashed_password)) {
+        if ($loginPassword == $storedpassword) {
             $_SESSION['user_id'] = $id;
             $_SESSION['register-ID'] = $loginID;
             $loginSuccess = true;

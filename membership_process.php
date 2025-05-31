@@ -46,7 +46,18 @@ if (!$stmt->execute()) {
     die('Insert failed: ' . $stmt->error);
 }
 
+$stmt2 = $mysqli->prepare("INSERT INTO user (`register-ID`, `register-Password`) VALUES (?, ?)");
+if (!$stmt2) {
+    die('Prepare failed: ' . $mysqli->error);
+}
+
+$stmt2->bind_param("ss", $loginID, $password);
+if (!$stmt2->execute()) {
+    die('Insert failed: ' . $stmt->error);
+}
+
 $stmt->close();
+$stmt2->close();
 $mysqli->close();
 ?>
 
