@@ -18,8 +18,7 @@ $navItems = [
     ],
     'JOIN US' => 'joinus.php',
     'ENQUIRY FORM' => 'enquiry.php',
-    'MEMBERSHIP REGISTRATION' => 'registration.php',
-    'LOGIN' => 'login.php'
+    'MEMBERSHIP REGISTRATION' => 'registration.php'
 ];
 
 $currentPage = basename($_SERVER['PHP_SELF']);

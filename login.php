@@ -55,7 +55,7 @@
 
                 <div class="login-register-link">
                     <p>Don't have an account?</p>
-                    <a href="registration.html" class="register-button">Register</a>
+                    <a href="registration.php" class="register-button">Register</a>
                 </div>
                 
                 <div class="form-login-footer">

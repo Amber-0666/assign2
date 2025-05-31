@@ -29,7 +29,7 @@
             <div class="form-container-register">
                 <h2>MEMBER REGISTRATION</h2>
 
-                <form id="register-form">
+                <form id="register-form" method="POST" action="membership_process.php">
                     <div class="form-register-group">
                         <div class="form-register-row">
                             <div class="form-register-col">
