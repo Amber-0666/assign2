@@ -15,9 +15,9 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "assign2db";
+$dbname = "BrewnGo";
 
-// Create connection
+// Create connection 
 $conn = new mysqli($servername, $username, $password, $dbname);
 $loginSuccess = false;
 $loginError = "";

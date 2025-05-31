@@ -38,10 +38,24 @@ $sql_membership = "CREATE TABLE IF NOT EXISTS membership (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
+$sql_user = "CREATE TABLE IF NOT EXISTS user (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    register-ID VARCHAR(10),
+    `register-Password` VARCHAR(255),
+)";
+
+$sql_admin = "CREATE TABLE IF NOT EXISTS admin (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `admin-ID` VARCHAR(10),
+    `admin-Password` VARCHAR(255),
+)";
+
 // Execute queries and output result
 if (mysqli_query($conn, $sql_enquiry) &&
     mysqli_query($conn, $sql_joinus) &&
-    mysqli_query($conn, $sql_membership)) {
+    mysqli_query($conn, $sql_membership) &&
+    mysqli_query($conn, $sql_user) &&
+    mysqli_query($conn, $sql_admin)) {
     echo "All tables created successfully or already exist.";
 } else {
     echo "Error creating tables: " . mysqli_error($conn);
