@@ -1,4 +1,5 @@
 <?php
+session_start(); // ← Required before using $_SESSION
 
 // Clear all session variables
 $_SESSION = [];
@@ -14,3 +15,4 @@ if (isset($_COOKIE['rememberme'])) {
 // Redirect to login page
 header("Location: login.php");
 exit;
+?>

@@ -28,6 +28,7 @@
         <div class="content-container-login">
             <div class="form-container-login">
                 <h2>LOGIN</h2>
+                <form id="login-form" action="login_process.php" method="post">
                     <div class="form-login-col">
                         <label for="login-ID">Login ID*</label>
                         <input type="text" id="login-ID" name="register-ID" required 
@@ -62,6 +63,7 @@
                     <button type="reset" class="reset-login-btn">Reset</button>
                     <button type="submit" class="submit-login-btn">Submit</button>
                 </div>
+                </form>
             </div>
         </div>
     </main>
