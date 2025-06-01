@@ -13,19 +13,22 @@ if ($conn->connect_error) {
 }
 
 // Admin credentials
-$admin_id = "admin";
-$admin_pass = "admin";
+$admin_id = "Admin";
+$admin_pass = "Admin";
 
-// SQL to insert data
-$sql = "INSERT INTO `admin` (`admin-ID`, `admin-Password`) VALUES ('$admin_id', '$admin_pass')";
+// Check if admin already exists
+$check_sql = "SELECT `admin-ID` FROM `admin` WHERE `admin-ID` = 'Admin'";
+$result = $conn->query($check_sql);
 
-// Execute and check result
-if ($conn->query($sql) === TRUE) {
-    echo "Admin user inserted successfully.";
+if ($result->num_rows == 0) {
+    // Insert admin if not found
+    $insert_sql = "INSERT IGNORE INTO `admin` (`admin-ID`, `admin-Password`) VALUES ('$admin_id', '$admin_pass')";
+    if ($conn->query($insert_sql) === TRUE) {
+        echo "Admin user inserted successfully.";
+    } else {
+        echo "Error inserting admin: " . $conn->error;
+    }
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Admin user already exists. No action taken.";
 }
-
-$conn->close();
-
 ?>

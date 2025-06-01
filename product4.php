@@ -28,10 +28,10 @@
 		<br>
 			<nav class="product_selection">
 				<ul>
-					<li class="Basic_Brew"><a href="product1.html">Basic Brew</a></li>
-					<li class="Artisan_Brew"><a href="product2.html">Artisan Brew</a></li>
-					<li class="Non-coffee"><a href="product3.html">Non-coffee</a></li> 	
-					<li class="Hot_Beverages" id="target_page"><a href="product4.html">Hot Beverages</a></li>
+					<li class="Basic_Brew"><a href="product1.php">Basic Brew</a></li>
+					<li class="Artisan_Brew"><a href="product2.php">Artisan Brew</a></li>
+					<li class="Non-coffee"><a href="product3.php">Non-coffee</a></li> 	
+					<li class="Hot_Beverages" id="target_page"><a href="product4.php">Hot Beverages</a></li>
 				</ul>
 				<hr>
 				<br> 

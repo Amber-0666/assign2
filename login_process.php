@@ -34,8 +34,7 @@ if (!isset($_POST['register-ID'], $_POST['login-Password'])) {
     $loginID = $_POST['register-ID'];
     $loginPassword = $_POST['login-Password'];
 
-    // Prepare statement to avoid SQL injection
-    $stmt = $conn->prepare("SELECT ID, `register-Password` FROM user WHERE `register-ID` = ?");
+$stmt = $conn->prepare("SELECT `register-ID`, `register-Password` FROM user WHERE `register-ID` = ?");
     $stmt->bind_param("s", $loginID);
     $stmt->execute();
     $stmt->store_result();
@@ -44,15 +43,36 @@ if (!isset($_POST['register-ID'], $_POST['login-Password'])) {
         $stmt->bind_result($id, $storedpassword);
         $stmt->fetch();
 
-        if ($loginPassword == $storedpassword) {
+        if ($loginPassword === $storedpassword) {
             $_SESSION['user_id'] = $id;
-            $_SESSION['register-ID'] = $loginID;
+
+            $_SESSION['is_admin'] = false;
             $loginSuccess = true;
         } else {
             $loginError = "Invalid Username or Password";
         }
     } else {
-        $loginError = "Invalid Username or Password";
+        // Check in admin table
+        $stmt = $conn->prepare("SELECT `admin-ID`, `admin-Password` FROM admin WHERE `admin-ID` = ?");
+        $stmt->bind_param("s", $loginID);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($admin_id, $admin_pass);
+            $stmt->fetch();
+
+            if ($loginPassword === $admin_pass) {
+                $_SESSION['user_id'] = $admin_id;
+                $_SESSION['admin-ID'] = $admin_id;
+                $_SESSION['is_admin'] = true;
+                $loginSuccess = true;
+            } else {
+                $loginError = "Invalid Username or Password";
+            }
+        } else {
+            $loginError = "Invalid Username or Password";
+        }
     }
 
     $stmt->close();
@@ -61,15 +81,15 @@ if (!isset($_POST['register-ID'], $_POST['login-Password'])) {
 $conn->close();
 ?>
 
-<main class="confirmation-container">
+<main class="login-process-container">
     <?php if ($loginSuccess): ?>
         <h2>Login Successful!</h2>
         <p>Welcome, <?php echo htmlspecialchars($loginID); ?>.</p>
-        <button class="enquiry-submit-btn"><a href="index.php" class="back-home-btn">Go to front page</a></button>
+        <button class="login-process-btn"><a href="index.php">Go to front page</a></button>
     <?php else: ?>
         <h2>Login Failed</h2>
         <p><?php echo htmlspecialchars($loginError); ?></p>
-        <button class="enquiry-submit-btn"><a href="login.php" class="back-home-btn">Try Again</a></button>
+        <button class="login-process-btn"><a href="login.php">Try Again</a></button>
     <?php endif; ?>
 </main>
 

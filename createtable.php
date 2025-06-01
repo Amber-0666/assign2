@@ -1,6 +1,5 @@
 <?php
 include 'connection.php';
-include 'autoadmin.php';
 
 // Create enquiry table
 $sql_enquiry = "CREATE TABLE IF NOT EXISTS enquiry (
@@ -70,4 +69,8 @@ if (mysqli_query($conn, $sql_enquiry) &&
 }
 
 mysqli_close($conn);
+?>
+
+<?php
+include 'autoadmin.php';
 ?>
