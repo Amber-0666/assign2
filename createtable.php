@@ -1,5 +1,6 @@
 <?php
 include 'connection.php';
+include 'autoadmin.php';
 
 // Create enquiry table
 $sql_enquiry = "CREATE TABLE IF NOT EXISTS enquiry (
