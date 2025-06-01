@@ -48,7 +48,7 @@ $conn->close();
 
 ?>
 
-<main class="confirmation-container">
+<main id="confirmation-container">
     <h2>Welcome to Your Profile</h2>
 
     <?php if ($userInfo): ?>
@@ -60,7 +60,7 @@ $conn->close();
         <p>User information not found??</p>
     <?php endif; ?>
 
-    <button class="enquiry-submit-btn"><a href="logout.php" class="back-home-btn">Logout</a></button>
+    <button class="enquiry-reset-btn"><a href="logout.php" class="back-home-btn">Logout</a></button>
 </main>
 
 <?php include 'footer.php'; ?>

@@ -45,7 +45,7 @@ $stmt = $conn->prepare("SELECT `register-ID`, `register-Password` FROM user WHER
 
         if ($loginPassword === $storedpassword) {
             $_SESSION['user_id'] = $id;
-
+            $_SESSION['register-ID'] = $id;
             $_SESSION['is_admin'] = false;
             $loginSuccess = true;
         } else {
@@ -81,16 +81,18 @@ $stmt = $conn->prepare("SELECT `register-ID`, `register-Password` FROM user WHER
 $conn->close();
 ?>
 
-<main class="login-process-container">
-    <?php if ($loginSuccess): ?>
-        <h2>Login Successful!</h2>
-        <p>Welcome, <?php echo htmlspecialchars($loginID); ?>.</p>
-        <button class="login-process-btn"><a href="index.php">Go to front page</a></button>
-    <?php else: ?>
-        <h2>Login Failed</h2>
-        <p><?php echo htmlspecialchars($loginError); ?></p>
-        <button class="login-process-btn"><a href="login.php">Try Again</a></button>
-    <?php endif; ?>
+<main id="confirmation-container">
+    <div>
+        <?php if ($loginSuccess): ?>
+            <h2>Login Successful!</h2>
+            <p>Welcome, <?php echo htmlspecialchars($loginID); ?>.</p>
+            <a href="index.php">Go to front page</a>
+        <?php else: ?>
+            <h2>Login Failed</h2>
+            <p><?php echo htmlspecialchars($loginError); ?></p>
+            <a href="login.php">Try Again</a>
+        <?php endif; ?>
+    </div>
 </main>
 
 <?php include 'footer.php'; ?>
