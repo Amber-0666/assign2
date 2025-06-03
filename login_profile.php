@@ -49,18 +49,19 @@ $conn->close();
 ?>
 
 <main id="confirmation-container">
-    <h2>Welcome to Your Profile</h2>
+    <h2>Welcome to Your Profile, <?= htmlspecialchars($userInfo['loginid']) ?> </h2>
 
     <?php if ($userInfo): ?>
-        <p><strong>Name:</strong> <?= htmlspecialchars($userInfo['fullname']) ?></p>
-        <p><strong>Email:</strong> <?= htmlspecialchars($userInfo['email']) ?></p>
-        <p><strong>User ID:</strong> <?= htmlspecialchars($userInfo['loginid']) ?></p>
-        <p><strong>Registration Date:</strong> <?= htmlspecialchars($userInfo['created_at']) ?></p>
+        <p><strong>Full Name:</strong> <?= htmlspecialchars($userInfo['fullname']) ?></p><br>
+        <p><strong>Email:</strong> <?= htmlspecialchars($userInfo['email']) ?></p><br>
+        <p><strong>User ID:</strong> <?= htmlspecialchars($userInfo['loginid']) ?></p><br>
+        <p><strong>Registration Date:</strong> <?= htmlspecialchars($userInfo['created_at']) ?></p><br>
     <?php else: ?>
-        <p>User information not found??</p>
+        <p>User information not found???</p><br>
+        <p>Click<a href="login.php" class="back-home-btn">here</a>to login</p>
     <?php endif; ?>
-
-    <button class="enquiry-reset-btn"><a href="logout.php" class="back-home-btn">Logout</a></button>
+    
+    <a href="logout.php" class="back-home-btn">Logout</a>
 </main>
 
 <?php include 'footer.php'; ?>

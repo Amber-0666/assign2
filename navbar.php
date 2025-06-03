@@ -65,12 +65,12 @@ function isDropdownActive($items, $currentPage) {
             $adminname = htmlspecialchars($_SESSION['admin-ID']); 
         ?>
             <li><a href="logout.php">LOGOUT</a></li>
-            <li><a href=""><?= $adminname ?></a></li>
+            <li><a href=""><?= strtoupper($adminname) ?></a></li>
         <?php elseif (isset($_SESSION['register-ID'])): 
             $username = htmlspecialchars($_SESSION['register-ID']);
         ?>
             <li><a href="logout.php">LOGOUT</a></li>
-            <li><a href="login_profile.php"><?= $username ?></a></li>
+            <li><a href="login_profile.php"><?= strtoupper($username) ?></a></li>
         <?php else: ?>
             <li class="<?= ($currentPage === 'login.php') ? 'active' : '' ?>"><a href="login.php">LOGIN</a></li>
         <?php endif; ?>
