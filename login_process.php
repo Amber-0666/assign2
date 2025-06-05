@@ -82,17 +82,27 @@ $conn->close();
 ?>
 
 <main id="confirmation-container">
-    <div>
-        <?php if ($loginSuccess): ?>
-            <h2>Login Successful!</h2>
-            <p>Welcome, <?php echo htmlspecialchars($loginID); ?>.</p>
-            <a href="index.php">Go to front page</a>
-        <?php else: ?>
-            <h2>Login Failed</h2>
-            <p><?php echo htmlspecialchars($loginError); ?></p>
-            <a href="login.php">Try Again</a>
-        <?php endif; ?>
-    </div>
+  <div class="confirmation-box">
+    <?php if ($loginSuccess): ?>
+      <h2 class="success-title">🎉 Login Successful!</h2>
+      <p class="welcome-msg">
+        Welcome back, <strong><?php echo htmlspecialchars($loginID); ?></strong>! We're delighted to have you here again.
+      </p>
+      <p class="info-msg">
+        Feel free to browse our latest products and exciting promotions tailored just for you.  
+        You can search for anything you like using the search bar at the top — from your favorite drinks to exclusive deals.
+      </p>
+      <a class="btn btn-primary" href="index.php">Go to Front Page</a>
+    <?php else: ?>
+      <h2 class="error-title">⚠️ Login Failed</h2>
+      <p class="error-msg"><?php echo htmlspecialchars($loginError); ?></p>
+      <p class="info-msg">
+        Don’t worry, you can try logging in again. Make sure you enter the correct login ID and password.
+        If you forgot your password, please contact our team for assistance.
+      </p>
+      <a class="btn btn-secondary" href="login.php">Try Again</a>
+    <?php endif; ?>
+  </div>
 </main>
 
 <?php include 'footer.php'; ?>

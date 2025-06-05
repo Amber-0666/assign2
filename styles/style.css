@@ -3609,10 +3609,10 @@ iframe {
     background-color: #e7cdab;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    font-family: "Arial", sans-serif;
+    font-family: Arial, sans-serif;
     color: #000000;
+    text-align: center;
 }
-
 
 #confirmation-container h2 {
     font-size: 36px;
@@ -3621,35 +3621,132 @@ iframe {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-}
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+
+  #confirmation-container p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #5c2f1d; 
+  }
+
+  #confirmation-container strong {
+    color: #a52a2a;
+  }
 
 #confirmation-container a {
-    text-decoration: underline;
+    text-decoration: none;
     color: brown;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-top: 20px;
+    font-weight: bold;
+    padding: 12px 30px;
+    background-color: #fff8ef;
+    border-radius: 25px;
+    box-shadow: 0 3px 6px rgba(165, 42, 42, 0.3);
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 30px; 
 }
 
-#confirmation-container a:hover {
+  #confirmation-container a:hover {
+    background-color: #d4b78a;
+    color: #7a2a2a;
     text-decoration: none;
-    color: red;
-}
+  }
 
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 3 equal columns */
-  gap: 20px; /* space between columns and rows */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; 
   margin-top: 20px;
 }
 
 .info-grid > div {
-  background: #f8e5cb;          /* white background for each item */
+  background: #f8e5cb;     
   padding: 15px;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+/* End of Confirmation Page CSS */
+
+/* view Page CSS */
+#view-membership-page {
+    background-color: #f8e5cb;
+    font-family: 'Georgia', 'Garamond', serif;
+    color: rgb(165, 42, 42);
+    padding: 40px 20px;
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#view-membership-page h1 {
+    font-size: 220%;
+    font-weight: bold;
+    color: rgb(165, 42, 42);
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 0 #fff, 2px 2px 0 #e0c8a4;
+    letter-spacing: 1px;
+    border-bottom: 4px double brown;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+#view-membership-page .table-container {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+#view-membership-page table {
+    width: 100%;
+    max-width: 1000px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #fff8ef;
+    box-shadow: 0 0 12px rgba(139, 69, 19, 0.3);
+    border: 4px double brown;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#view-membership-page thead th {
+    background-color: #e7cdab;
+    color: brown;
+    font-weight: bold;
+    padding: 14px;
+    font-size: 16px;
+    border-bottom: 3px solid brown;
+    font-family: 'Georgia', serif;
+    text-align: center;
+}
+
+#view-membership-page tbody td {
+    padding: 12px 15px;
+    font-size: 15px;
+    font-family: 'Georgia', serif;
+    border-bottom: 2px dashed #b08864;
+    text-align: center;
+}
+
+#view-membership-page tbody tr:nth-child(even) {
+    background-color: #f1e2cc;
+}
+
+#view-membership-page .no-data {
+    font-size: 18px;
+    color: rgb(165, 42, 42);
+    margin-top: 40px;
+    font-style: italic;
+    border: 2px dashed brown;
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #fbe9d3;
+    border-radius: 8px;
+}
+/* End of view Page CSS */
 
