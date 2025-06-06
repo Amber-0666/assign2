@@ -48,20 +48,22 @@ $conn->close();
 
 ?>
 
-<main id="confirmation-container">
+<main id="login-profile-container">
     <h2>Welcome to Your Profile, <?= htmlspecialchars($userInfo['loginid']) ?> </h2>
 
     <?php if ($userInfo): ?>
         <p><strong>Full Name:</strong> <?= htmlspecialchars($userInfo['fullname']) ?></p><br>
         <p><strong>Email:</strong> <?= htmlspecialchars($userInfo['email']) ?></p><br>
         <p><strong>User ID:</strong> <?= htmlspecialchars($userInfo['loginid']) ?></p><br>
-        <p><strong>Registration Date:</strong> <?= htmlspecialchars($userInfo['created_at']) ?></p><br>
+        <p><strong>Registration Date:</strong> <?= htmlspecialchars($userInfo['created_at']) ?></p><br>    
+        
+        <a href="password.php" id="login-profile-btn">Change Password?</a>
+        <a href="logout.php" id="login-profile-btn">Logout</a>
     <?php else: ?>
         <p>User information not found???</p><br>
-        <p>Click<a href="login.php" class="back-home-btn">here</a>to login</p>
+        <p>Click<a href="login.php" id="login-profile-btn">here</a>to login</p>
     <?php endif; ?>
     
-    <a href="logout.php" class="back-home-btn">Logout</a>
 </main>
 
 <?php include 'footer.php'; ?>

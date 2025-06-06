@@ -3750,3 +3750,171 @@ iframe {
 }
 /* End of view Page CSS */
 
+/* Login Profile CSS */
+#login-profile-container {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 40px 50px;
+    background-color: #e7cdab;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+    color: #000;
+    text-align: center;
+}
+
+#login-profile-container h2 {
+    font-size: 32px;
+    color: #a52a2a;
+    margin-bottom: 25px;
+}
+
+#login-profile-container p {
+    font-size: 18px;
+    color: #5c2f1d;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+#login-profile-container strong {
+    color: #7a2a2a;
+}
+
+#login-profile-btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #fff8ef;
+    color: brown;
+    font-weight: bold;
+    padding: 12px 28px;
+    border-radius: 25px;
+    margin: 20px 10px 0;
+    box-shadow: 0 3px 6px rgba(165, 42, 42, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#login-profile-btn:hover {
+    background-color: #d4b78a;
+    color: #7a2a2a;
+    transform: translateY(-2px);
+}
+
+#login-profile-btn:active {
+    background-color: #a67c52;
+    transform: translateY(0);
+}
+/* End of Login Profile CSS */
+
+/* Password Change CSS */
+#pass-container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px 40px;
+  background-color: #e7cdab;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+#pass-container h2 {
+  font-size: 32px;
+  color: #a52a2a;
+  margin-bottom: 24px;
+}
+
+#pass-container label {
+  font-weight: bold;
+  display: block;
+  text-align: left;
+  margin-bottom: 6px;
+  color: #5c2f1d;
+}
+
+#pass-container input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border: 1px solid #c2a67b;
+  border-radius: 6px;
+  background-color: #fff8ef;
+  font-size: 16px;
+  color: #333;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease;
+}
+
+#pass-container input[type="password"]:focus {
+  border-color: #a52a2a;
+  outline: none;
+}
+
+#change-pass-btn {
+  padding: 12px 30px;
+  background-color: #fff8ef;
+  color: brown;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 3px 6px rgba(165, 42, 42, 0.3);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+#change-pass-btn:hover {
+  background-color: #d4b78a;
+  color: #7a2a2a;
+}
+/* End of Password Change CSS */
+
+/* Password Process CSS */
+#pass-process-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: #e7cdab;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    color: #000000;
+    text-align: center;
+}
+
+#pass-process-container h2 {
+    font-size: 36px;
+    padding-bottom: 20px;
+    color: #a52a2a;
+}
+
+#pass-process-container p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #5c2f1d;
+}
+
+#pass-process-container strong {
+    color: #a52a2a;
+}
+
+#pass-process-btn {
+    text-decoration: none;
+    color: brown;
+    font-weight: bold;
+    padding: 12px 30px;
+    background-color: #fff8ef;
+    border-radius: 25px;
+    box-shadow: 0 3px 6px rgba(165, 42, 42, 0.3);
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+#pass-process-btn:hover {
+    background-color: #d4b78a;
+    color: #7a2a2a;
+    text-decoration: none;
+}
+/* End of Password Process CSS */
