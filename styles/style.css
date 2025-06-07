@@ -3672,7 +3672,7 @@ iframe {
 /* End of Confirmation Page CSS */
 
 /* view Page CSS */
-#view-membership-page {
+.membership-view-page {
     background-color: #f8e5cb;
     font-family: 'Georgia', 'Garamond', serif;
     color: rgb(165, 42, 42);
@@ -3684,7 +3684,7 @@ iframe {
     align-items: center;
 }
 
-#view-membership-page h1 {
+.membership-view-page h1 {
     font-size: 220%;
     font-weight: bold;
     color: rgb(165, 42, 42);
@@ -3696,13 +3696,14 @@ iframe {
     padding-bottom: 10px;
 }
 
-#view-membership-page .table-container {
+.membership-view-page .table-container {
     display: flex;
     justify-content: center;
     overflow-x: auto;
+    width: 100%;
 }
 
-#view-membership-page table {
+.membership-view-page table {
     width: 100%;
     max-width: 1000px;
     border-collapse: separate;
@@ -3714,7 +3715,7 @@ iframe {
     overflow: hidden;
 }
 
-#view-membership-page thead th {
+.membership-view-page thead th {
     background-color: #e7cdab;
     color: brown;
     font-weight: bold;
@@ -3725,7 +3726,7 @@ iframe {
     text-align: center;
 }
 
-#view-membership-page tbody td {
+.membership-view-page tbody td {
     padding: 12px 15px;
     font-size: 15px;
     font-family: 'Georgia', serif;
@@ -3733,11 +3734,11 @@ iframe {
     text-align: center;
 }
 
-#view-membership-page tbody tr:nth-child(even) {
+.membership-view-page tbody tr:nth-child(even) {
     background-color: #f1e2cc;
 }
 
-#view-membership-page .no-data {
+.membership-view-page .no-data {
     font-size: 18px;
     color: rgb(165, 42, 42);
     margin-top: 40px;
@@ -3747,6 +3748,55 @@ iframe {
     padding: 15px 30px;
     background-color: #fbe9d3;
     border-radius: 8px;
+}
+
+.membership-view-page td.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.membership-view-page .actions a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background-color: brown;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+}
+
+.membership-view-page .actions a:hover {
+    background-color: #8b4513;
+}
+
+.membership-view-page .add-member-actions {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px;        
+    margin-bottom: 40px;      
+}
+
+.membership-view-page .add-member-btn {
+    background-color: brown;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 2px 2px 6px rgba(165, 42, 42, 0.3);
+}
+
+.membership-view-page .add-member-btn:hover {
+    background-color: #a0522d;
+    transform: scale(1.05);
 }
 /* End of view Page CSS */
 
@@ -3918,3 +3968,188 @@ iframe {
     text-decoration: none;
 }
 /* End of Password Process CSS */
+
+/* Edit Profile CSS */
+#edit-membership-page {
+    background-color: #f8e5cb;
+    font-family: 'Georgia', serif;
+    color: brown;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+#edit-membership-page form.edit-form {
+    background: #fff8ef;
+    padding: 30px 40px;
+    border: 4px double brown;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(165, 42, 42, 0.2);
+    width: 400px;
+    margin-top: 60px;
+}
+#edit-membership-page form.edit-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+#edit-membership-page form.edit-form input[type="text"],
+#edit-membership-page form.edit-form input[type="email"] {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 1rem;
+    border: 2px solid brown;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+#edit-membership-page form.edit-form button {
+    text-align: center;
+    margin-top: 25px;
+    background-color: brown;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+#edit-membership-page form.edit-form button:hover {
+    background-color: #a0522d;
+}
+/* End of Edit Profile CSS */
+
+/* Start of edit_success CSS */
+#edit-success-page {
+    background-color: #f8e5cb;
+    font-family: 'Georgia', serif;
+    color: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+#edit-success-page .message-box {
+    background: #fff8ef;
+    padding: 40px 60px;
+    border: 4px double brown;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(165,42,42,0.2);
+}
+#edit-success-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+#edit-success-page p {
+    font-size: 1.0rem;
+    margin-top: 0;
+}
+/* End of edit_success CSS */
+
+/* Add Member Page CSS */
+#add-member-page {
+    background-color: #fff8ef;
+    font-family: 'Georgia', 'Garamond', serif;
+    color: rgb(165, 42, 42);
+    padding: 40px 20px;
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#add-member-page h1 {
+    font-size: 220%;
+    font-weight: bold;
+    color: rgb(165, 42, 42);
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 0 #fff, 2px 2px 0 #e0c8a4;
+    letter-spacing: 1px;
+    border-bottom: 4px double brown;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+#add-member-page #register-form {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #fef5e7;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(165, 42, 42, 0.2);
+    border: 3px double brown;
+    text-align: left;
+}
+
+#add-member-page .form-register-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#add-member-page .form-register-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#add-member-page .form-register-col {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+#add-member-page .form-register-col label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: brown;
+}
+
+#add-member-page .form-register-col input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #b08864;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+    background-color: #fff8ef;
+    transition: border-color 0.3s ease;
+}
+
+#add-member-page .form-register-col input:focus {
+    border-color: #a0522d;
+    outline: none;
+}
+
+#add-member-page .form-submit-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#add-member-page .submit-btn {
+    background-color: brown;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 2px 2px 6px rgba(165, 42, 42, 0.3);
+}
+
+#add-member-page .submit-btn:hover {
+    background-color: #8b4513;
+    transform: scale(1.05);
+}
+/* End of Add Member Page CSS */
