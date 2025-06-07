@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Top Up History</title>
-    <link rel="stylesheet" href="styles/style.css" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-
-<?php include 'navbar.php'; ?>
-
 <?php
+// Start session and enable error reporting
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if (!isset($_SESSION['register-ID'])) {
     header("Location: login.php");
     exit;
@@ -40,6 +33,18 @@ while ($row = $result->fetch_assoc()) {
 $stmt->close();
 $conn->close();
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Top Up History</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<?php include 'navbar.php'; ?>
 
 <main id="topup-history-container">
     <h2>Your Top Up History</h2>
