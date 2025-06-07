@@ -72,9 +72,8 @@ if (mysqli_query($conn, $sql_enquiry) &&
     mysqli_query($conn, $sql_register) &&
     mysqli_query($conn, $sql_user) &&
     mysqli_query($conn, $sql_admin) &&
-    mysqli_query($conn, $sql_topup)) {
-    echo "All tables created successfully or already exist.";
-} else {
+    mysqli_query($conn, $sql_topup)) 
+     else {
     echo "Error creating tables: " . mysqli_error($conn);
 }
 
