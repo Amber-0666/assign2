@@ -26,6 +26,10 @@
             border-radius: 5px;
             margin-left: 10px;
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .search-form button:hover {
+            background-color: #5a2e2e;
         }
     </style>
 </head>
