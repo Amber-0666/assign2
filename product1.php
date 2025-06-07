@@ -1,113 +1,174 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'brewngo';
-$conn = new mysqli($host, $username, $password, $database);
-if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
-
-$search = $_GET['search'] ?? '';
-$category = 'Basic Brew';
-
-if (!empty($search)) {
-    $stmt = $conn->prepare("SELECT * FROM products WHERE category = ? AND name LIKE ?");
-    $param = "%$search%";
-    $stmt->bind_param("ss", $category, $param);
-} else {
-    $stmt = $conn->prepare("SELECT * FROM products WHERE category = ?");
-    $stmt->bind_param("s", $category);
-}
-$stmt->execute();
-$result = $stmt->get_result();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Brew</title>
     <link rel="website icon" href="styles/images/websitelogo.png">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="styles/style.css">
-    <style>
-        .search-button {
-            padding: 10px 20px;
-            border: none;
-            background-color: #7a3e3e;
-            color: white;
-            border-radius: 5px;
-            font-weight: 600;
-            font-size: 16px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-            cursor: pointer;
-        }
-        .search-button:hover {
-            background-color: #5e2e2e;
-            transform: scale(1.05);
-        }
-    </style>
 </head>
 
 <body class="index-body">
+	
+	<?php include 'navbar.php'; ?>
 
-<?php include 'navbar.php'; ?>
-
-<header style="position: relative; z-index: 999;">
-    <div class="header-upper">
-        <h1>Basic Brew</h1>
-        <p class="subtitle">Balanced and Delightful<br>Find out Our Homemade Coffee, Complemented with Rich Aroma and Flavor</p>
-
-        <form method="get" style="margin-top: 20px; display: flex; justify-content: center; gap: 10px;">
-            <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search product name..." 
-                style="padding: 10px 15px; width: 300px; border-radius: 5px; border: 1px solid #aaa;">
-            <button type="submit" class="search-button">Search</button>
-        </form>
-    </div>
+<header>
+	<div class="header-upper">
+		<h1>Basic Brew</h1>
+		<p class="subtitle">Balanced and Delightful<br>Find out Our Homemade Coffee, Complemented with Rich Aroma and Flavor</p>
+	</div>
 </header>
 
 <section class="product_sidebar">
     <aside>
-        <div class="product_nav">
-            <p>LIST</p> <hr><br>
-            <nav class="product_selection">
-                <ul>
-                    <li class="Basic_Brew" id="target_page"><a href="product1.php">Basic Brew</a></li>
-                    <li class="Artisan_Brew"><a href="product2.php">Artisan Brew</a></li>
-                    <li class="Non-coffee"><a href="product3.php">Non-coffee</a></li>
-                    <li class="Hot_Beverages"><a href="product4.php">Hot Beverages</a></li>
-                </ul><hr><br>
-            </nav>
-            <ol class="product_extra">
-                <li>★ MP : Member Price / NP : Normal Price</li>
-                <li>★ All Price are in Ringgit Malaysia (RM)</li>
-                <li>★ Add on RM 2 for Oat Milk</li>
-            </ol>
-        </div>
-    </aside>
+		<div class="product_nav">
+		<p>LIST</p> 
+		<hr>
+		<br>
+			<nav class="product_selection">
+				<ul>
+					<li class="Basic_Brew" id="target_page"><a href="product1.php">Basic Brew</a></li>
+					<li class="Artisan_Brew"><a href="product2.php">Artisan Brew</a></li>
+					<li class="Non-coffee"><a href="product3.php">Non-coffee</a></li> 	
+					<li class="Hot_Beverages"><a href="product4.php">Hot Beverages</a></li>
+				</ul>
+				<hr>
+				<br>
+			</nav>
+			<ol class="product_extra">
+				<li>&starf; MP : Member Price / NP : Normal Price</li>
+				<li>&starf; All Price are in Ringgit Malaysia (RM)</li>
+				<li>&starf; Add on RM 2 for Oat Milk</li>
+			</ol> 
+		</div>
+	</aside>
+	
+	
+	<div class="product_menu">
+		<div>
+			<figure><a href="#Americano"><img src="styles/images/No_image.jpg" alt="Americano"></a></figure>
+		  	<dl>	
+				<dt>Americano</dt>
+				<dd>MP | NP</dd>
+				<dd>8.90 | 10.90</dd>
+		  	</dl>
+		  	<hr>
+	  	</div>
+	  	<div>
+			<figure><a href="#Latte"><img src="styles/images/Latte.jpg" alt="Latte"></a></figure>
+		  	<dl>	
+				<dt>Latte</dt>
+				<dd>MP | NP</dd>
+				<dd>10.90 | 12.90</dd>
+		    </dl>
+			<hr>
+	  	</div>
+		<div>
+			<figure><a href="#Cappuccino"><img src="styles/images/Cappuccino.jpg" alt="Cappuccino"></a></figure>
+		    <dl>	
+				<dt>Cappuccino</dt>
+				<dd>MP | NP</dd>
+				<dd>11.90 | 13.90</dd>
+		    </dl>
+		    <hr>
+		</div>
+		<diV>
+		  	<figure><a href="#Aerocano"><img src="styles/images/Aerocano.jpg" alt="Aerocano"></a></figure>
+		  	<dl>		
+				<dt>Aerocano</dt>
+				<dd>MP | NP</dd>
+				<dd>10.90 | 12.90</dd>
+			</dl>	
+			<hr>
+		</diV>		
+	  
+		<div>
+			<figure><a href="#Aero-latte"><img src="styles/images/Aero-Latte.jpg" alt="Aero-latte"></a></figure>
+			<dl>	
+				<dt>Aero-latte</dt>
+				<dd>MP | NP</dd>
+				<dd>12.90 | 14.90</dd>
+			</dl>	
+			<hr>
+		</div>
+  	</div>
+</section>
 
-    <div class="product_menu">
-        <?php if ($result && $result->num_rows > 0): ?>
-            <?php while ($row = $result->fetch_assoc()): ?>
-                <div>
-                    <figure><img src="<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>"></figure>
-                    <dl>
-                        <dt><?= htmlspecialchars($row['name']) ?></dt>
-                        <dd>MP | NP</dd>
-                        <dd><?= number_format($row['price_mp'], 2) ?> | <?= number_format($row['price_np'], 2) ?></dd>
-                    </dl>
-                    <hr>
-                </div>
-            <?php endwhile; ?>
-        <?php else: ?>
-            <p>No products found.</p>
-        <?php endif; ?>
-    </div>
+<section class="product_details">
+	<div id="Americano" class="overlay">
+		<div id="Return_List_01" class="pop_up">
+			<a href="#Return_List_01" class="close-button">x</a>
+			<figure>
+				<img src="styles/images/No_image.jpg" alt="Americano">
+				<figcaption>
+					<p class="pop_up_name">Americano</p>
+					<p class="pop_up_member">MP | NP</p>
+					<p class="pop_up_price">8.90 | 10.90</p>
+					<p class="pop_up_desc">Chilled Espresso Poured Over Cold Water and Ice for a Bold Flavor.</p>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+	<div id="Latte" class="overlay">
+		<div id="Return_List_02" class="pop_up">
+			<a href="#Return_List_02" class="close-button">x</a>
+			<figure>
+				<img src="styles/images/Latte.jpg" alt="Latte">
+				<figcaption>
+					<p class="pop_up_name">Latte</p>
+					<p class="pop_up_member">MP | NP</p>
+					<p class="pop_up_price">10.90 | 12.90</p>
+					<p class="pop_up_desc">Espresso Combined with Cold Milk and Ice for a Smooth Sip.</p>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+	<div id="Cappuccino" class="overlay">
+		<div id="Return_List_03" class="pop_up">
+			<a href="#Return_List_03" class="close-button">x</a>
+			<figure>
+				<img src="styles/images/Cappuccino.jpg" alt="Cappuccino">
+				<figcaption>
+					<p class="pop_up_name">Cappuccino</p>
+					<p class="pop_up_member">MP | NP</p>
+					<p class="pop_up_price">11.90 | 13.90</p>
+					<p class="pop_up_desc">Classic Blend of Rich Espresso, with Cold Milk and a Light Foamy Top.</p>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+	<div id="Aerocano" class="overlay">
+		<div id="Return_List_04" class="pop_up">
+			<a href="#Return_List_04" class="close-button">x</a>
+			<figure>
+				<img src="styles/images/Aerocano.jpg" alt="Aerocano">
+				<figcaption>
+					<p class="pop_up_name">Aerocano</p>
+					<p class="pop_up_member">MP | NP</p>
+					<p class="pop_up_price">10.90 | 12.90</p>
+					<p class="pop_up_desc">Made by Steaming Espresso, Ice and Icy Clid Water to Create a Bold and Silky Aftertaste.</p>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+	<div id="Aero-latte" class="overlay">
+		<div id="Return_List_05" class="pop_up">
+			<a href="#Return_List_05" class="close-button">x</a>
+			<figure>
+				<img src="styles/images/Aero-Latte.jpg" alt="Aero-latte">
+				<figcaption>
+					<p class="pop_up_name">Aero-latte</p>
+					<p class="pop_up_member">MP | NP</p>
+					<p class="pop_up_price">12.90 | 14.90</p>
+					<p class="pop_up_desc">Made by Freshly-brewed Latte, Ice and Icy Clid Water to Create a Smooth and Silky Aftertaste.</p>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
 </section>
 
 <?php include 'footer.php'; ?>
-<?php $conn->close(); ?>
+
 </body>
 </html>
