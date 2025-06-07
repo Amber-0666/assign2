@@ -1,8 +1,18 @@
 <?php
+// === Enable error reporting for debugging ===
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include 'connection.php'; 
+// === Connect to DB ===
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$db = 'brewngo'; 
+
+$mysqli = new mysqli($host, $user, $pass, $db);
+if ($mysqli->connect_error) {
+    die('DB Connection failed: ' . $mysqli->connect_error);
+}
 
 // Sanitize and validate input
 $firstName = htmlspecialchars($_POST['first-name'] ?? '');
@@ -17,41 +27,60 @@ $postcode = preg_match('/^[0-9]{5}$/', $_POST['postcode'] ?? '') ? $_POST['postc
 $cvFileName = 'No file uploaded';
 $photoFileName = 'No file uploaded';
 
-// Handle CV upload
+$errors = [];
+if (!$firstName || !$lastName || !$email || !$phone || !$street || !$city || !$state || !$postcode) {
+    $errors[] = 'All fields must be filled in with valid data.';
+}
+
+// === Handle CV Upload ===
 if (isset($_FILES['cv']) && $_FILES['cv']['error'] === UPLOAD_ERR_OK) {
     $cvDir = 'uploads/cv/';
     if (!file_exists($cvDir)) mkdir($cvDir, 0777, true);
-
     $cvFileName = uniqid('cv_') . '_' . basename($_FILES['cv']['name']);
     move_uploaded_file($_FILES['cv']['tmp_name'], $cvDir . $cvFileName);
 }
 
-// Handle Photo upload
-if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-    $photoDir = 'uploads/photo/';
-    if (!file_exists($photoDir)) mkdir($photoDir, 0777, true);
+// === Handle Photo Upload ===
+$maxPhotoSize = 200 * 1024; // 200KB
 
-    $photoFileName = uniqid('photo_') . '_' . basename($_FILES['photo']['name']);
-    move_uploaded_file($_FILES['photo']['tmp_name'], $photoDir . $photoFileName);
+if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+    if ($_FILES['photo']['size'] > $maxPhotoSize) {
+        $errors[] = 'Photo file exceeds the 200KB limit.';
+    } else {
+        $photoDir = 'uploads/photo/';
+        if (!file_exists($photoDir)) mkdir($photoDir, 0777, true);
+        $photoFileName = uniqid('photo_') . '_' . basename($_FILES['photo']['name']);
+        move_uploaded_file($_FILES['photo']['tmp_name'], $photoDir . $photoFileName);
+    }
 }
 
-// Insert form data into the database
-$stmt = $conn->prepare("INSERT INTO applications 
+
+if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo '<p style="color:red;">' . htmlspecialchars($error) . '</p>';
+    }
+    echo '<a href="joinus.php">Go Back</a>';
+    exit;
+}
+
+// === Insert into DB ===
+$stmt = $mysqli->prepare("INSERT INTO joinus 
     (first_name, last_name, email, phone, street, city, state, postcode, cv_filename, photo_filename)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+if (!$stmt) {
+    die('Prepare failed: ' . $mysqli->error);
+}
 
 $stmt->bind_param("ssssssssss", 
     $firstName, $lastName, $email, $phone, $street, $city, $state, $postcode, $cvFileName, $photoFileName);
 
 if (!$stmt->execute()) {
-    die("Database insert failed: " . $stmt->error);
+    die('Insert failed: ' . $stmt->error);
 }
 
 $stmt->close();
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,8 +93,6 @@ $stmt->close();
 <body>
 
     <?php include 'navbar.php'; ?>
-    
-    <?php include ('connection.php') ?>
 
 <main id="confirmation-container">
     <h2>Application Confirmation</h2>
