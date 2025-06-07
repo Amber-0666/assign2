@@ -1,4 +1,8 @@
 <?php
+    session_start()
+?>
+
+<?php
 // Define navigation structure
 $navItems = [
     'PRODUCTS' => [
@@ -14,8 +18,7 @@ $navItems = [
     ],
     'JOIN US' => 'joinus.php',
     'ENQUIRY FORM' => 'enquiry.php',
-    'MEMBERSHIP REGISTRATION' => 'registration.php',
-    'LOGIN' => 'login.php'
+    'MEMBERSHIP REGISTRATION' => 'registration.php'
 ];
 
 $currentPage = basename($_SERVER['PHP_SELF']);
@@ -57,6 +60,20 @@ function isDropdownActive($items, $currentPage) {
                 </li>
             <?php endif; ?>
         <?php endforeach; ?>
+
+        <?php if (isset($_SESSION['admin-ID'])): 
+            $adminname = htmlspecialchars($_SESSION['admin-ID']); 
+        ?>
+            <li><a href="logout.php">LOGOUT</a></li>
+            <li><a href=""><?= strtoupper($adminname) ?></a></li>
+        <?php elseif (isset($_SESSION['register-ID'])): 
+            $username = htmlspecialchars($_SESSION['register-ID']);
+        ?>
+            <li><a href="logout.php">LOGOUT</a></li>
+            <li><a href="login_profile.php"><?= strtoupper($username) ?></a></li>
+        <?php else: ?>
+            <li class="<?= ($currentPage === 'login.php') ? 'active' : '' ?>"><a href="login.php">LOGIN</a></li>
+        <?php endif; ?>
     </ul>
 </nav>
 <!-- File ends here - no closing PHP tag needed -->

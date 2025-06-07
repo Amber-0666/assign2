@@ -19,6 +19,7 @@ ob_start();
 <body class="index-body">
 
     <?php include 'navbar.php'; ?>
+    <?php include 'createtable.php'; ?>
 
     <?php
     // Hero Section

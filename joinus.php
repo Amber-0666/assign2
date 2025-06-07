@@ -29,7 +29,7 @@
             <div class="joinus-form-container">
                 <h2>Application Form</h2>
                 
-                <form id="join-form" action="joinus_process.php" method="get">
+                <form id="join-form" action="joinus_process.php" method="post" enctype="multipart/form-data">
                     <div class="joinus-form-group">
                         <div class="joinus-form-row">
                             <div class="joinus-form-col">
@@ -153,25 +153,6 @@
             </div>
         </div>
     </main>
-
-    <script>
-        document.querySelectorAll('input[type="file"]').forEach(input => {
-            input.addEventListener('change', function() {
-                const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
-                this.nextElementSibling.nextElementSibling.textContent = fileName;
-                
-                // For photo upload, check file size
-                if (this.id === 'photo' && this.files[0]) {
-                    const fileSize = this.files[0].size / 1024; // in KB
-                    if (fileSize > 200) {
-                        alert('Photo size must be less than 200KB');
-                        this.value = '';
-                        this.nextElementSibling.nextElementSibling.textContent = 'No file chosen';
-                    }
-                }
-            });
-        });
-    </script>
     
     <?php include 'footer.php'; ?>
     
