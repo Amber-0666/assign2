@@ -27,9 +27,9 @@ html {
     justify-content: space-between;
     align-items: center;
     position: relative;
-     z-index: 9999; 
+    z-index: 999; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: unset; /* Ensures dropdowns aren't clipped */
+    overflow: visible; /* Ensures dropdowns aren't clipped */
 }
 
 .nav-logo img {
@@ -82,16 +82,16 @@ html {
 
 /* Dropdown Styling */
 .nav-dropdown-content {
-    position: absolute;
-    top: 100%;  /* dropdown sits below menu */
-    left: 0;
+    display: none;
+    position: relative;
     background-color: var(--light-bg);
     min-width: 200px;
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
-    z-index: 99999;  /* higher than navbar */
+    z-index: 10000;
+    margin: 0;
+    padding: 0;
 }
-
 
 .nav-dropdown-content a {
     color: var(--dark-text);
