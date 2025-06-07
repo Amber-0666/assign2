@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db = 'brewngo';
+$db = 'Brewngo';
 
 $mysqli = new mysqli($host, $user, $pass, $db);
 if ($mysqli->connect_error) {
