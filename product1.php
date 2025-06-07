@@ -28,7 +28,43 @@ $hasSearch = !empty($search);
     <link rel="website icon" href="styles/images/websitelogo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="styles/style.css">
-
+    <style>
+        .search-form {
+            margin: 20px auto;
+            text-align: center;
+            max-width: 500px;
+        }
+        .search-form input[type="text"] {
+            padding: 10px 15px;
+            width: 60%;
+            border-radius: 20px;
+            border: 1px solid #7a3e3e;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        .search-form button {
+            padding: 10px 20px;
+            background-color: #7a3e3e;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .search-form button:hover {
+            background-color: #5a2e2e;
+            transform: translateY(-2px);
+        }
+        .no-results {
+            text-align: center;
+            color: #7a3e3e;
+            font-style: italic;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 
 <body class="index-body">
@@ -42,13 +78,12 @@ $hasSearch = !empty($search);
     </div>
 </header>
 
-
-
-<section class="product_sidebar">
-    <form method="get" class="search-form">
+<form method="get" class="search-form">
     <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search Basic Brew products...">
     <button type="submit">Search</button>
 </form>
+
+<section class="product_sidebar">
     <aside>
         <div class="product_nav">
         <p>LIST</p> 
