@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db = 'brewngo';
+$db = 'Brewngo';
 
 $mysqli = new mysqli($host, $user, $pass, $db);
 
@@ -21,11 +21,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $loginid = trim($_POST['loginid']);
 
+    // Fetch old loginid
+    $stmt_old = $mysqli->prepare("SELECT loginid FROM register WHERE id = ?");
+    $stmt_old->bind_param("i", $id);
+    $stmt_old->execute();
+    $stmt_old->bind_result($old_loginid);
+    $stmt_old->fetch();
+    $stmt_old->close();
+
     if ($fullname && $email && $loginid) {
+        // Update register table
         $stmt = $mysqli->prepare("UPDATE register SET fullname = ?, email = ?, loginid = ? WHERE id = ?");
         $stmt->bind_param("sssi", $fullname, $email, $loginid, $id);
         $stmt->execute();
         $stmt->close();
+
+        // Update user table (loginid may have changed)
+        $stmt2 = $mysqli->prepare("UPDATE user SET `register-ID` = ? WHERE `register-ID` = ?");
+        $stmt2->bind_param("ss", $loginid, $old_loginid);
+        $stmt2->execute();
+        $stmt2->close();
 
         header("Location: edit_success.php");
         exit;

@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db = 'brewngo';
+$db = 'Brewngo';
 
 // Connect to database
 $mysqli = new mysqli($host, $user, $pass, $db);
@@ -15,12 +15,27 @@ if ($mysqli->connect_error) {
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = (int) $_GET['id'];
 
-    // Prepare delete statement
+    // Get loginid before deleting
+    $stmt_get = $mysqli->prepare("SELECT loginid FROM register WHERE id = ?");
+    $stmt_get->bind_param("i", $id);
+    $stmt_get->execute();
+    $stmt_get->bind_result($loginid);
+    $stmt_get->fetch();
+    $stmt_get->close();
+
+    // Delete from register table
     $stmt = $mysqli->prepare("DELETE FROM register WHERE id = ?");
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
         $stmt->close();
+
+        // Delete from user table
+        $stmt2 = $mysqli->prepare("DELETE FROM user WHERE `register-ID` = ?");
+        $stmt2->bind_param("s", $loginid);
+        $stmt2->execute();
+        $stmt2->close();
+
         $mysqli->close();
         // Redirect to confirmation page
         header("Location: delete_success.php");
