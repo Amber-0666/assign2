@@ -40,12 +40,18 @@ $stmt = $conn->prepare("SELECT `fullname`, `email`, `loginid`, `created_at` FROM
 $stmt->bind_param("s", $loginID);
 $stmt->execute();
 $result = $stmt->get_result();
-
 $userInfo = $result->fetch_assoc();
-
 $stmt->close();
-$conn->close();
 
+// Get balance from user table by register-ID
+$stmt2 = $conn->prepare("SELECT balance FROM user WHERE `register-ID` = ?");
+$stmt2->bind_param("s", $loginID);
+$stmt2->execute();
+$stmt2->bind_result($balance);
+$stmt2->fetch();
+$stmt2->close();
+
+$conn->close();
 ?>
 
 <main id="login-profile-container">
@@ -64,6 +70,13 @@ $conn->close();
         <p>Click<a href="login.php" id="login-profile-btn">here</a>to login</p>
     <?php endif; ?>
     
+</main>
+<main id="login-profile-container">
+
+    <p><strong>Balance:</strong> RM <?= number_format($balance ?? 0, 2) ?></p>
+
+    <a href="topup.php" class="login-profile-btn">Top Up Now</a>
+    <a href="topup_history.php" class="login-profile-btn">Top Up History</a>
 </main>
 
 <?php include 'footer.php'; ?>
