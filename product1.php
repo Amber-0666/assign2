@@ -31,6 +31,24 @@ $result = $stmt->get_result();
     <link rel="website icon" href="styles/images/websitelogo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="styles/style.css">
+    <style>
+        .search-button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #7a3e3e;
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            cursor: pointer;
+        }
+        .search-button:hover {
+            background-color: #5e2e2e;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
 <body class="index-body">
@@ -42,9 +60,9 @@ $result = $stmt->get_result();
         <h1>Basic Brew</h1>
         <p class="subtitle">Balanced and Delightful<br>Find out Our Homemade Coffee, Complemented with Rich Aroma and Flavor</p>
 
-        <!-- Search Form -->
-        <form method="get" style="margin-top: 20px;">
-            <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search product name..." style="padding:10px; width:300px; border-radius:5px; border:1px solid #aaa;">
+        <form method="get" style="margin-top: 20px; display: flex; justify-content: center; gap: 10px;">
+            <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search product name..." 
+                style="padding: 10px 15px; width: 300px; border-radius: 5px; border: 1px solid #aaa;">
             <button type="submit" class="search-button">Search</button>
         </form>
     </div>
