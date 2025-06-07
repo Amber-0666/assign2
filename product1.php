@@ -122,8 +122,9 @@ $hasSearch = !empty($search);
             
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    $productId = str_replace(' ', '', $row['name']);
                     echo '<div>
-                        <figure><a href="#'.str_replace(' ', '', $row['name']).'"><img src="'.$row['image'].'" alt="'.$row['name'].'"></a></figure>
+                        <figure><a href="#'.$productId.'"><img src="'.$row['image'].'" alt="'.$row['name'].'"></a></figure>
                         <dl>    
                             <dt>'.$row['name'].'</dt>
                             <dd>MP | NP</dd>
@@ -131,17 +132,33 @@ $hasSearch = !empty($search);
                         </dl>
                         <hr>
                     </div>';
+                    
+                    // Generate corresponding popup for each product
+                    echo '<div id="'.$productId.'" class="overlay">
+                        <div id="Return_List_'.$productId.'" class="pop_up">
+                            <a href="#Return_List_'.$productId.'" class="close-button">x</a>
+                            <figure>
+                                <img src="'.$row['image'].'" alt="'.$row['name'].'">
+                                <figcaption>
+                                    <p class="pop_up_name">'.$row['name'].'</p>
+                                    <p class="pop_up_member">MP | NP</p>
+                                    <p class="pop_up_price">'.$row['price_mp'].' | '.$row['price_np'].'</p>
+                                    <p class="pop_up_desc">'.$row['description'].'</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>';
                 }
             } else {
                 echo '<div style="grid-column: 1/-1; text-align:center;">
                     <p class="no-results">No products found matching "'.htmlspecialchars($search).'"</p>
                 </div>';
                 // Show original content after no results message
-                include 'original_basic_brew_products.php';
+                include 'product1_original_content.php';
             }
         } else {
             // Show original content when no search
-            include 'original_basic_brew_products.php';
+            include 'product1_original_content.php';
         }
         ?>
     </div>
