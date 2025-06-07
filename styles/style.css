@@ -4051,7 +4051,7 @@ iframe {
 
 /* Add member Page CSS */
 #add-member-page {
-    background-color: #fff8ef;
+    background-color: #f8e5cb;
     font-family: 'Georgia', 'Garamond', serif;
     color: rgb(165, 42, 42);
     padding: 40px 20px;
@@ -4074,20 +4074,15 @@ iframe {
     padding-bottom: 10px;
 }
 
-.topup-process-btn:hover {
-    background-color: #d4b78a;
-    color: #7a2a2a;
-    text-decoration: none;
-}
-
-#topup-history-container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #e7cdab;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-family: Arial, sans-serif;
+#add-member-page #register-form {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #fef5e7;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(165, 42, 42, 0.2);
+    border: 3px double brown;
+    text-align: left;
 }
 
 #add-member-page .form-register-group {
@@ -4102,11 +4097,11 @@ iframe {
     gap: 20px;
 }
 
-#topup-history-container table th, 
-#topup-history-container table td {
-    padding: 12px;
-    border-bottom: 1px solid #d4b78a;
-    text-align: left;
+#add-member-page .form-register-col {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
 }
 
 #add-member-page .form-register-col label {
