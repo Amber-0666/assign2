@@ -29,7 +29,6 @@ $hasSearch = !empty($search);
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="styles/style.css">
     <style>
-        /* Search form styling that matches original design */
         .search-form {
             margin: 20px auto;
             text-align: center;
@@ -70,7 +69,7 @@ $hasSearch = !empty($search);
 
 <body class="index-body">
     
-    <?php include 'navbar.php'; ?>
+<?php include 'navbar.php'; ?>
 
 <header>
     <div class="header-upper">
@@ -79,7 +78,6 @@ $hasSearch = !empty($search);
     </div>
 </header>
 
-<!-- Added search form - matches original aesthetic -->
 <form method="get" class="search-form">
     <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search Basic Brew products...">
     <button type="submit">Search</button>
@@ -112,7 +110,6 @@ $hasSearch = !empty($search);
     <div class="product_menu">
         <?php
         if ($hasSearch) {
-            // Search database if there's a search term
             $query = "SELECT * FROM products WHERE category = 'Basic Brew' AND name LIKE ? ORDER BY name";
             $searchParam = "%$search%";
             $stmt = $conn->prepare($query);
@@ -133,7 +130,6 @@ $hasSearch = !empty($search);
                         <hr>
                     </div>';
                     
-                    // Generate corresponding popup for each product
                     echo '<div id="'.$productId.'" class="overlay">
                         <div id="Return_List_'.$productId.'" class="pop_up">
                             <a href="#Return_List_'.$productId.'" class="close-button">x</a>
@@ -153,12 +149,71 @@ $hasSearch = !empty($search);
                 echo '<div style="grid-column: 1/-1; text-align:center;">
                     <p class="no-results">No products found matching "'.htmlspecialchars($search).'"</p>
                 </div>';
-                // Show original content after no results message
-                include 'product1_original_content.php';
+                
+                // ✅ insert your original static content directly here:
+                ?>
+                <div>
+                    <figure><a href="#Americano"><img src="styles/images/No_image.jpg" alt="Americano"></a></figure>
+                    <dl>    
+                        <dt>Americano</dt>
+                        <dd>MP | NP</dd>
+                        <dd>8.90 | 10.90</dd>
+                    </dl>
+                    <hr>
+                </div>
+                <div>
+                    <figure><a href="#Latte"><img src="styles/images/Latte.jpg" alt="Latte"></a></figure>
+                    <dl>    
+                        <dt>Latte</dt>
+                        <dd>MP | NP</dd>
+                        <dd>10.90 | 12.90</dd>
+                    </dl>
+                    <hr>
+                </div>
+                <div>
+                    <figure><a href="#Cappuccino"><img src="styles/images/Cappuccino.jpg" alt="Cappuccino"></a></figure>
+                    <dl>    
+                        <dt>Cappuccino</dt>
+                        <dd>MP | NP</dd>
+                        <dd>11.90 | 13.90</dd>
+                    </dl>
+                    <hr>
+                </div>
+                <!-- You can continue for Aerocano, Aero-latte etc -->
+                <?php
             }
         } else {
-            // Show original content when no search
-            include 'product1_original_content.php';
+            ?>
+            <!-- Display original static content when no search -->
+            <div>
+                <figure><a href="#Americano"><img src="styles/images/No_image.jpg" alt="Americano"></a></figure>
+                <dl>    
+                    <dt>Americano</dt>
+                    <dd>MP | NP</dd>
+                    <dd>8.90 | 10.90</dd>
+                </dl>
+                <hr>
+            </div>
+            <div>
+                <figure><a href="#Latte"><img src="styles/images/Latte.jpg" alt="Latte"></a></figure>
+                <dl>    
+                    <dt>Latte</dt>
+                    <dd>MP | NP</dd>
+                    <dd>10.90 | 12.90</dd>
+                </dl>
+                <hr>
+            </div>
+            <div>
+                <figure><a href="#Cappuccino"><img src="styles/images/Cappuccino.jpg" alt="Cappuccino"></a></figure>
+                <dl>    
+                    <dt>Cappuccino</dt>
+                    <dd>MP | NP</dd>
+                    <dd>11.90 | 13.90</dd>
+                </dl>
+                <hr>
+            </div>
+            <!-- Continue the rest... -->
+            <?php
         }
         ?>
     </div>
@@ -168,4 +223,5 @@ $hasSearch = !empty($search);
 
 </body>
 </html>
+
 <?php $conn->close(); ?>
