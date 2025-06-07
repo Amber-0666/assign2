@@ -157,50 +157,98 @@ $hasSearch = !empty($search);
 
         function displayStaticContent() {
             ?>
+            <!-- STATIC PRODUCT CARDS -->
             <div>
                 <figure><a href="#Americano"><img src="styles/images/No_image.jpg" alt="Americano"></a></figure>
-                <dl>    
-                    <dt>Americano</dt>
-                    <dd>MP | NP</dd>
-                    <dd>8.90 | 10.90</dd>
-                </dl>
-                <hr>
+                <dl><dt>Americano</dt><dd>MP | NP</dd><dd>8.90 | 10.90</dd></dl><hr>
             </div>
             <div>
                 <figure><a href="#Latte"><img src="styles/images/Latte.jpg" alt="Latte"></a></figure>
-                <dl>    
-                    <dt>Latte</dt>
-                    <dd>MP | NP</dd>
-                    <dd>10.90 | 12.90</dd>
-                </dl>
-                <hr>
+                <dl><dt>Latte</dt><dd>MP | NP</dd><dd>10.90 | 12.90</dd></dl><hr>
             </div>
             <div>
                 <figure><a href="#Cappuccino"><img src="styles/images/Cappuccino.jpg" alt="Cappuccino"></a></figure>
-                <dl>    
-                    <dt>Cappuccino</dt>
-                    <dd>MP | NP</dd>
-                    <dd>11.90 | 13.90</dd>
-                </dl>
-                <hr>
+                <dl><dt>Cappuccino</dt><dd>MP | NP</dd><dd>11.90 | 13.90</dd></dl><hr>
             </div>
             <div>
                 <figure><a href="#Aerocano"><img src="styles/images/Aerocano.jpg" alt="Aerocano"></a></figure>
-                <dl>    
-                    <dt>Aerocano</dt>
-                    <dd>MP | NP</dd>
-                    <dd>10.90 | 12.90</dd>
-                </dl>
-                <hr>
+                <dl><dt>Aerocano</dt><dd>MP | NP</dd><dd>10.90 | 12.90</dd></dl><hr>
             </div>
             <div>
                 <figure><a href="#Aero-latte"><img src="styles/images/Aero-Latte.jpg" alt="Aero-latte"></a></figure>
-                <dl>    
-                    <dt>Aero-latte</dt>
-                    <dd>MP | NP</dd>
-                    <dd>12.90 | 14.90</dd>
-                </dl>
-                <hr>
+                <dl><dt>Aero-latte</dt><dd>MP | NP</dd><dd>12.90 | 14.90</dd></dl><hr>
+            </div>
+
+            <!-- STATIC POPUP MODALS -->
+            <div id="Americano" class="overlay">
+                <div id="Return_List_Americano" class="pop_up">
+                    <a href="#Return_List_Americano" class="close-button">x</a>
+                    <figure>
+                        <img src="styles/images/No_image.jpg" alt="Americano">
+                        <figcaption>
+                            <p class="pop_up_name">Americano</p>
+                            <p class="pop_up_member">MP | NP</p>
+                            <p class="pop_up_price">8.90 | 10.90</p>
+                            <p class="pop_up_desc">Chilled Espresso Poured Over Cold Water and Ice for a Bold Flavor.</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div id="Latte" class="overlay">
+                <div id="Return_List_Latte" class="pop_up">
+                    <a href="#Return_List_Latte" class="close-button">x</a>
+                    <figure>
+                        <img src="styles/images/Latte.jpg" alt="Latte">
+                        <figcaption>
+                            <p class="pop_up_name">Latte</p>
+                            <p class="pop_up_member">MP | NP</p>
+                            <p class="pop_up_price">10.90 | 12.90</p>
+                            <p class="pop_up_desc">Espresso Combined with Cold Milk and Ice for a Smooth Sip.</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div id="Cappuccino" class="overlay">
+                <div id="Return_List_Cappuccino" class="pop_up">
+                    <a href="#Return_List_Cappuccino" class="close-button">x</a>
+                    <figure>
+                        <img src="styles/images/Cappuccino.jpg" alt="Cappuccino">
+                        <figcaption>
+                            <p class="pop_up_name">Cappuccino</p>
+                            <p class="pop_up_member">MP | NP</p>
+                            <p class="pop_up_price">11.90 | 13.90</p>
+                            <p class="pop_up_desc">Classic Blend of Rich Espresso, with Cold Milk and a Light Foamy Top.</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div id="Aerocano" class="overlay">
+                <div id="Return_List_Aerocano" class="pop_up">
+                    <a href="#Return_List_Aerocano" class="close-button">x</a>
+                    <figure>
+                        <img src="styles/images/Aerocano.jpg" alt="Aerocano">
+                        <figcaption>
+                            <p class="pop_up_name">Aerocano</p>
+                            <p class="pop_up_member">MP | NP</p>
+                            <p class="pop_up_price">10.90 | 12.90</p>
+                            <p class="pop_up_desc">Made by Steaming Espresso, Ice and Icy Cold Water to Create a Bold and Silky Aftertaste.</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div id="Aero-latte" class="overlay">
+                <div id="Return_List_Aero-latte" class="pop_up">
+                    <a href="#Return_List_Aero-latte" class="close-button">x</a>
+                    <figure>
+                        <img src="styles/images/Aero-Latte.jpg" alt="Aero-latte">
+                        <figcaption>
+                            <p class="pop_up_name">Aero-latte</p>
+                            <p class="pop_up_member">MP | NP</p>
+                            <p class="pop_up_price">12.90 | 14.90</p>
+                            <p class="pop_up_desc">Made by Freshly-brewed Latte, Ice and Icy Cold Water to Create a Smooth and Silky Aftertaste.</p>
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
             <?php
         }
