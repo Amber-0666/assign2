@@ -84,7 +84,7 @@ $conn->close();
 <main id="confirmation-container">
   <div class="confirmation-box">
     <?php if ($loginSuccess): ?>
-      <h2 class="success-title">🎉 Login Successful!</h2>
+      <h2 class="success-title">Login Successful!</h2>
       <p class="welcome-msg">
         Welcome back, <strong><?php echo htmlspecialchars($loginID); ?></strong>! We're delighted to have you here again.
       </p>
@@ -94,7 +94,7 @@ $conn->close();
       </p>
       <a class="btn btn-primary" href="index.php">Go to Front Page</a>
     <?php else: ?>
-      <h2 class="error-title">⚠️ Login Failed</h2>
+      <h2 class="error-title">Login Failed</h2>
       <p class="error-msg"><?php echo htmlspecialchars($loginError); ?></p>
       <p class="info-msg">
         Don’t worry, you can try logging in again. Make sure you enter the correct login ID and password.
