@@ -4151,3 +4151,25 @@ iframe {
     transform: scale(1.05);
 }
 /* End of Add Member Page CSS */
+
+/* Admin UI CSS */
+.admin_dashboard {
+    background-color: #fdfdfd;
+}
+
+#admin_dashboard-aside {
+    padding: 20px;
+    background-color: #e7cdab;
+    float: left;
+    width: 30%;
+    height: 100vh;
+}
+
+#admin_dashboard-aside h2 {
+    font-size: 24px;
+    color: brown;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* End of Admin UI Page CSS */
