@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 $host = 'localhost';
 $username = 'root';
 $password = '';
@@ -33,15 +34,18 @@ $result = $stmt->get_result();
 </head>
 
 <body class="index-body">
+
 <?php include 'navbar.php'; ?>
 
 <header>
     <div class="header-upper">
         <h1>Basic Brew</h1>
         <p class="subtitle">Balanced and Delightful<br>Find out Our Homemade Coffee, Complemented with Rich Aroma and Flavor</p>
-        <form method="get" style="margin-top: 20px;">
-            <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search product name..." style="padding:10px;width:300px;border-radius:5px;">
-            <button type="submit" style="padding:10px 20px;border:none;background-color:#7a3e3e;color:white;border-radius:5px;">Search</button>
+
+        <!-- Search Bar -->
+        <form method="get" style="margin-top: 20px; position: relative; z-index: 999;">
+            <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search product name..." style="padding:10px; width:300px; border-radius:5px; border:1px solid #aaa;">
+            <button type="submit" style="padding:10px 20px; border:none; background-color:#7a3e3e; color:white; border-radius:5px; margin-left:10px;">Search</button>
         </form>
     </div>
 </header>
