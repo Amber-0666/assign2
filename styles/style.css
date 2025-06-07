@@ -3394,19 +3394,22 @@ body {
     text-decoration: none;
 }
 
-/* Search button styling */
 .search-button {
     padding: 10px 20px;
     border: none;
     background-color: #7a3e3e;
     color: white;
     border-radius: 5px;
-    margin-left: 10px;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    cursor: pointer;
 }
 
 .search-button:hover {
     background-color: #5e2e2e;
+    transform: scale(1.05);
 }
 
 /* END OF PRODUCT CSS FILE */
