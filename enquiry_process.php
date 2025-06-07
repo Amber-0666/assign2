@@ -1,45 +1,62 @@
 <?php
-// === Enable error reporting ===
+session_start(); // Start session for anti-spam
+
+// Enable error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// === Database connection ===
+// Database connection
 $host = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'enquiry';
+$database = 'brewngo';
 $conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// === Initialize inserted variable ===
+// Anti-spam logic: prevent submissions within 60 seconds
+$cooldown_seconds = 60;
+$now = time();
+$allow_submission = true;
+$spam_message = "";
+
+if (isset($_SESSION['last_submission_time'])) {
+    $time_since_last = $now - $_SESSION['last_submission_time'];
+    if ($time_since_last < $cooldown_seconds) {
+        $allow_submission = false;
+        $spam_message = "You are submitting too fast! Please wait ".($cooldown_seconds - $time_since_last)." seconds before submitting again.";
+    }
+}
+
 $inserted = false;
 
-// === Sanitize and validate input ===
-$firstName = htmlspecialchars($_POST['first-name'] ?? '');
-$lastName = htmlspecialchars($_POST['last-name'] ?? '');
-$email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
-$phone = preg_match('/^[0-9]{10}$/', $_POST['phone'] ?? '') ? $_POST['phone'] : false;
-$street = htmlspecialchars($_POST['street'] ?? '');
-$city = htmlspecialchars($_POST['city'] ?? '');
-$state = htmlspecialchars($_POST['state'] ?? '');
-$postcode = preg_match('/^[0-9]{5}$/', $_POST['postcode'] ?? '') ? $_POST['postcode'] : false;
-$enquiryType = htmlspecialchars($_POST['enquiry-type'] ?? '');
-$message = htmlspecialchars($_POST['message'] ?? '');
+// Process form only if allowed
+if ($allow_submission) {
+    $firstName = htmlspecialchars($_POST['first-name'] ?? '');
+    $lastName = htmlspecialchars($_POST['last-name'] ?? '');
+    $email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+    $phone = preg_match('/^[0-9]{10}$/', $_POST['phone'] ?? '') ? $_POST['phone'] : false;
+    $street = htmlspecialchars($_POST['street'] ?? '');
+    $city = htmlspecialchars($_POST['city'] ?? '');
+    $state = htmlspecialchars($_POST['state'] ?? '');
+    $postcode = preg_match('/^[0-9]{5}$/', $_POST['postcode'] ?? '') ? $_POST['postcode'] : false;
+    $enquiryType = htmlspecialchars($_POST['enquiry-type'] ?? '');
+    $message = htmlspecialchars($_POST['message'] ?? '');
 
-// === Validation check ===
-if ($firstName && $lastName && $email && $phone && $street && $city && $state && $postcode && $enquiryType && $message) {
-    // === Insert into database ===
-    $stmt = $conn->prepare("INSERT INTO enquiry (first_name, last_name, email, phone, street, city, state, postcode, enquiry_type, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssssss", $firstName, $lastName, $email, $phone, $street, $city, $state, $postcode, $enquiryType, $message);
-    $inserted = $stmt->execute();
-    $stmt->close();
+    if ($firstName && $lastName && $email && $phone && $street && $city && $state && $postcode && $enquiryType && $message) {
+        $stmt = $conn->prepare("INSERT INTO enquiry (first_name, last_name, email, phone, street, city, state, postcode, enquiry_type, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssssss", $firstName, $lastName, $email, $phone, $street, $city, $state, $postcode, $enquiryType, $message);
+        $inserted = $stmt->execute();
+        $stmt->close();
+
+        // Store submission time into session
+        $_SESSION['last_submission_time'] = $now;
+    }
 }
 
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +112,10 @@ $conn->close();
 
 <main>
     <div class="confirmation-container">
-        <?php if ($inserted): ?>
+        <?php if (!$allow_submission): ?>
+            <h2>Spam Detected!</h2>
+            <p><?= htmlspecialchars($spam_message) ?></p>
+        <?php elseif ($inserted): ?>
             <h2>Enquiry Submitted Successfully!</h2>
             <p>Thank you, <?= htmlspecialchars($firstName) . ' ' . htmlspecialchars($lastName) ?>, for reaching out.</p>
             <ul>
