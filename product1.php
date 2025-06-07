@@ -149,42 +149,14 @@ $hasSearch = !empty($search);
                 echo '<div style="grid-column: 1/-1; text-align:center;">
                     <p class="no-results">No products found matching "'.htmlspecialchars($search).'"</p>
                 </div>';
-                
-                // ✅ insert your original static content directly here:
-                ?>
-                <div>
-                    <figure><a href="#Americano"><img src="styles/images/No_image.jpg" alt="Americano"></a></figure>
-                    <dl>    
-                        <dt>Americano</dt>
-                        <dd>MP | NP</dd>
-                        <dd>8.90 | 10.90</dd>
-                    </dl>
-                    <hr>
-                </div>
-                <div>
-                    <figure><a href="#Latte"><img src="styles/images/Latte.jpg" alt="Latte"></a></figure>
-                    <dl>    
-                        <dt>Latte</dt>
-                        <dd>MP | NP</dd>
-                        <dd>10.90 | 12.90</dd>
-                    </dl>
-                    <hr>
-                </div>
-                <div>
-                    <figure><a href="#Cappuccino"><img src="styles/images/Cappuccino.jpg" alt="Cappuccino"></a></figure>
-                    <dl>    
-                        <dt>Cappuccino</dt>
-                        <dd>MP | NP</dd>
-                        <dd>11.90 | 13.90</dd>
-                    </dl>
-                    <hr>
-                </div>
-                <!-- You can continue for Aerocano, Aero-latte etc -->
-                <?php
+                displayStaticContent();
             }
         } else {
+            displayStaticContent();
+        }
+
+        function displayStaticContent() {
             ?>
-            <!-- Display original static content when no search -->
             <div>
                 <figure><a href="#Americano"><img src="styles/images/No_image.jpg" alt="Americano"></a></figure>
                 <dl>    
@@ -213,25 +185,23 @@ $hasSearch = !empty($search);
                 <hr>
             </div>
             <div>
-  				  <figure><a href="#Aerocano"><img src="styles/images/Aerocano.jpg" alt="Aerocano"></a></figure>
-  				  <dl>    
-       				 <dt>Aerocano</dt>
-      				  <dd>MP | NP</dd>
-       				 <dd>10.90 | 12.90</dd>
-   				 </dl>
-   				 <hr>
-				</div>
-
-				<div>
-   				 <figure><a href="#Aero-latte"><img src="styles/images/Aero-Latte.jpg" alt="Aero-latte"></a></figure>
-   				 <dl>    
-       				 <dt>Aero-latte</dt>
-       				 <dd>MP | NP</dd>
-       				 <dd>12.90 | 14.90</dd>
-   				 </dl>
-   				 <hr>
-				</div>
-
+                <figure><a href="#Aerocano"><img src="styles/images/Aerocano.jpg" alt="Aerocano"></a></figure>
+                <dl>    
+                    <dt>Aerocano</dt>
+                    <dd>MP | NP</dd>
+                    <dd>10.90 | 12.90</dd>
+                </dl>
+                <hr>
+            </div>
+            <div>
+                <figure><a href="#Aero-latte"><img src="styles/images/Aero-Latte.jpg" alt="Aero-latte"></a></figure>
+                <dl>    
+                    <dt>Aero-latte</dt>
+                    <dd>MP | NP</dd>
+                    <dd>12.90 | 14.90</dd>
+                </dl>
+                <hr>
+            </div>
             <?php
         }
         ?>
