@@ -72,7 +72,7 @@ $conn->close();
     
 </main>
 <main id="login-profile-container">
-
+    <h2>Top-Up</h2>   
     <p><strong>Balance:</strong> RM <?= number_format($balance ?? 0, 2) ?></p>
 
     <a href="topup.php" class="login-profile-btn">Top Up Now</a>
