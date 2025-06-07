@@ -29,7 +29,7 @@ html {
     position: relative;
      z-index: 9999; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: visible; /* Ensures dropdowns aren't clipped */
+    overflow: unset; /* Ensures dropdowns aren't clipped */
 }
 
 .nav-logo img {
