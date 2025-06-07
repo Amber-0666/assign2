@@ -846,7 +846,7 @@ html {
 header {
     background: linear-gradient(135deg, var(--primary-color), rgb(140, 35, 35));
     color: white;
-    z-index: -2;
+    z-index: 0;
     text-align: center;
     width: 100%;
     padding: 50px 20px 50px;
