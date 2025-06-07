@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Top Up Balance</title>
-    <link rel="stylesheet" href="styles/style.css" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
+<?php
+// Start session and enable error reporting
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-<?php include 'navbar.php'; ?>
-<?php 
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -31,7 +25,19 @@ $conn->close();
 
 ?>
 
-<div id="topup-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Top Up Balance</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<?php include 'navbar.php'; ?>
+
+<main id="topup-container">
     <h2>Top Up Your Balance</h2>
 
     <p><strong>Balance:</strong> RM <?= number_format($balance ?? 0, 2) ?></p>
@@ -42,9 +48,9 @@ $conn->close();
         <button type="submit" id="topup-submit-btn">Top Up</button>
     </form>
 
-    <a href="login_profile.php" id="topup-btn">Return</a>
+    <a href="login_profile.php" id="topup-btn">Return to Profile</a>
 
-</div>
+</main>
 <?php include 'footer.php'; ?>
 
 </body>

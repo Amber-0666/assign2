@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Password Change Status</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-
-<?php include 'navbar.php'; ?>
-
 <?php
+// Start session and enable error reporting
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -65,6 +58,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Change Status</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<?php include 'navbar.php'; ?>
 
 <main id="pass-process-container">
     <?php if ($changeSuccess): ?>
