@@ -7,12 +7,7 @@
 <?php
 // Define navigation structure
 $navItems = [
-    'PRODUCTS' => [
-        'Basic Brew' => 'product1.php',
-        'Artisan Brew' => 'product2.php',
-        'Non-Coffee' => 'product3.php',
-        'Hot Beverages' => 'product4.php'
-    ],
+    'PRODUCTS' => 'product_search.php',
     'ACTIVITIES' => [
         'Coming Soon' => 'coming_soon.php',
         'Current Activities' => 'current.php',
@@ -22,6 +17,7 @@ $navItems = [
     'ENQUIRY FORM' => 'enquiry.php',
     'MEMBERSHIP REGISTRATION' => 'registration.php'
 ];
+
 
 $currentPage = basename($_SERVER['PHP_SELF']);
 
