@@ -3830,7 +3830,7 @@ iframe {
     color: #7a2a2a;
 }
 
-#login-profile-btn {
+.login-profile-btn {
     display: inline-block;
     text-decoration: none;
     background-color: #fff8ef;
@@ -3843,19 +3843,19 @@ iframe {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#login-profile-btn:hover {
+.login-profile-btn:hover {
     background-color: #d4b78a;
     color: #7a2a2a;
     transform: translateY(-2px);
 }
 
-#login-profile-btn:active {
+.login-profile-btn:active {
     background-color: #a67c52;
     transform: translateY(0);
 }
 /* End of Login Profile CSS */
 
-/* Password Change CSS */
+/* Password Change Process CSS */
 #pass-container {
   max-width: 600px;
   margin: 60px auto;
@@ -3898,7 +3898,7 @@ iframe {
   outline: none;
 }
 
-#change-pass-btn {
+.change-pass-btn {
   padding: 12px 30px;
   background-color: #fff8ef;
   color: brown;
@@ -3912,13 +3912,11 @@ iframe {
   text-decoration: none;
 }
 
-#change-pass-btn:hover {
+.change-pass-btn:hover {
   background-color: #d4b78a;
   color: #7a2a2a;
 }
-/* End of Password Change CSS */
 
-/* Password Process CSS */
 #pass-process-container {
     max-width: 800px;
     margin: 40px auto;
@@ -3948,7 +3946,7 @@ iframe {
     color: #a52a2a;
 }
 
-#pass-process-btn {
+.pass-process-btn {
     text-decoration: none;
     color: brown;
     font-weight: bold;
@@ -3962,14 +3960,14 @@ iframe {
     margin-top: 30px;
 }
 
-#pass-process-btn:hover {
+.pass-process-btn:hover {
     background-color: #d4b78a;
     color: #7a2a2a;
     text-decoration: none;
 }
 /* End of Password Process CSS */
 
-/* Edit Profile CSS */
+/* Edit Member Page CSS */
 #edit-membership-page {
     background-color: #f8e5cb;
     font-family: 'Georgia', serif;
@@ -4020,9 +4018,9 @@ iframe {
 #edit-membership-page form.edit-form button:hover {
     background-color: #a0522d;
 }
-/* End of Edit Profile CSS */
+/* End of Edit Member Page CSS */
 
-/* Start of edit_success CSS */
+/* Success Page CSS */
 #edit-success-page {
     background-color: #f8e5cb;
     font-family: 'Georgia', serif;
@@ -4049,9 +4047,9 @@ iframe {
     font-size: 1.0rem;
     margin-top: 0;
 }
-/* End of edit_success CSS */
+/* End of Success Page CSS */
 
-/* Add Member Page CSS */
+/* Add member Page CSS */
 #add-member-page {
     background-color: #fff8ef;
     font-family: 'Georgia', 'Garamond', serif;
