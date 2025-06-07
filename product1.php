@@ -37,13 +37,13 @@ $result = $stmt->get_result();
 
 <?php include 'navbar.php'; ?>
 
-<header>
+<!-- Here's the key fix: we add z-index to the entire header -->
+<header style="position: relative; z-index: 999;">
     <div class="header-upper">
         <h1>Basic Brew</h1>
         <p class="subtitle">Balanced and Delightful<br>Find out Our Homemade Coffee, Complemented with Rich Aroma and Flavor</p>
 
-        <!-- Search Bar -->
-        <form method="get" style="margin-top: 20px; position: relative; z-index: 999;">
+        <form method="get" style="margin-top: 20px;">
             <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search product name..." style="padding:10px; width:300px; border-radius:5px; border:1px solid #aaa;">
             <button type="submit" style="padding:10px 20px; border:none; background-color:#7a3e3e; color:white; border-radius:5px; margin-left:10px;">Search</button>
         </form>
