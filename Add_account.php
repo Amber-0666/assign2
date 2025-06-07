@@ -15,14 +15,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lastName = trim($_POST['register-last-name']);
     $email = trim($_POST['register-email']);
     $loginid = trim($_POST['register-ID']);
-    $password = trim($_POST['register-Password']); // plaintext for now
+    $password = trim($_POST['register-Password']);
     $fullname = $firstName . ' ' . $lastName;
 
     if ($fullname && $email && $loginid && $password) {
+        // Insert into register table
         $stmt = $mysqli->prepare("INSERT INTO register (fullname, email, loginid, password, created_at) VALUES (?, ?, ?, ?, NOW())");
         $stmt->bind_param("ssss", $fullname, $email, $loginid, $password);
         $stmt->execute();
         $stmt->close();
+
+        // Insert into user table
+        $stmt2 = $mysqli->prepare("INSERT INTO user (`register-ID`, `register-Password`) VALUES (?, ?)");
+        $stmt2->bind_param("ss", $loginid, $password);
+        $stmt2->execute();
+        $stmt2->close();
 
         header("Location: add_success.php");
         exit;
