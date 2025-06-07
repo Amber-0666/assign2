@@ -1,46 +1,60 @@
 <?php
-// === Enable error reporting for debugging ===
+session_start(); // Start session for anti-spam
+
+// Enable error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// === Database connection ===
-
+// Database connection
 $host = 'localhost';
 $username = 'root';
-$password = ''; 
-$database = 'enquiry'; 
-
+$password = '';
+$database = 'brewngo';
 $conn = new mysqli($host, $username, $password, $database);
-
-// Check for DB connection error
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// === Sanitize and validate input ===
-$firstName   = htmlspecialchars($_POST['first-name'] ?? '');
-$lastName    = htmlspecialchars($_POST['last-name'] ?? '');
-$email       = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
-$phone       = preg_match('/^[0-9]{10}$/', $_POST['phone'] ?? '') ? $_POST['phone'] : false;
-$street      = htmlspecialchars($_POST['street'] ?? '');
-$city        = htmlspecialchars($_POST['city'] ?? '');
-$state       = htmlspecialchars($_POST['state'] ?? '');
-$postcode    = preg_match('/^[0-9]{5}$/', $_POST['postcode'] ?? '') ? $_POST['postcode'] : false;
-$enquiryType = htmlspecialchars($_POST['enquiry-type'] ?? '');
-$message     = htmlspecialchars($_POST['message'] ?? '');
+// Anti-spam logic: prevent submissions within 60 seconds
+$cooldown_seconds = 60;
+$now = time();
+$allow_submission = true;
+$spam_message = "";
 
-// === Validation check ===
-if (!$firstName || !$lastName || !$email || !$phone || !$street || !$city || !$state || !$postcode || !$enquiryType || !$message) {
-    echo "<p>Error: Please ensure all fields are filled in correctly.</p>";
-    exit();
+if (isset($_SESSION['last_submission_time'])) {
+    $time_since_last = $now - $_SESSION['last_submission_time'];
+    if ($time_since_last < $cooldown_seconds) {
+        $allow_submission = false;
+        $spam_message = "You are submitting too fast! Please wait ".($cooldown_seconds - $time_since_last)." seconds before submitting again.";
+    }
 }
 
-// === Insert into database ===
-$stmt = $conn->prepare("INSERT INTO enquiry (first_name, last_name, email, phone, street, city, state, postcode, enquiry_type, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssssssss", $firstName, $lastName, $email, $phone, $street, $city, $state, $postcode, $enquiryType, $message);
+$inserted = false;
 
-$inserted = $stmt->execute();
-$stmt->close();
+// Process form only if allowed
+if ($allow_submission) {
+    $firstName = htmlspecialchars($_POST['first-name'] ?? '');
+    $lastName = htmlspecialchars($_POST['last-name'] ?? '');
+    $email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+    $phone = preg_match('/^[0-9]{10}$/', $_POST['phone'] ?? '') ? $_POST['phone'] : false;
+    $street = htmlspecialchars($_POST['street'] ?? '');
+    $city = htmlspecialchars($_POST['city'] ?? '');
+    $state = htmlspecialchars($_POST['state'] ?? '');
+    $postcode = preg_match('/^[0-9]{5}$/', $_POST['postcode'] ?? '') ? $_POST['postcode'] : false;
+    $enquiryType = htmlspecialchars($_POST['enquiry-type'] ?? '');
+    $message = htmlspecialchars($_POST['message'] ?? '');
+
+    if ($firstName && $lastName && $email && $phone && $street && $city && $state && $postcode && $enquiryType && $message) {
+        $stmt = $conn->prepare("INSERT INTO enquiry (first_name, last_name, email, phone, street, city, state, postcode, enquiry_type, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssssss", $firstName, $lastName, $email, $phone, $street, $city, $state, $postcode, $enquiryType, $message);
+        $inserted = $stmt->execute();
+        $stmt->close();
+
+        // Store submission time into session
+        $_SESSION['last_submission_time'] = $now;
+    }
+}
+
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -50,27 +64,73 @@ $conn->close();
     <title>Enquiry Confirmation</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .confirmation-container {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 30px 40px;
+            background: #fff7f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .confirmation-container h2 {
+            text-align: center;
+            color: #7a3e3e;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        .confirmation-container p, .confirmation-container li {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .confirmation-container ul {
+            list-style: none;
+            padding: 0;
+        }
+        .back-home-btn {
+            display: block;
+            margin: 30px auto 0;
+            width: fit-content;
+            padding: 10px 25px;
+            background-color: #7a3e3e;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .back-home-btn:hover {
+            background-color: #5e2e2e;
+        }
+    </style>
 </head>
 <body>
 
 <?php include 'navbar.php'; ?>
 
-<main class="confirmation-container">
-    <?php if ($inserted): ?>
-        <h2>Enquiry Submitted Successfully!</h2>
-        <p>Thank you, <?= $firstName ?> <?= $lastName ?>, for reaching out.</p>
-        <ul>
-            <li><strong>Email:</strong> <?= $email ?></li>
-            <li><strong>Phone:</strong> <?= $phone ?></li>
-            <li><strong>Address:</strong> <?= "$street, $city, $state $postcode" ?></li>
-            <li><strong>Enquiry Type:</strong> <?= $enquiryType ?></li>
-            <li><strong>Message:</strong><br><?= nl2br($message) ?></li>
-        </ul>
-    <?php else: ?>
-        <h2>Submission Failed</h2>
-        <p>Sorry, there was a problem submitting your enquiry. Please try again later.</p>
-    <?php endif; ?>
-    <a href="index.php" class="back-home-btn">Back to Home</a>
+<main>
+    <div class="confirmation-container">
+        <?php if (!$allow_submission): ?>
+            <h2>Spam Detected!</h2>
+            <p><?= htmlspecialchars($spam_message) ?></p>
+        <?php elseif ($inserted): ?>
+            <h2>Enquiry Submitted Successfully!</h2>
+            <p>Thank you, <?= htmlspecialchars($firstName) . ' ' . htmlspecialchars($lastName) ?>, for reaching out.</p>
+            <ul>
+                <li><strong>Email:</strong> <?= htmlspecialchars($email) ?></li>
+                <li><strong>Phone:</strong> <?= htmlspecialchars($phone) ?></li>
+                <li><strong>Address:</strong> <?= htmlspecialchars($street) ?>, <?= htmlspecialchars($city) ?>, <?= htmlspecialchars($state) ?> <?= htmlspecialchars($postcode) ?></li>
+                <li><strong>Enquiry Type:</strong> <?= htmlspecialchars($enquiryType) ?></li>
+                <li><strong>Message:</strong> <?= nl2br(htmlspecialchars($message)) ?></li>
+            </ul>
+        <?php else: ?>
+            <h2>Submission Failed</h2>
+            <p>Sorry, there was a problem submitting your enquiry. Please try again later.</p>
+        <?php endif; ?>
+        <a href="index.php" class="back-home-btn">Back to Home</a>
+    </div>
 </main>
 
 <?php include 'footer.php'; ?>
