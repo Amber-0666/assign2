@@ -1,41 +1,3 @@
-<?php
-// Start session and enable error reporting
-session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Database connection
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'brewngo';
-$conn = new mysqli($host, $username, $password, $database);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Get search filter (we'll hardcode category to "Basic Brew" for this page)
-$search = $_GET['search'] ?? '';
-$category = "Basic Brew"; // Fixed for this page
-
-// Build query dynamically
-$query = "SELECT * FROM products WHERE category = ? ";
-$params = [$category];
-$types = "s";
-
-if (!empty($search)) {
-    $query .= "AND name LIKE ? ";
-    $params[] = "%$search%";
-    $types .= "s";
-}
-
-$query .= "ORDER BY name";
-$stmt = $conn->prepare($query);
-$stmt->bind_param($types, ...$params);
-$stmt->execute();
-$result = $stmt->get_result();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,26 +31,6 @@ $result = $stmt->get_result();
         .search-form button:hover {
             background-color: #5a2e2e;
         }
-        .products-grid {
-            margin-top: 30px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .product-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #ccc;
-            text-align: center;
-        }
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
     </style>
 </head>
 
@@ -103,9 +45,10 @@ $result = $stmt->get_result();
     </div>
 </header>
 
-<!-- Search form -->
-<form method="get" class="search-form">
-    <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search Basic Brew products...">
+<!-- Added search form here -->
+<form method="get" action="products.php" class="search-form">
+    <input type="text" name="search" placeholder="Search product name...">
+    <input type="hidden" name="category" value="Basic Brew">
     <button type="submit">Search</button>
 </form>
 
@@ -133,71 +76,57 @@ $result = $stmt->get_result();
         </div>
     </aside>
     
-    <!-- Dynamic product listing from database -->
-    <?php if ($result && $result->num_rows > 0): ?>
-        <div class="products-grid">
-            <?php while ($row = $result->fetch_assoc()): ?>
-                <div class="product-card">
-                    <img src="<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>">
-                    <h3><?= htmlspecialchars($row['name']) ?></h3>
-                    <p><strong>Price:</strong> RM <?= $row['price_mp'] ?> (MP) | RM <?= $row['price_np'] ?> (NP)</p>
-                    <p><?= htmlspecialchars($row['description']) ?></p>
-                </div>
-            <?php endwhile; ?>
+    
+    <div class="product_menu">
+        <div>
+            <figure><a href="#Americano"><img src="styles/images/No_image.jpg" alt="Americano"></a></figure>
+            <dl>    
+                <dt>Americano</dt>
+                <dd>MP | NP</dd>
+                <dd>8.90 | 10.90</dd>
+            </dl>
+            <hr>
         </div>
-    <?php else: ?>
-        <div class="product_menu">
-            <!-- Fallback to original static content if no search or no results -->
-            <div>
-                <figure><a href="#Americano"><img src="styles/images/No_image.jpg" alt="Americano"></a></figure>
-                <dl>    
-                    <dt>Americano</dt>
-                    <dd>MP | NP</dd>
-                    <dd>8.90 | 10.90</dd>
-                </dl>
-                <hr>
-            </div>
-            <div>
-                <figure><a href="#Latte"><img src="styles/images/Latte.jpg" alt="Latte"></a></figure>
-                <dl>    
-                    <dt>Latte</dt>
-                    <dd>MP | NP</dd>
-                    <dd>10.90 | 12.90</dd>
-                </dl>
-                <hr>
-            </div>
-            <div>
-                <figure><a href="#Cappuccino"><img src="styles/images/Cappuccino.jpg" alt="Cappuccino"></a></figure>
-                <dl>    
-                    <dt>Cappuccino</dt>
-                    <dd>MP | NP</dd>
-                    <dd>11.90 | 13.90</dd>
-                </dl>
-                <hr>
-            </div>
-            <div>
-                <figure><a href="#Aerocano"><img src="styles/images/Aerocano.jpg" alt="Aerocano"></a></figure>
-                <dl>        
-                    <dt>Aerocano</dt>
-                    <dd>MP | NP</dd>
-                    <dd>10.90 | 12.90</dd>
-                </dl>    
-                <hr>
-            </div>        
-            <div>
-                <figure><a href="#Aero-latte"><img src="styles/images/Aero-Latte.jpg" alt="Aero-latte"></a></figure>
-                <dl>    
-                    <dt>Aero-latte</dt>
-                    <dd>MP | NP</dd>
-                    <dd>12.90 | 14.90</dd>
-                </dl>    
-                <hr>
-            </div>
+        <div>
+            <figure><a href="#Latte"><img src="styles/images/Latte.jpg" alt="Latte"></a></figure>
+            <dl>    
+                <dt>Latte</dt>
+                <dd>MP | NP</dd>
+                <dd>10.90 | 12.90</dd>
+            </dl>
+            <hr>
         </div>
-    <?php endif; ?>
+        <div>
+            <figure><a href="#Cappuccino"><img src="styles/images/Cappuccino.jpg" alt="Cappuccino"></a></figure>
+            <dl>    
+                <dt>Cappuccino</dt>
+                <dd>MP | NP</dd>
+                <dd>11.90 | 13.90</dd>
+            </dl>
+            <hr>
+        </div>
+        <diV>
+            <figure><a href="#Aerocano"><img src="styles/images/Aerocano.jpg" alt="Aerocano"></a></figure>
+            <dl>        
+                <dt>Aerocano</dt>
+                <dd>MP | NP</dd>
+                <dd>10.90 | 12.90</dd>
+            </dl>    
+            <hr>
+        </diV>        
+      
+        <div>
+            <figure><a href="#Aero-latte"><img src="styles/images/Aero-Latte.jpg" alt="Aero-latte"></a></figure>
+            <dl>    
+                <dt>Aero-latte</dt>
+                <dd>MP | NP</dd>
+                <dd>12.90 | 14.90</dd>
+            </dl>    
+            <hr>
+        </div>
+    </div>
 </section>
 
-<!-- Original popup details sections -->
 <section class="product_details">
     <div id="Americano" class="overlay">
         <div id="Return_List_01" class="pop_up">
@@ -213,12 +142,65 @@ $result = $stmt->get_result();
             </figure>
         </div>
     </div>
-    <!-- Other popup sections remain unchanged -->
+    <div id="Latte" class="overlay">
+        <div id="Return_List_02" class="pop_up">
+            <a href="#Return_List_02" class="close-button">x</a>
+            <figure>
+                <img src="styles/images/Latte.jpg" alt="Latte">
+                <figcaption>
+                    <p class="pop_up_name">Latte</p>
+                    <p class="pop_up_member">MP | NP</p>
+                    <p class="pop_up_price">10.90 | 12.90</p>
+                    <p class="pop_up_desc">Espresso Combined with Cold Milk and Ice for a Smooth Sip.</p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div id="Cappuccino" class="overlay">
+        <div id="Return_List_03" class="pop_up">
+            <a href="#Return_List_03" class="close-button">x</a>
+            <figure>
+                <img src="styles/images/Cappuccino.jpg" alt="Cappuccino">
+                <figcaption>
+                    <p class="pop_up_name">Cappuccino</p>
+                    <p class="pop_up_member">MP | NP</p>
+                    <p class="pop_up_price">11.90 | 13.90</p>
+                    <p class="pop_up_desc">Classic Blend of Rich Espresso, with Cold Milk and a Light Foamy Top.</p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div id="Aerocano" class="overlay">
+        <div id="Return_List_04" class="pop_up">
+            <a href="#Return_List_04" class="close-button">x</a>
+            <figure>
+                <img src="styles/images/Aerocano.jpg" alt="Aerocano">
+                <figcaption>
+                    <p class="pop_up_name">Aerocano</p>
+                    <p class="pop_up_member">MP | NP</p>
+                    <p class="pop_up_price">10.90 | 12.90</p>
+                    <p class="pop_up_desc">Made by Steaming Espresso, Ice and Icy Clid Water to Create a Bold and Silky Aftertaste.</p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div id="Aero-latte" class="overlay">
+        <div id="Return_List_05" class="pop_up">
+            <a href="#Return_List_05" class="close-button">x</a>
+            <figure>
+                <img src="styles/images/Aero-Latte.jpg" alt="Aero-latte">
+                <figcaption>
+                    <p class="pop_up_name">Aero-latte</p>
+                    <p class="pop_up_member">MP | NP</p>
+                    <p class="pop_up_price">12.90 | 14.90</p>
+                    <p class="pop_up_desc">Made by Freshly-brewed Latte, Ice and Icy Clid Water to Create a Smooth and Silky Aftertaste.</p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
 </section>
 
 <?php include 'footer.php'; ?>
 
 </body>
 </html>
-
-<?php $conn->close(); ?>
