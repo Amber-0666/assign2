@@ -22,8 +22,8 @@
         <label>Confirm New Password:</label><br>
         <input type="password" name="confirm_password" required><br><br>
 
-        <a href="login_profile.php" id="change-pass-btn">Return</a>
-        <button type="submit" id="change-pass-btn">Change Password</button>
+        <a href="login_profile.php" class="change-pass-btn">Return</a>
+        <button type="submit" class="change-pass-btn">Change Password</button>
     </form>
 </main>
 

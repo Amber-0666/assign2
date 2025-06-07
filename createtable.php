@@ -47,7 +47,8 @@ $sql_register = "CREATE TABLE IF NOT EXISTS register (
 $sql_user = "CREATE TABLE IF NOT EXISTS user (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `register-ID` VARCHAR(10),
-    `register-Password` VARCHAR(255)
+    `register-Password` VARCHAR(255),
+    balance DECIMAL(10,2) DEFAULT 0.00
 )";
 
 // Create admin table
@@ -57,12 +58,21 @@ $sql_admin = "CREATE TABLE IF NOT EXISTS admin (
     `admin-Password` VARCHAR(255)
 )";
 
+// Create top-up history table
+$sql_topup = "CREATE TABLE IF NOT EXISTS topup_history (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    register_ID VARCHAR(10) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    topup_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+
 // Execute queries and output result
 if (mysqli_query($conn, $sql_enquiry) &&
     mysqli_query($conn, $sql_joinus) &&
     mysqli_query($conn, $sql_register) &&
     mysqli_query($conn, $sql_user) &&
-    mysqli_query($conn, $sql_admin)) {
+    mysqli_query($conn, $sql_admin) &&
+    mysqli_query($conn, $sql_topup)) {
     echo "All tables created successfully or already exist.";
 } else {
     echo "Error creating tables: " . mysqli_error($conn);

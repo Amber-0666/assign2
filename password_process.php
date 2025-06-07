@@ -72,11 +72,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p>
         Click the button below to return to front page
       </p>
-      <a href="index.php" id="pass-process-btn">Go to Front Page</a>
+      <a href="index.php" class="pass-process-btn">Go to Front Page</a>
     <?php else: ?>
       <h2>Password Change Failed</h2>
       <p><?= htmlspecialchars($loginError ?: "Please fill out the form.") ?></p>
-      <a href="password.php" id="pass-process-btn">Try Again</a>
+      <a href="password.php" class="pass-process-btn">Try Again</a>
     <?php endif; ?>
 </main>
 
