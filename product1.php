@@ -212,7 +212,26 @@ $hasSearch = !empty($search);
                 </dl>
                 <hr>
             </div>
-            <!-- Continue the rest... -->
+            <div>
+  				  <figure><a href="#Aerocano"><img src="styles/images/Aerocano.jpg" alt="Aerocano"></a></figure>
+  				  <dl>    
+       				 <dt>Aerocano</dt>
+      				  <dd>MP | NP</dd>
+       				 <dd>10.90 | 12.90</dd>
+   				 </dl>
+   				 <hr>
+				</div>
+
+				<div>
+   				 <figure><a href="#Aero-latte"><img src="styles/images/Aero-Latte.jpg" alt="Aero-latte"></a></figure>
+   				 <dl>    
+       				 <dt>Aero-latte</dt>
+       				 <dd>MP | NP</dd>
+       				 <dd>12.90 | 14.90</dd>
+   				 </dl>
+   				 <hr>
+				</div>
+
             <?php
         }
         ?>
