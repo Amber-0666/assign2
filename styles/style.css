@@ -4039,12 +4039,14 @@ iframe {
 
 #topup-history-container {
     max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
+    margin: 60px auto;
+    padding: 40px 50px;
     background-color: #e7cdab;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-family: Arial, sans-serif;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: 'Arial', sans-serif;
+    color: #000;
+    text-align: center;
 }
 
 #topup-history-container h2 {
@@ -4059,8 +4061,7 @@ iframe {
     margin-bottom: 20px;
 }
 
-#topup-history-container table th, 
-#topup-history-container table td {
+#topup-history-container table th, #topup-history-container table td {
     padding: 12px;
     border-bottom: 1px solid #d4b78a;
     text-align: left;
