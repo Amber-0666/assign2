@@ -3394,6 +3394,21 @@ body {
     text-decoration: none;
 }
 
+/* Search button styling */
+.search-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #7a3e3e;
+    color: white;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #5e2e2e;
+}
+
 /* END OF PRODUCT CSS FILE */
 
 /* Start of enhancement css file */
