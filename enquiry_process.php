@@ -1,3 +1,45 @@
+<?php
+// === Enable error reporting ===
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// === Database connection ===
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'enquiry';
+$conn = new mysqli($host, $username, $password, $database);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// === Initialize inserted variable ===
+$inserted = false;
+
+// === Sanitize and validate input ===
+$firstName = htmlspecialchars($_POST['first-name'] ?? '');
+$lastName = htmlspecialchars($_POST['last-name'] ?? '');
+$email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+$phone = preg_match('/^[0-9]{10}$/', $_POST['phone'] ?? '') ? $_POST['phone'] : false;
+$street = htmlspecialchars($_POST['street'] ?? '');
+$city = htmlspecialchars($_POST['city'] ?? '');
+$state = htmlspecialchars($_POST['state'] ?? '');
+$postcode = preg_match('/^[0-9]{5}$/', $_POST['postcode'] ?? '') ? $_POST['postcode'] : false;
+$enquiryType = htmlspecialchars($_POST['enquiry-type'] ?? '');
+$message = htmlspecialchars($_POST['message'] ?? '');
+
+// === Validation check ===
+if ($firstName && $lastName && $email && $phone && $street && $city && $state && $postcode && $enquiryType && $message) {
+    // === Insert into database ===
+    $stmt = $conn->prepare("INSERT INTO enquiry (first_name, last_name, email, phone, street, city, state, postcode, enquiry_type, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssssss", $firstName, $lastName, $email, $phone, $street, $city, $state, $postcode, $enquiryType, $message);
+    $inserted = $stmt->execute();
+    $stmt->close();
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +47,6 @@
     <title>Enquiry Confirmation</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         .confirmation-container {
             max-width: 800px;
@@ -68,7 +109,6 @@
             <h2>Submission Failed</h2>
             <p>Sorry, there was a problem submitting your enquiry. Please try again later.</p>
         <?php endif; ?>
-
         <a href="index.php" class="back-home-btn">Back to Home</a>
     </div>
 </main>
