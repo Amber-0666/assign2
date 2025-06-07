@@ -83,7 +83,7 @@ html {
 /* Dropdown Styling */
 .nav-dropdown-content {
     display: none;
-    position: absolute;
+    position: relative;
     background-color: var(--light-bg);
     min-width: 200px;
     box-shadow: var(--box-shadow);
