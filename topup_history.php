@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Top Up History</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
