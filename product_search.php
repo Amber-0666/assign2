@@ -1,5 +1,6 @@
 <?php
-// Enable error reporting during development
+// Start session and enable error reporting
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -13,71 +14,65 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get search term
+// Get search and category filters
 $search = $_GET['search'] ?? '';
+$category = $_GET['category'] ?? '';
 
-// Prepare search query
+// Build query dynamically
+$query = "SELECT * FROM products WHERE 1 ";
+$params = [];
+$types = "";
+
 if (!empty($search)) {
-    $stmt = $conn->prepare("SELECT * FROM products WHERE name LIKE ? OR category LIKE ?");
-    $param = "%$search%";
-    $stmt->bind_param("ss", $param, $param);
-    $stmt->execute();
-    $result = $stmt->get_result();
-} else {
-    $result = $conn->query("SELECT * FROM products");
+    $query .= "AND name LIKE ? ";
+    $params[] = "%$search%";
+    $types .= "s";
 }
+
+if (!empty($category)) {
+    $query .= "AND category = ? ";
+    $params[] = $category;
+    $types .= "s";
+}
+
+$query .= "ORDER BY category, name";
+$stmt = $conn->prepare($query);
+
+if (!empty($params)) {
+    $stmt->bind_param($types, ...$params);
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Product Search</title>
+    <title>Products</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
-        .search-container {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-        .search-form input[type=\"text\"] {
-            width: 300px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #aaa;
+        .products-container { max-width: 1200px; margin: 50px auto; padding: 20px; }
+        .search-form input[type="text"], .search-form select {
+            padding: 10px; width: 250px; border-radius: 5px; border: 1px solid #aaa;
         }
         .search-form button {
-            padding: 10px 20px;
-            border: none;
-            background-color: #7a3e3e;
-            color: #fff;
-            border-radius: 5px;
-            margin-left: 10px;
-            cursor: pointer;
+            padding: 10px 20px; background-color: #7a3e3e; color: white;
+            border: none; border-radius: 5px; margin-left: 10px; cursor: pointer;
         }
         .products-grid {
             margin-top: 30px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
         }
         .product-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #ccc;
-            text-align: center;
+            border: 1px solid #ddd; padding: 15px; border-radius: 10px;
+            box-shadow: 0 0 10px #ccc; text-align: center;
         }
         .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            margin-bottom: 10px;
+            width: 100%; height: 200px; object-fit: cover; margin-bottom: 10px;
             border-radius: 5px;
-        }
-        .product-card h3 {
-            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -85,11 +80,20 @@ if (!empty($search)) {
 
 <?php include 'navbar.php'; ?>
 
-<div class="search-container">
-    <h1>Product Search</h1>
+<div class="products-container">
+    <h1>Product Catalog</h1>
 
     <form method="get" class="search-form">
-        <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Enter product name or category">
+        <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search product name...">
+
+        <select name="category">
+            <option value="">All Categories</option>
+            <option value="Basic Brew" <?= ($category=="Basic Brew")?"selected":"" ?>>Basic Brew</option>
+            <option value="Artisan Brew" <?= ($category=="Artisan Brew")?"selected":"" ?>>Artisan Brew</option>
+            <option value="Non-coffee" <?= ($category=="Non-coffee")?"selected":"" ?>>Non-coffee</option>
+            <option value="Hot Beverages" <?= ($category=="Hot Beverages")?"selected":"" ?>>Hot Beverages</option>
+        </select>
+
         <button type="submit">Search</button>
     </form>
 
@@ -111,7 +115,6 @@ if (!empty($search)) {
 </div>
 
 <?php include 'footer.php'; ?>
-
 </body>
 </html>
 
