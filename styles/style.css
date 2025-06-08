@@ -3671,8 +3671,8 @@ iframe {
 }
 /* End of Confirmation Page CSS */
 
-/* view Page CSS */
-.membership-view-page {
+/* View Page CSS */
+.View-page {
     background-color: #f8e5cb;
     font-family: 'Georgia', 'Garamond', serif;
     color: rgb(165, 42, 42);
@@ -3684,7 +3684,7 @@ iframe {
     align-items: center;
 }
 
-.membership-view-page h1 {
+.View-page h1 {
     font-size: 220%;
     font-weight: bold;
     color: rgb(165, 42, 42);
@@ -3696,14 +3696,14 @@ iframe {
     padding-bottom: 10px;
 }
 
-.membership-view-page .table-container {
+.View-page .table-container {
     display: flex;
     justify-content: center;
     overflow-x: auto;
     width: 100%;
 }
 
-.membership-view-page table {
+.View-page table {
     width: 100%;
     max-width: 1000px;
     border-collapse: separate;
@@ -3715,7 +3715,7 @@ iframe {
     overflow: hidden;
 }
 
-.membership-view-page thead th {
+.View-page thead th {
     background-color: #e7cdab;
     color: brown;
     font-weight: bold;
@@ -3726,7 +3726,7 @@ iframe {
     text-align: center;
 }
 
-.membership-view-page tbody td {
+.View-page tbody td {
     padding: 12px 15px;
     font-size: 15px;
     font-family: 'Georgia', serif;
@@ -3734,11 +3734,11 @@ iframe {
     text-align: center;
 }
 
-.membership-view-page tbody tr:nth-child(even) {
+.View-page tbody tr:nth-child(even) {
     background-color: #f1e2cc;
 }
 
-.membership-view-page .no-data {
+.View-page .no-data {
     font-size: 18px;
     color: rgb(165, 42, 42);
     margin-top: 40px;
@@ -3750,13 +3750,13 @@ iframe {
     border-radius: 8px;
 }
 
-.membership-view-page td.actions {
+.View-page td.actions {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-.membership-view-page .actions a {
+.View-page .actions a {
     text-decoration: none;
     font-weight: bold;
     color: white;
@@ -3768,11 +3768,11 @@ iframe {
     font-family: 'Georgia', serif;
 }
 
-.membership-view-page .actions a:hover {
+.View-page .actions a:hover {
     background-color: #8b4513;
 }
 
-.membership-view-page .add-member-actions {
+.View-page .add-member-actions {
     width: 100%;
     max-width: 1000px;
     display: flex;
@@ -3781,7 +3781,7 @@ iframe {
     margin-bottom: 40px;      
 }
 
-.membership-view-page .add-member-btn {
+.View-page .add-member-btn {
     background-color: brown;
     color: #fff;
     text-decoration: none;
@@ -3794,7 +3794,7 @@ iframe {
     box-shadow: 2px 2px 6px rgba(165, 42, 42, 0.3);
 }
 
-.membership-view-page .add-member-btn:hover {
+.View-page .add-member-btn:hover {
     background-color: #a0522d;
     transform: scale(1.05);
 }
@@ -4153,23 +4153,60 @@ iframe {
 /* End of Add Member Page CSS */
 
 /* Admin UI CSS */
-.admin_dashboard {
-    background-color: #fdfdfd;
-}
-
 #admin_dashboard-aside {
     padding: 20px;
     background-color: #e7cdab;
     float: left;
-    width: 30%;
-    height: 100vh;
+    width: 20%;
+    min-height: 100vh;
 }
 
-#admin_dashboard-aside h2 {
-    font-size: 24px;
-    color: brown;
-    margin-bottom: 20px;
+#admin_dashboard-aside h1 {
+    font-size: 25px;
+    color: brown; 
+    margin-bottom: 30px;
     text-align: center;
+}
+
+#admin_dashboard-aside a {
+    display: block;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    margin: 10px 0;
+    background-color: brown;
+    box-shadow: 0 4px 8px rgba(165, 42, 42, 0.5);
+    padding: 10px;
+    text-align: center;
+}
+
+#admin_dashboard-aside a:hover {
+    color: red; 
+}
+
+#admin_dashboard_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* Vertical center */
+    align-items: center;       /* Horizontal center */
+    width: 80%; 
+    height: 100vh;               /* Remaining width after aside (20%) */
+    float: left;
+    padding: 20px;
+    color: black;
+}
+
+#admin_dashboard_info h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: center; 
+    color: brown; 
+}
+
+#admin-msg {
+    font-size: 20px;
+    text-align: center;
+    max-width: 600px;
 }
 
 /* End of Admin UI Page CSS */

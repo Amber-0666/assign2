@@ -25,7 +25,7 @@ $result = $mysqli->query($sql);
 </head>
 <body>
 
-<div class="membership-view-page">
+<div class="View-page">
 
     <h1>All Membership Records</h1>
 
