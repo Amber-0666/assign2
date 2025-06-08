@@ -27,6 +27,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+<?php include 'navbar.php'; ?>
 
 <?php include 'navbar.php'; ?>
 
@@ -89,6 +90,7 @@ $result = $conn->query($sql);
 </div>
 
 <?php $conn->close(); ?>
+<?php include 'footer.php'; ?>
 
 </body>
 </html>
