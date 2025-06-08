@@ -25,8 +25,16 @@ $result = $mysqli->query($sql);
 </head>
 <body>
 
-<div class="membership-view-page">
+<?php include 'navbar.php'; ?>
 
+<aside id="admin_dashboard-aside">
+    <h1>Welcome Admin!</h1>
+    <p><a href="view_enquiry.php">View Enquiry</a></p>
+    <p><a href="view_joinus.php">View Join Us</a></p>
+    <p><a href="view_membership.php">View Membership</a></p>
+</aside>
+
+<div class="View-page">
     <h1>All Membership Records</h1>
 
     <?php if ($result && $result->num_rows > 0): ?>

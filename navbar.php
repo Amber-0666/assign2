@@ -63,11 +63,21 @@ function isDropdownActive($items, $currentPage) {
             <?php endif; ?>
         <?php endforeach; ?>
 
-        <?php if (isset($_SESSION['admin-ID'])): 
-            $adminname = htmlspecialchars($_SESSION['admin-ID']); 
+        <?php 
+        // Check for admin session or if register-ID is "Admin"
+        $isAdmin = false;
+        if (isset($_SESSION['admin-ID'])) {
+            $adminname = htmlspecialchars($_SESSION['admin-ID']);
+            $isAdmin = true;
+        } elseif (isset($_SESSION['register-ID']) && strcasecmp($_SESSION['register-ID'], 'Admin') === 0) {
+            $adminname = htmlspecialchars($_SESSION['register-ID']);
+            $isAdmin = true;
+        }
         ?>
+
+        <?php if ($isAdmin): ?>
             <li><a href="logout.php">LOGOUT</a></li>
-            <li><a href=""><?= strtoupper($adminname) ?></a></li>
+            <li><a href="admin_dashboard.php"><?= strtoupper($adminname) ?></a></li>
         <?php elseif (isset($_SESSION['register-ID'])): 
             $username = htmlspecialchars($_SESSION['register-ID']);
         ?>

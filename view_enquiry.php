@@ -14,79 +14,82 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve enquiry records
-$sql = "SELECT * FROM enquiry ORDER BY id DESC";
+// Retrieve enquiry records without street and postcode
+$sql = "SELECT id, first_name, last_name, email, phone, city, state, enquiry_type, message FROM enquiry ORDER BY id DESC";
 $result = $conn->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>View Enquiries</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #444;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #ddd;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
-<h1>Customer Enquiries</h1>
+<?php include 'navbar.php'; ?>
 
-<?php if ($result && $result->num_rows > 0): ?>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Postcode</th>
-                <th>Enquiry Type</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while($row = $result->fetch_assoc()): ?>
-                <tr>
-                    <td><?= htmlspecialchars($row['id']) ?></td>
-                    <td><?= htmlspecialchars($row['first_name']) ?></td>
-                    <td><?= htmlspecialchars($row['last_name']) ?></td>
-                    <td><?= htmlspecialchars($row['email']) ?></td>
-                    <td><?= htmlspecialchars($row['phone']) ?></td>
-                    <td><?= htmlspecialchars($row['street']) ?></td>
-                    <td><?= htmlspecialchars($row['city']) ?></td>
-                    <td><?= htmlspecialchars($row['state']) ?></td>
-                    <td><?= htmlspecialchars($row['postcode']) ?></td>
-                    <td><?= htmlspecialchars($row['enquiry_type']) ?></td>
-                    <td><?= nl2br(htmlspecialchars($row['message'])) ?></td>
-                </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
-<?php else: ?>
-    <p style="text-align:center; margin-top:50px;">No enquiries found.</p>
-<?php endif; ?>
+<aside id="admin_dashboard-aside">
+    <h1>Welcome Admin!</h1>
+    <p><a href="view_enquiry.php">View Enquiry</a></p>
+    <p><a href="view_joinus.php">View Join Us</a></p>
+    <p><a href="view_membership.php">View Membership</a></p>
+</aside>
+
+<div class="View-page">
+    <h1>Customer Enquiries</h1>
+
+    <?php if ($result && $result->num_rows > 0): ?>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Enquiry Type</th>
+                        <th>Message</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while($row = $result->fetch_assoc()): ?>
+                    <tr>
+                        <td data-label="ID"><?= htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td data-label="First Name"><?= htmlspecialchars($row['first_name'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td data-label="Last Name"><?= htmlspecialchars($row['last_name'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td data-label="Email"><?= htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td data-label="Phone"><?= htmlspecialchars($row['phone'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td data-label="City"><?= htmlspecialchars($row['city'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td data-label="State"><?= htmlspecialchars($row['state'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td data-label="Enquiry Type"><?= htmlspecialchars($row['enquiry_type'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td data-label="Message"><?= nl2br(htmlspecialchars($row['message'], ENT_QUOTES, 'UTF-8')) ?></td>
+                        <td class="actions" data-label="Actions">
+                            <a href="edit_enquiry.php?id=<?= $row['id'] ?>">Edit</a>
+                            <a href="delete_enquiry.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this enquiry?');">Delete</a>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+
+                </tbody>
+            </table>
+        </div>
+    <?php else: ?>
+        <p class="no-data">No enquiries found.</p>
+    <?php endif; ?>
+
+    <div class="add-member-actions">
+        <a href="add_enquiry.php" class="add-member-btn">Add New Enquiry</a>
+    </div>
+</div>
 
 <?php $conn->close(); ?>
+<?php include 'footer.php'; ?>
 
 </body>
 </html>
