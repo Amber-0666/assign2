@@ -4210,3 +4210,42 @@ text-decoration: none;
 }
 
 /* End of Admin UI Page CSS */
+
+/* Product search  CSS */
+.search-form {
+    margin: 20px auto;
+    text-align: center;
+    max-width: 500px;
+}
+.search-form input[type="text"] {
+    padding: 10px 15px;
+    width: 60%;
+    border-radius: 20px;
+    border: 2px solid brown;
+    font-family: inherit;
+    font-size: 14px;
+}
+.search-form button {
+    padding: 10px 20px;
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.search-form button:hover {
+    background-color: #5a2e2e;
+    transform: translateY(-2px);
+}
+.no-results {
+    text-align: center;
+    color: #7a3e3e;
+    font-style: italic;
+    margin: 20px 0;
+}
+/* End of Product Search CSS */

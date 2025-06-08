@@ -26,8 +26,6 @@ $result = $mysqli->query($sql);
 <body>
 <?php include 'navbar.php'; ?>
 
-<?php include 'navbar.php'; ?>
-
 <aside id="admin_dashboard-aside">
     <h1>Welcome Admin!</h1>
     <p><a href="view_enquiry.php">View Enquiry</a></p>
