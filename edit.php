@@ -71,7 +71,7 @@ $mysqli->close();
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-    <div id="edit-membership-page">
+    <div id="edit-page">
         <form method="post" class="edit-form" action="">
             <label for="edit-fullname">Full Name*</label>
             <input

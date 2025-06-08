@@ -24,10 +24,17 @@ $result = $mysqli->query($sql);
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+
 <?php include 'navbar.php'; ?>
 
-<div class="View-page">
+<aside id="admin_dashboard-aside">
+    <h1>Welcome Admin!</h1>
+    <p><a href="view_enquiry.php">View Enquiry</a></p>
+    <p><a href="view_joinus.php">View Join Us</a></p>
+    <p><a href="view_membership.php">View Membership</a></p>
+</aside>
 
+<div class="View-page">
     <h1>All Membership Records</h1>
 
     <?php if ($result && $result->num_rows > 0): ?>
@@ -70,7 +77,6 @@ $result = $mysqli->query($sql);
 </div>
 
 <?php $mysqli->close(); ?>
-<?php include 'footer.php'; ?>
 
 </body>
 </html>

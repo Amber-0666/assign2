@@ -12,7 +12,7 @@ if ($mysqli->connect_error) {
 
 $mysqli->set_charset("utf8");
 
-$sql = "SELECT id, first_name, last_name, email, phone, city, state FROM joinus ORDER BY id DESC";
+$sql = "SELECT id, first_name, last_name, email, phone, city, state FROM joinus ORDER BY id ASC";
 $result = $mysqli->query($sql);
 ?>
 
@@ -25,8 +25,18 @@ $result = $mysqli->query($sql);
 </head>
 <body>
 
+<?php include 'navbar.php'; ?>
+
+<aside id="admin_dashboard-aside">
+    <h1>Welcome Admin!</h1>
+    <p><a href="view_enquiry.php">View Enquiry</a></p>
+    <p><a href="view_joinus.php">View Join Us</a></p>
+    <p><a href="view_membership.php">View Membership</a></p>
+    </aside>
+
 <div class="View-page">
-    <h1>All Applicant List</h1>
+
+    <h1>Applicants List</h1>
 
     <?php if ($result && $result->num_rows > 0): ?>
         <div class="table-container">
@@ -54,8 +64,8 @@ $result = $mysqli->query($sql);
                         <td data-label="City"><?= htmlspecialchars($row['city']) ?></td>
                         <td data-label="State"><?= htmlspecialchars($row['state']) ?></td>
                         <td class="actions" data-label="Actions">
-                            <a href="edit_joinus.php?id=<?= $row['id'] ?>">Edit</a>
-                            <a href="delete_joinus.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this applicant?');">Delete</a>
+                            <a href="edit_applicant.php?id=<?= $row['id'] ?>">Edit</a>
+                            <a href="delete_applicant.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this applicant?');">Delete</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
@@ -67,8 +77,8 @@ $result = $mysqli->query($sql);
     <?php endif; ?>
 
     <div class="add-member-actions">
-        <a href="add_joinus.php" class="add-member-btn">Add New Applicant</a>
-    </div>
+        <a href="add_applicant.php" class="add-member-btn">Add New Applicant</a>
+    </div>     
 </div>
 
 <?php $mysqli->close(); ?>

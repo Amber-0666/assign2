@@ -3623,18 +3623,18 @@ iframe {
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
-  }
+}
 
-  #confirmation-container p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    color: #5c2f1d; 
-  }
+#confirmation-container p {
+font-size: 18px;
+line-height: 1.5;
+margin-bottom: 20px;
+color: #5c2f1d; 
+}
 
-  #confirmation-container strong {
-    color: #a52a2a;
-  }
+#confirmation-container strong {
+color: #a52a2a;
+}
 
 #confirmation-container a {
     text-decoration: none;
@@ -3650,11 +3650,11 @@ iframe {
     margin-top: 30px; 
 }
 
-  #confirmation-container a:hover {
-    background-color: #d4b78a;
-    color: #7a2a2a;
-    text-decoration: none;
-  }
+#confirmation-container a:hover {
+background-color: #d4b78a;
+color: #7a2a2a;
+text-decoration: none;
+}
 
 .info-grid {
   display: grid;
@@ -3968,7 +3968,7 @@ iframe {
 /* End of Password Process CSS */
 
 /* Edit Member Page CSS */
-#edit-membership-page {
+#edit-page {
     background-color: #f8e5cb;
     font-family: 'Georgia', serif;
     color: brown;
@@ -3978,7 +3978,7 @@ iframe {
     justify-content: center;
     align-items: flex-start;
 }
-#edit-membership-page form.edit-form {
+#edit-page form.edit-form {
     background: #fff8ef;
     padding: 30px 40px;
     border: 4px double brown;
@@ -3987,14 +3987,14 @@ iframe {
     width: 400px;
     margin-top: 60px;
 }
-#edit-membership-page form.edit-form label {
+#edit-page form.edit-form label {
     display: block;
     font-weight: bold;
     margin-top: 15px;
     margin-bottom: 6px;
 }
-#edit-membership-page form.edit-form input[type="text"],
-#edit-membership-page form.edit-form input[type="email"] {
+#edit-page form.edit-form input[type="text"],
+#edit-page form.edit-form input[type="email"] {
     width: 100%;
     padding: 8px 10px;
     font-size: 1rem;
@@ -4002,7 +4002,7 @@ iframe {
     border-radius: 6px;
     box-sizing: border-box;
 }
-#edit-membership-page form.edit-form button {
+#edit-page form.edit-form button {
     text-align: center;
     margin-top: 25px;
     background-color: brown;
@@ -4015,7 +4015,7 @@ iframe {
     transition: background-color 0.3s ease;
     width: 100%;
 }
-#edit-membership-page form.edit-form button:hover {
+#edit-page form.edit-form button:hover {
     background-color: #a0522d;
 }
 /* End of Edit Member Page CSS */

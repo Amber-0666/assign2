@@ -14,10 +14,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve enquiry records
-$sql = "SELECT * FROM enquiry ORDER BY id DESC";
+// Retrieve enquiry records without street and postcode
+$sql = "SELECT id, first_name, last_name, email, phone, city, state, enquiry_type, message FROM enquiry ORDER BY id DESC";
 $result = $conn->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +27,15 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+
+<?php include 'navbar.php'; ?>
+
+<aside id="admin_dashboard-aside">
+    <h1>Welcome Admin!</h1>
+    <p><a href="view_enquiry.php">View Enquiry</a></p>
+    <p><a href="view_joinus.php">View Join Us</a></p>
+    <p><a href="view_membership.php">View Membership</a></p>
+</aside>
 
 <div class="View-page">
     <h1>Customer Enquiries</h1>
@@ -40,12 +50,11 @@ $result = $conn->query($sql);
                         <th>Last Name</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Street</th>
                         <th>City</th>
                         <th>State</th>
-                        <th>Postcode</th>
                         <th>Enquiry Type</th>
                         <th>Message</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,10 +65,8 @@ $result = $conn->query($sql);
                         <td data-label="Last Name"><?= htmlspecialchars($row['last_name'], ENT_QUOTES, 'UTF-8') ?></td>
                         <td data-label="Email"><?= htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') ?></td>
                         <td data-label="Phone"><?= htmlspecialchars($row['phone'], ENT_QUOTES, 'UTF-8') ?></td>
-                        <td data-label="Street"><?= htmlspecialchars($row['street'], ENT_QUOTES, 'UTF-8') ?></td>
                         <td data-label="City"><?= htmlspecialchars($row['city'], ENT_QUOTES, 'UTF-8') ?></td>
                         <td data-label="State"><?= htmlspecialchars($row['state'], ENT_QUOTES, 'UTF-8') ?></td>
-                        <td data-label="Postcode"><?= htmlspecialchars($row['postcode'], ENT_QUOTES, 'UTF-8') ?></td>
                         <td data-label="Enquiry Type"><?= htmlspecialchars($row['enquiry_type'], ENT_QUOTES, 'UTF-8') ?></td>
                         <td data-label="Message"><?= nl2br(htmlspecialchars($row['message'], ENT_QUOTES, 'UTF-8')) ?></td>
                         <td class="actions" data-label="Actions">
@@ -76,8 +83,8 @@ $result = $conn->query($sql);
         <p class="no-data">No enquiries found.</p>
     <?php endif; ?>
 
-    <div class="add-enquiry-actions">
-        <a href="add_enquiry.php" class="add-enquiry-btn">Add New Enquiry</a>
+    <div class="add-member-actions">
+        <a href="add_enquiry.php" class="add-member-btn">Add New Enquiry</a>
     </div>
 </div>
 
