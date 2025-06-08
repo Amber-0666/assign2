@@ -1,4 +1,7 @@
 <?php
+
+session_start();  
+
 // === Enable error reporting for debugging ===
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -34,10 +37,17 @@ if (!$firstName || !$lastName || !$email || !$phone || !$street || !$city || !$s
 
 // === Handle CV Upload ===
 if (isset($_FILES['cv']) && $_FILES['cv']['error'] === UPLOAD_ERR_OK) {
-    $cvDir = 'uploads/cv/';
-    if (!file_exists($cvDir)) mkdir($cvDir, 0777, true);
-    $cvFileName = uniqid('cv_') . '_' . basename($_FILES['cv']['name']);
-    move_uploaded_file($_FILES['cv']['tmp_name'], $cvDir . $cvFileName);
+    $cvFileType = mime_content_type($_FILES['cv']['tmp_name']);
+    if ($cvFileType !== 'application/pdf') {
+        $errors[] = 'CV must be a PDF file.';
+    } else {
+        $cvDir = 'uploads/cv/';
+        if (!file_exists($cvDir)) mkdir($cvDir, 0777, true);
+        $cvFileName = uniqid('cv_') . '_' . basename($_FILES['cv']['name']);
+        move_uploaded_file($_FILES['cv']['tmp_name'], $cvDir . $cvFileName);
+    }
+} else {
+    $errors[] = 'CV file upload error.';
 }
 
 // === Handle Photo Upload ===
@@ -52,14 +62,14 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
         $photoFileName = uniqid('photo_') . '_' . basename($_FILES['photo']['name']);
         move_uploaded_file($_FILES['photo']['tmp_name'], $photoDir . $photoFileName);
     }
+} else {
+    $errors[] = 'Photo file upload error.';
 }
 
-
+// If errors found, save them to session and redirect to error page
 if (!empty($errors)) {
-    foreach ($errors as $error) {
-        echo '<p style="color:red;">' . htmlspecialchars($error) . '</p>';
-    }
-    echo '<a href="joinus.php">Go Back</a>';
+    $_SESSION['upload_errors'] = $errors;
+    header('Location: joinus_error.php');
     exit;
 }
 
