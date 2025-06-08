@@ -3688,7 +3688,7 @@ text-decoration: none;
     font-size: 220%;
     font-weight: bold;
     color: rgb(165, 42, 42);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     text-shadow: 1px 1px 0 #fff, 2px 2px 0 #e0c8a4;
     letter-spacing: 1px;
     border-bottom: 4px double brown;
@@ -4249,3 +4249,67 @@ text-decoration: none;
     margin: 20px 0;
 }
 /* End of Product Search CSS */
+
+/* View search and filter feature CSS*/
+.view_search {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Target only the search input by its class */
+.view_search_input {
+    width: 400px !important;
+    padding: 8px 12px !important;
+    font-family: 'Georgia', serif !important;
+    font-size: 1rem !important;
+    border: 2px solid brown !important;
+    border-radius: 6px !important;
+    margin-right: 20px !important;
+    max-width: 90vw !important;
+    background-color: #fff8ef !important;
+    transition: border-color 0.3s ease !important;
+}
+
+.view_search_input:focus {
+    border-color: #a0522d !important;
+    outline: none !important;
+}
+
+/* Target select elements inside the form with class view_search */
+.view_search select {
+    padding: 8px 12px;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    border: 2px solid brown;
+    border-radius: 6px;
+    margin-right: 20px;
+    width: 180px;
+    max-width: 90vw;
+    background-color: #fff8ef;
+    transition: border-color 0.3s ease;
+}
+
+.view_search select:focus {
+    border-color: #a0522d;
+    outline: none;
+}
+
+/* Target button inside the form */
+.view_search button {
+    padding: 8px 16px;
+    background-color: brown;
+    color: #fff;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view_search button:hover {
+    background-color: #a0522d;
+    transform: scale(1.05);
+}
+/* End of View search and filter feature CSS */

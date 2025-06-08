@@ -12,7 +12,21 @@ if ($mysqli->connect_error) {
 
 $mysqli->set_charset("utf8");
 
-$sql = "SELECT id, first_name, last_name, email, phone, city, state FROM joinus ORDER BY id ASC";
+// Handle search and sorting inputs
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$sort_by = isset($_GET['sort_by']) && in_array($_GET['sort_by'], ['id', 'first_name']) ? $_GET['sort_by'] : 'id';
+$order = isset($_GET['order']) && in_array($_GET['order'], ['ASC', 'DESC']) ? $_GET['order'] : 'ASC';
+
+// Prepare SQL with search and sort
+$sql = "SELECT id, first_name, last_name, email, phone, city, state FROM joinus";
+
+if ($search !== '') {
+    $search = $mysqli->real_escape_string($search);
+    $sql .= " WHERE first_name LIKE '%$search%'";
+}
+
+$sql .= " ORDER BY $sort_by $order";
+
 $result = $mysqli->query($sql);
 ?>
 
@@ -31,11 +45,28 @@ $result = $mysqli->query($sql);
     <p><a href="view_enquiry.php">View Enquiry</a></p>
     <p><a href="view_joinus.php">View Join Us</a></p>
     <p><a href="view_membership.php">View Membership</a></p>
-    </aside>
+</aside>
 
 <div class="View-page">
-
     <h1>Applicants List</h1>
+
+    <!-- Search and Filter Form -->
+    <form method="GET" class="view_search">
+        <input type="text" name="search" class="view_search_input" 
+        placeholder="Search by First Name..." value="<?= htmlspecialchars($search) ?>">
+        
+        <select name="sort_by" class="view_sortby">
+            <option value="id" <?= $sort_by === 'id' ? 'selected' : '' ?>>Sort by ID</option>
+            <option value="first_name" <?= $sort_by === 'first_name' ? 'selected' : '' ?>>Sort by First Name</option>
+        </select>
+
+        <select name="order" class="view_order">
+            <option value="ASC" <?= $order === 'ASC' ? 'selected' : '' ?>>Ascending</option>
+            <option value="DESC" <?= $order === 'DESC' ? 'selected' : '' ?>>Descending</option>
+        </select>
+
+        <button type="submit" class="view_apply">Apply</button>
+    </form>
 
     <?php if ($result && $result->num_rows > 0): ?>
         <div class="table-container">
