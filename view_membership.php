@@ -24,6 +24,7 @@ $result = $mysqli->query($sql);
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+<?php include 'navbar.php'; ?>
 
 <div class="membership-view-page">
 
@@ -69,6 +70,7 @@ $result = $mysqli->query($sql);
 </div>
 
 <?php $mysqli->close(); ?>
+<?php include 'footer.php'; ?>
 
 </body>
 </html>
