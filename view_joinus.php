@@ -24,6 +24,7 @@ $result = $mysqli->query($sql);
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+<?php include 'navbar.php'; ?>
 
 <div class="View-page">
     <h1>All Applicant List</h1>
@@ -72,7 +73,7 @@ $result = $mysqli->query($sql);
 </div>
 
 <?php $mysqli->close(); ?>
-
+<?php include 'footer.php'; ?>
 </body>
 </html>
 

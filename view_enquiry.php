@@ -26,6 +26,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+<?php include 'navbar.php'; ?>
 
 <div class="View-page">
     <h1>Customer Enquiries</h1>
@@ -76,12 +77,13 @@ $result = $conn->query($sql);
         <p class="no-data">No enquiries found.</p>
     <?php endif; ?>
 
-    <div class="add-enquiry-actions">
-        <a href="add_enquiry.php" class="add-enquiry-btn">Add New Enquiry</a>
+    <div class="add-member-actions">
+        <a href="add_enquiry.php" class="add-member-btn">Add New Enquiry</a>
     </div>
 </div>
 
 <?php $conn->close(); ?>
+<?php include 'footer.php'; ?>
 
 </body>
 </html>
