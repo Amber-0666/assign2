@@ -13,17 +13,9 @@ $username = 'root';
 $password = '';
 $database = 'brewngo';
 $conn = new mysqli($host, $username, $password, $database);
-$conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-// Verify products table exists
-$table_check = $conn->query("SHOW TABLES LIKE 'products'");
-if ($table_check->num_rows == 0) {
-    die("Products table not found. Please check your database setup.");
-}
-
 
 // Get search filter
 $search = $_GET['search'] ?? '';
