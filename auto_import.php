@@ -77,7 +77,7 @@ if (!$conn->select_db($db)) {
             ('Chocolate', 'Hot Beverages', 12.90, 14.90, 'styles/images/No_image.jpg', 'Steamed Milk mixed with Chocolate Syrup.'),
             ('Yuri Matcha', 'Hot Beverages', 13.90, 14.90, 'styles/images/No_image.jpg', 'Premium Matcha and Creamy Milk, Served Hot.'),
             ('Houjicha', 'Hot Beverages', 13.90, 14.90, 'styles/images/No_image.jpg', 'Roasted Japanese Green Tea.')
-        ";
+        "
         
         if ($conn->query($insert_products)) {
             echo "<p><strong>✅ Database and products table created successfully with all products.</strong></p>";
