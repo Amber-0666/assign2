@@ -3908,8 +3908,39 @@ text-decoration: none;
     line-height: 1.5;
 }
 
-#login-profile-container strong {
-    color: #7a2a2a;
+.login-profile-info-box {
+    background-color: #fff8ef;
+    padding: 25px 30px;
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.login-profile-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    font-size: 17px;
+    border-bottom: 1px solid #e0cbb4;
+    padding-bottom: 8px;
+}
+
+.login-profile-row:last-child {
+    border-bottom: none;
+}
+
+.login-profile-label {
+    color: #5c2f1d;
+    font-weight: bold;
+    width: 40%;
+}
+
+.login-profile-value {
+    color: #3b2a23;
+    text-align: right;
+    width: 60%;
+    word-break: break-word;
 }
 
 .login-profile-btn {
@@ -4429,3 +4460,163 @@ text-decoration: none;
 }
 
 /* End of Joinus Error CSS */
+
+/* Top-Up Process CSS */
+#topup-container {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 40px 50px;
+    background-color: #e7cdab;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: 'Arial', sans-serif;
+    color: #000;
+    text-align: center;
+}
+
+#topup-container h2 {
+    font-size: 32px;
+    color: #a52a2a;
+    margin-bottom: 25px;
+}
+
+#topup-container p {
+    font-size: 18px;
+    color: #5c2f1d;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+#topup-container label {
+    font-size: 16px;
+    color: #5c2f1d;
+    display: block;
+    margin: 20px 0 10px;
+}
+
+#topup-container input[type="number"] {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #a67c52;
+    border-radius: 8px;
+    background-color: #fff8ef;
+    color: #5c2f1d;
+}
+
+#topup-container select {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #a67c52;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s border;
+}
+
+#topup-container select img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+#topup-container input:focus, form select:focus {
+    border-color: #5c2f1d;
+}
+
+#topup-submit-btn, #topup-btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #fff8ef;
+    color: brown;
+    font-weight: bold;
+    padding: 12px 28px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    margin: 20px 10px 0;
+    box-shadow: 0 3px 6px rgba(165, 42, 42, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+#topup-submit-btn:hover, #topup-btn:hover {
+    background-color: #d4b78a;
+    color: #7a2a2a;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+#topup-submit-btn:active, #topup-btn:active {
+    background-color: #a67c52;
+    transform: translateY(0);
+}
+
+#topup-history-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #e7cdab;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#topup-history-container h2 {
+    color: #a52a2a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#topup-history-container p {
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#topup-history-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+#topup-history-container table th, #topup-history-container table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #cba874;
+    text-align: left;
+    color: #3b2a23;
+}
+
+#topup-history-container table th {
+    background-color: #d4b78a;
+    color: #5c2f1d;
+    font-weight: bold;
+    border-bottom: 2px solid #b58a5c;
+}
+
+#topup-history-container table tr:nth-child(even) {
+    background-color: #f9f1e3;
+}
+
+#topup-history-btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #fff8ef;
+    color: brown;
+    font-weight: bold;
+    padding: 12px 28px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    margin: 20px 10px 0;
+    box-shadow: 0 3px 6px rgba(165, 42, 42, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+#topup-history-btn:hover {
+    background-color: #d4b78a;
+    color: #7a2a2a;
+}
+/* End of Top-up Process CSS*/

@@ -1,5 +1,4 @@
 <?php
-// Start session and enable error reporting
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -9,82 +8,80 @@ $username = "root";
 $password = "";
 $dbname = "BrewnGo";
 
-// Ensure user is logged in
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['register-ID'])) {
     die("You must be logged in to perform top-up.");
 }
 
-$userId = $_SESSION['user_id'];
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$userId = $_SESSION['register-ID'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $amount = floatval($_POST['amount']);
-
-    if ($amount <= 0) {
-        $_SESSION['topup_error'] = "Please enter a valid top-up amount.";
+    if (!isset($_POST['amount'], $_POST['ewallet'])) {
+        $_SESSION['topup_error'] = "Please provide amount and select an e-wallet.";
         header("Location: topup.php");
         exit;
     }
 
-    // Update balance in DB
-    $stmt = $conn->prepare("UPDATE user SET balance = balance + ? WHERE `register-ID` = ?");
-    $stmt->bind_param("ds", $amount, $userId);
+    $amount = floatval($_POST['amount']);
+    $ewallet = $_POST['ewallet'];
+    $validEwallets = ['tng', 'grabpay', 'boost'];
 
-    if ($stmt->execute()) {
-        // Get updated balance
+    if ($amount <= 0 || !in_array($ewallet, $validEwallets)) {
+        $_SESSION['topup_error'] = "Invalid top-up details.";
+        header("Location: topup.php");
+        exit;
+    }
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $conn->begin_transaction();
+
+    try {
+        // Insert pending transaction
+        $stmt = $conn->prepare("INSERT INTO topup_history (register_ID, amount, `e-wallet`, status) VALUES (?, ?, ?, 'pending')");
+        $stmt->bind_param("sds", $userId, $amount, $ewallet);
+        if (!$stmt->execute()) {
+            throw new Exception("Failed to create top-up record.");
+        }
+        $topupId = $stmt->insert_id;
         $stmt->close();
 
-        $stmt = $conn->prepare("SELECT balance FROM user WHERE id = ?");
-        $stmt->bind_param("s", $userId);
+        // Update balance
+        $stmt = $conn->prepare("UPDATE user SET balance = balance + ? WHERE `register-ID` = ?");
+        $stmt->bind_param("ds", $amount, $userId);
+        if (!$stmt->execute()) {
+            throw new Exception("Failed to update balance.");
+        }
+        $stmt->close();
+
+        // Mark top-up as successful
+        $stmt = $conn->prepare("UPDATE topup_history SET status = 'success' WHERE id = ?");
+        $stmt->bind_param("i", $topupId);
         $stmt->execute();
-        $stmt->bind_result($newBalance);
-        $stmt->fetch();
         $stmt->close();
 
-        $_SESSION['balance'] = $newBalance;
-        $_SESSION['topup_success'] = "Top-up successful! RM " . number_format($amount, 2) . " has been added.";
+        $conn->commit();
 
-        // Insert topup record
-        $stmt2 = $conn->prepare("INSERT INTO topup_history (register_ID, amount) VALUES (?, ?)");
-        $stmt2->bind_param("sd", $userId, $amount);
-        $stmt2->execute();
-        $stmt2->close();
-    } else {
-        $_SESSION['topup_error'] = "Top-up failed. Please try again.";
+        $_SESSION['topup_success'] = "Top-up successful! RM " . number_format($amount, 2) . " added via " . strtoupper($ewallet) . ".";
+        $_SESSION['topup_status'] = "success";
+    } catch (Exception $e) {
+        $conn->rollback();
+
+        // If topup record exists, mark it as fail
+        if (isset($topupId)) {
+            $conn->query("UPDATE topup_history SET status = 'fail' WHERE id = $topupId");
+        }
+
+        $_SESSION['topup_error'] = "Top-up failed: " . $e->getMessage();
+        $_SESSION['topup_status'] = "fail";
     }
 
     $conn->close();
+    header("Location: topup.php");
+    exit;
+} else {
+    header("Location: topup.php");
+    exit;
 }
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Top Up Confirmation</title>
-    <link rel="stylesheet" href="styles/style.css" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-
-<?php include 'navbar.php'; ?>
-
-<main id="topup-process-container">
-    <h2>Top Up Confirmation</h2>
-    <p>
-        Thank you, <?= htmlspecialchars($_SESSION['user_id']) ?>.
-        <?= isset($_SESSION['topup_success']) ? htmlspecialchars($_SESSION['topup_success']) : '' ?>
-    </p>
-
-    <a href="login_profile.php" class="topup-process-btn">Back to Profile</a>
-    <a href="topup.php" class="topup-process-btn">Top Up Again</a>
-    
-</main>
-<?php include 'footer.php'; ?>
-
-</body>
-</html>
