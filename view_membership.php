@@ -56,7 +56,7 @@ $result = $mysqli->query($sql);
     <h1>All Membership Records</h1>
 
     <!-- Search and Filter Form -->
-    <form method="GET" class="view_search" style="text-align:center; margin-bottom:20px;">
+    <form method="GET" class="view_search">
         <input
             type="text"
             name="search"
