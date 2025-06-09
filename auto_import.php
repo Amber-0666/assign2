@@ -33,7 +33,7 @@ if (!$conn->select_db($db)) {
         description TEXT
     )";
     
-    if ($conn->query($products_table) {
+    if ($conn->query($products_table)) {
         // Insert ALL products
         $insert_products = "INSERT INTO products (name, category, price_mp, price_np, image, description) VALUES
             -- Basic Brew
@@ -77,7 +77,7 @@ if (!$conn->select_db($db)) {
             ('Chocolate', 'Hot Beverages', 12.90, 14.90, 'styles/images/No_image.jpg', 'Steamed Milk mixed with Chocolate Syrup.'),
             ('Yuri Matcha', 'Hot Beverages', 13.90, 14.90, 'styles/images/No_image.jpg', 'Premium Matcha and Creamy Milk, Served Hot.'),
             ('Houjicha', 'Hot Beverages', 13.90, 14.90, 'styles/images/No_image.jpg', 'Roasted Japanese Green Tea.')
-        "
+        ";
         
         if ($conn->query($insert_products)) {
             echo "<p><strong>✅ Database and products table created successfully with all products.</strong></p>";
