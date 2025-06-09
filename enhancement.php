@@ -338,6 +338,13 @@
                 The product search bar allows users to efficiently find specific coffee products by typing keywords into a search field. 
                 It dynamically filters the items displayed on the product page based on the user’s input, enhancing the browsing experience and reducing the time spent navigating through products.
             </p>
+
+            <h2><strong>Basic Implementation Idea:</strong></h2>
+                        <p>
+                            To implement the product search bar, a programmer creates a MySQL query that uses the `LIKE` operator to match user input with product names. 
+                            The search form submits the keyword via GET, and the PHP script filters and displays matching results dynamically. 
+                            Input is sanitized to prevent SQL injection, and fallback messages are shown when no results are found.
+                        </p>
         
             <h2><strong>Benefits:</strong></h2>
             <ul>
@@ -371,6 +378,14 @@
                   The anti-spam feature prevents users from submitting the enquiry form repeatedly within a short period. 
                  It uses session-based timing logic to enforce a cooldown period, ensuring fair use of the form and protecting the website from spam or abuse.
             </p>
+
+            <h2><strong>Basic Implementation Idea:</strong></h2>
+                        <p>
+                            To implement the anti-spam feature, a programmer uses PHP sessions to track the time of the last form submission. 
+                            If a user submits the enquiry form, the script checks the session timestamp and enforces a cooldown period (e.g., 60 seconds) before allowing another submission. 
+                            Input validation and user feedback are included to guide user behavior during this cooldown.
+                        </p>
+
     
              <h2><strong>Benefits:</strong></h2>
              <ul>
