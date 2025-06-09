@@ -45,8 +45,8 @@ $hasSearch = !empty($search);
 </header>
 
 <form method="get" class="search-form">
-    <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search Basic Brew products...">
-    <button type="submit">Search</button>
+    <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search Basic Brew products..." class="search-input">
+    <button type="submit" class="search-button">Search</button>
 </form>
 
 <section class="product_sidebar">
