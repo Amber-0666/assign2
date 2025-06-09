@@ -129,7 +129,6 @@ $result = $conn->query($sql);
 </div>
 
 <?php $conn->close(); ?>
-<?php include 'footer.php'; ?>
 
 </body>
 </html>

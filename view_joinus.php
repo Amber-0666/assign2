@@ -112,7 +112,6 @@ $result = $mysqli->query($sql);
 </div>
 
 <?php $mysqli->close(); ?>
-<?php include 'footer.php'; ?>
 </body>
 </html>
 

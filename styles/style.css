@@ -3799,44 +3799,64 @@ text-decoration: none;
     transform: scale(1.05);
 }
 
-/* Mobile responsive table using data-label */
-@media (max-width: 900px) {
-    table thead {
-        display: none;
-    }
+@media (max-width: 1500px) {
+  .View-page table,
+  .View-page thead,
+  .View-page tbody,
+  .View-page th,
+  .View-page td,
+  .View-page tr {
+    display: block;
+    width: 100%;
+  }
 
-    table, table tbody, table tr, table td {
-        display: block;
-        width: 100%;
-    }
+  .View-page thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
 
-    table tr {
-        margin-bottom: 1em;
-        border-bottom: 2px solid #ccc;
-    }
+  .View-page tr {
+    border: 2px solid brown;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fff8ef;
+    box-shadow: 0 0 6px rgba(139, 69, 19, 0.2);
+  }
 
-    table td {
-        text-align: right;
-        padding-left: 50%;
-        position: relative;
-    }
+  .View-page td {
+    border: none;
+    border-bottom: 1px dashed #b08864;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+    font-size: 14px;
+  }
 
-    table td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 15px;
-        width: 45%;
-        padding-left: 10px;
-        font-weight: bold;
-        text-align: left;
-        white-space: nowrap;
-    }
+  .View-page td:last-child {
+    border-bottom: none;
+  }
 
-    .actions {
-        display: flex;
-        justify-content: space-around;
-    }
+  .View-page td:before {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    content: attr(data-label);
+    color: brown;
+  }
+
+  /* Adjust action buttons */
+  .View-page td.actions {
+    padding-left: 12px;
+    text-align: center;
+  }
 }
+/* End of view Page CSS */
 
 /* Add Member Button */
 .add-member-btn {
@@ -4271,7 +4291,7 @@ text-decoration: none;
     max-width: 600px;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1500px) {
     #admin_dashboard-aside {
         width: 100%;
         position: static;
