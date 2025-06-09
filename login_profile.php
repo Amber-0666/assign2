@@ -65,11 +65,12 @@ $conn->close();
     <h2>Welcome to Your Profile, <?= htmlspecialchars($userInfo['loginid']) ?> </h2>
 
     <?php if ($userInfo): ?>
-        <p><strong>Full Name:</strong> <?= htmlspecialchars($userInfo['fullname']) ?></p><br>
-        <p><strong>Email:</strong> <?= htmlspecialchars($userInfo['email']) ?></p><br>
-        <p><strong>User ID:</strong> <?= htmlspecialchars($userInfo['loginid']) ?></p><br>
-        <p><strong>Registration Date:</strong> <?= htmlspecialchars($userInfo['created_at']) ?></p><br>    
-        
+    <div class="login-profile-info-box">
+        <div class="login-profile-row"><span class="login-profile-label">Full Name:</span><span class="login-profile-value"> <?= htmlspecialchars($userInfo['fullname']) ?></span></div>
+        <div class="login-profile-row"><span class="login-profile-label">Email:</span><span class="login-profile-value"><?= htmlspecialchars($userInfo['email']) ?></span></div>
+        <div class="login-profile-row"><span class="login-profile-label">User ID:</span><span class="login-profile-value"> <?= htmlspecialchars($userInfo['loginid']) ?> </span></div>
+        <div class="login-profile-row"><span class="login-profile-label">Member Since:</span><span class="login-profile-value"><?= htmlspecialchars($userInfo['created_at']) ?></span></div> 
+    </div>    
         <a href="password.php" class="login-profile-btn">Change Password?</a>
         <a href="logout.php" class="login-profile-btn">Logout</a>
     <?php else: ?>
@@ -79,9 +80,10 @@ $conn->close();
     
 </main>
 <main id="login-profile-container">
-    <h2>Top-Up</h2>   
-    <p><strong>Balance:</strong> RM <?= number_format($balance ?? 0, 2) ?></p>
-
+    <h2>Top-Up</h2> 
+    <div class="login-profile-info-box">  
+    <div class="login-profile-row"><span class="login-profile-label">Balance:</span><span class="login-profile-value"> RM <?= number_format($balance ?? 0, 2) ?></span></div>
+    </div> 
     <a href="topup.php" class="login-profile-btn">Top Up Now</a>
     <a href="topup_history.php" class="login-profile-btn">Top Up History</a>
 </main>

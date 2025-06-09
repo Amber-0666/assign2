@@ -20,7 +20,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$stmt = $conn->prepare("SELECT amount, topup_date FROM topup_history WHERE register_ID = ? ORDER BY topup_date DESC");
+$stmt = $conn->prepare("SELECT amount, `e-wallet`, `status`, topup_date FROM topup_history WHERE register_ID = ? ORDER BY topup_date DESC");
 $stmt->bind_param("s", $loginID);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -55,6 +55,8 @@ $conn->close();
                 <tr>
                     <th>Date & Time</th>
                     <th>Amount (RM)</th>
+                    <th>E-wallet</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +64,8 @@ $conn->close();
                     <tr>
                         <td><?= htmlspecialchars($record['topup_date']) ?></td>
                         <td><?= number_format($record['amount'], 2) ?></td>
+                        <td><?= htmlspecialchars(strtoupper($record['e-wallet'])) ?></td>
+                        <td><?= htmlspecialchars($record['status']) ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
