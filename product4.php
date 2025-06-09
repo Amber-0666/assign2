@@ -82,7 +82,7 @@ if ($row['count'] == 0) {
         ('Cappuccino', 'Hot Beverages', 10.90, 12.90, 'styles/images/No_image.jpg', 'Rich Espresso, Steamed Milk, Thick Velvety Foam.'),
         ('Chocolate', 'Hot Beverages', 12.90, 14.90, 'styles/images/No_image.jpg', 'Steamed Milk mixed with Chocolate Syrup.'),
         ('Yuri Matcha', 'Hot Beverages', 13.90, 14.90, 'styles/images/No_image.jpg', 'Premium Matcha and Creamy Milk, Served Hot.'),
-        ('Houjicha', 'Hot Beverages', 13.90, 14.90, 'styles/images/Houjicha.jpg', 'Roasted Japanese Green Tea.')
+        ('Houjicha', 'Hot Beverages', 13.90, 14.90, 'styles/images/No_image.jpg', 'Roasted Japanese Green Tea.')
     ";
 
     if (!$conn->query($insertSQL)) {
