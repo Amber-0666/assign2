@@ -66,6 +66,17 @@ $sql_topup = "CREATE TABLE IF NOT EXISTS topup_history (
     topup_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
+// Execute queries and output result
+if (mysqli_query($conn, $sql_enquiry) && 
+    mysqli_query($conn, $sql_joinus) &&
+    mysqli_query($conn, $sql_register) &&
+    mysqli_query($conn, $sql_user) &&
+    mysqli_query($conn, $sql_admin) &&
+    mysqli_query($conn, $sql_topup)) {
+} else {
+    echo "Error creating tables: " . mysqli_error($conn);
+}
+
 mysqli_close($conn);
 ?>
 
