@@ -66,6 +66,16 @@ $sql_topup = "CREATE TABLE IF NOT EXISTS topup_history (
     topup_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
+$products_table = "CREATE TABLE IF NOT EXISTS products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    price_mp DECIMAL(5,2) NOT NULL,
+    price_np DECIMAL(5,2) NOT NULL,
+    image VARCHAR(255),
+    description TEXT
+)";
+
 // Execute queries and output result
 if (mysqli_query($conn, $sql_enquiry) && 
     mysqli_query($conn, $sql_joinus) &&
