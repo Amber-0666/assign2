@@ -1,3 +1,6 @@
+<?php include 'auto_import.php'; ?>
+
+
 <?php
 // Start session and enable error reporting
 session_start();
