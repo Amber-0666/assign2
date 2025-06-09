@@ -361,7 +361,7 @@
     
         <div class="enhancement-video">
             <p>Here is a video demonstrating the enhancements in action:</p>
-            <video class="demo-video" width="560" height="315" controls>
+            <video class="demo-video" width="500" height="315" controls>
                 <source src="styles/images/SearchBar.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -403,7 +403,7 @@
 
         <div class="enhancement-video">
             <p>Here is a video demonstrating the enhancements in action:</p>
-            <video class="demo-video" width="560" height="315" controls>
+            <video class="demo-video" width="500" height="315" controls>
                 <source src="styles/images/AntiSpam.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
