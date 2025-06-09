@@ -321,6 +321,43 @@
                 </div>
             </div>
     </div>
+
+        <div class="enhancement-container">
+    <h1 class="enhancement-title">ENHANCEMENTS 2</h1>
+
+    <div class="enhancement-content">
+        <div class="title-enhancement-content">Product Search Bar</div>
+
+        <div class="enhancement-info">
+            <p>
+                The product search bar allows users to efficiently find specific coffee products by typing keywords into a search field. 
+                It dynamically filters the items displayed on the product page based on the user’s input, enhancing the browsing experience and reducing the time spent navigating through products.
+            </p>
+        
+            <h2><strong>Benefits:</strong></h2>
+            <ul>
+                <li>Enables fast and intuitive product discovery</li>
+                <li>Improves user experience with real-time filtering</li>
+                <li>Handles partial matches using flexible keyword logic</li>
+                <li>Displays helpful messages when no results are found</li>
+            </ul>
+    
+            <h2><strong>Where it's used:</strong></h2>
+            <a href="product1.php" class="enhancement-button">Product Search Bar</a>
+        </div>
+    
+        <div class="enhancement-video">
+            <p>Here is a video demonstrating the enhancements in action:</p>
+            <video class="demo-video" width="560" height="315" controls>
+                <source src="styles/images/SearchBar.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <br>
+            <a href="https://www.youtube.com/watch?v=0yhetysnDRI" target="_blank" class="enhancement-button">Source</a>
+        </div>
+    </div>
+</div>
+
     
     <?php include 'footer.php'; ?>
 </body>
