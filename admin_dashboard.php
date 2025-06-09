@@ -23,10 +23,11 @@
         <h2>Welcome back, Admin!</h2>
         <p id="admin-msg">
             This is your dashboard, where you can manage all user accounts efficiently. <br>
-            From here, you can <strong>add</strong>, <strong>edit</strong>, or <strong>delete</strong> user information, as well as monitor system activity and maintain overall site integrity.
+            From here, you can <strong>add</strong>, <strong>edit</strong>, or <strong>delete</strong> user information, 
+            as well as monitor system activity and maintain overall site integrity.
         </p>
         <p id="admin-msg">
-            Use the navigation menu beside to access the user management panel, update system settings, or view reports.
+            Use the navigation menu beside to access the user management panel, update user information, or view reports.
         </p>
     </main>
     
