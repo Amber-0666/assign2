@@ -106,7 +106,8 @@ $stmt->close();
 
 <main id="confirmation-container">
     <h2>Application Confirmation</h2>
-    <p>Thank you, <?= htmlspecialchars($firstName) ?> <?= htmlspecialchars($lastName) ?>, for applying to join our team. Here's the information you submitted:</p>
+    <p>Thank you, <?= htmlspecialchars($firstName) ?> <?= htmlspecialchars($lastName) ?>, for applying to join our team. 
+    Here's the information you submitted:</p>
 
     <div class="info-grid">
         <div><strong>Email:</strong> <?= htmlspecialchars($_POST['email'] ?? '') ?></div>
