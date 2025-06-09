@@ -7,6 +7,8 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+<?php include 'auto_import.php'; ?>
+
 // Database connection
 $host = 'localhost';
 $username = 'root';
