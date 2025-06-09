@@ -3799,6 +3799,67 @@ text-decoration: none;
     transform: scale(1.05);
 }
 
+/* Mobile responsive table using data-label */
+@media (max-width: 900px) {
+    table thead {
+        display: none;
+    }
+
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+    }
+
+    table tr {
+        margin-bottom: 1em;
+        border-bottom: 2px solid #ccc;
+    }
+
+    table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+/* Add Member Button */
+.add-member-btn {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #3f51b5;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.add-member-btn:hover {
+    background-color: #303f9f;
+}
+
+/* No data message */
+.no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+}
+
 /* End of view Page CSS */
 
 /* Login Profile CSS */
@@ -4208,6 +4269,30 @@ text-decoration: none;
     font-size: 20px;
     text-align: center;
     max-width: 600px;
+}
+
+@media (max-width: 850px) {
+    #admin_dashboard-aside {
+        width: 100%;
+        position: static;
+        box-shadow: none;
+        min-height: auto;
+        text-align: center;
+        margin: 0;
+    }
+
+    #admin_dashboard-aside h1 {
+        margin-bottom: 0;
+    }
+
+    .View-page {
+        margin-left: 0;
+    }
+
+    #admin_dashboard-aside p {
+        display: inline-block;
+        margin: 0.2em 1em;
+    }
 }
 
 /* End of Admin UI Page CSS */
