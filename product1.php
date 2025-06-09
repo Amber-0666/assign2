@@ -44,9 +44,15 @@ $hasSearch = !empty($search);
     </div>
 </header>
 
-<form method="get" class="search-form">
-    <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search Basic Brew products..." class="search-input">
-    <button type="submit" class="search-button">Search</button>
+<form method="get" class="search-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+    <div class="search-container">
+        <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" 
+               placeholder="Search Basic Brew products..." class="search-input"
+               aria-label="Search products">
+        <button type="submit" class="search-button" aria-label="Submit search">
+            <i class='bx bx-search'></i> Search
+        </button>
+    </div>
 </form>
 
 <section class="product_sidebar">

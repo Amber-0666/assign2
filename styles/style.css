@@ -3396,54 +3396,47 @@ body {
 
 
 /* Search Form Styles */
+/* Search Form Styles */
 .search-form {
-    display: flex;
-    justify-content: center;
-    margin: 20px auto;
+    margin: 2rem auto;
     max-width: 600px;
-    padding: 0 20px;
+    padding: 0 1rem;
+}
+
+.search-container {
+    display: flex;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 25px;
+    overflow: hidden;
 }
 
 .search-input {
     flex: 1;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px 0 0 4px;
-    font-size: 16px;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    font-size: 1rem;
     outline: none;
-    transition: border-color 0.3s;
-}
-
-.search-input:focus {
-    border-color: #8B4513; /* Coffee brown color */
 }
 
 .search-button {
-    padding: 12px 20px;
-    background-color: #8B4513;
+    background: #8B4513;
     color: white;
     border: none;
-    border-radius: 0 4px 4px 0;
+    padding: 0 1.5rem;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.3s;
 }
 
 .search-button:hover {
-    background-color: #A0522D; /* Darker brown on hover */
+    background: #A0522D;
 }
 
-/* No results message */
-.no-results {
-    color: #666;
-    font-size: 18px;
-    padding: 40px 0;
+.search-button i {
+    font-size: 1.2rem;
 }
-
-.search-form button:hover {
-    background-color: #a00000;
-}
-
 /* END OF PRODUCT CSS FILE */
 
 /* Start of enhancement css file */
