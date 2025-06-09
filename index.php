@@ -9,7 +9,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="index-body">
-    
+
     <?php include 'navbar.php'; ?>
 
     <section class="index-hero">
@@ -113,51 +113,51 @@
         <div class="footer_container">
             <div class="footer_row">
                 <div class="footer_logo">
-                    <a href="index.html"><img src="styles/images/logo.png" alt="styles/images/logo.png"></a>
+                    <a href="index.php"><img src="styles/images/logo.png" alt="styles/images/logo.png"></a>
                 </div>
 
                 <div class="footer-col">
                     <h4 class="footer-h4">TEAM</h4>
                     <ul class="footer_ul">
-                        <li><a href="Chua_profile.html">Chua Yong Kang</a></li>
-                        <li><a href="Roxas_profile.html">Roxas Teo Xuan Hao</a></li>
-                        <li><a href="Michelle_profile.html">Michelle Tan Mei Xuan</a></li>
-                        <li><a href="Amberlyn_profile.html">Amberlyn Lim Xi En</a></li>
+                        <li><a href="Chua_profile.php">Chua Yong Kang</a></li>
+                        <li><a href="Roxas_profile.php">Roxas Teo Xuan Hao</a></li>
+                        <li><a href="Michelle_profile.php">Michelle Tan Mei Xuan</a></li>
+                        <li><a href="Amberlyn_profile.php">Amberlyn Lim Xi En</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h4 class="footer-h4">PRODUCTS</h4>
                     <ul class="footer_ul">
-                        <li><a href="product1.html">Basic Brew</a></li>
-                        <li><a href="product2.html">Artisan Brew</a></li>
-                        <li><a href="product3.html">Non-Coffee</a></li>
-                        <li><a href="product4.html">Hot Beverages</a></li>
+                        <li><a href="product1.php">Basic Brew</a></li>
+                        <li><a href="product2.php">Artisan Brew</a></li>
+                        <li><a href="product3.php">Non-Coffee</a></li>
+                        <li><a href="product4.php">Hot Beverages</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h4 class="footer-h4">ACTIVITIES</h4>
                     <ul class="footer_ul">
-                        <li><a href="coming_soon.html">Coming Soon</a></li>
-                        <li><a href="current.html">Current Activities</a></li>
-                        <li><a href="past_activities.html">Past Activities</a></li>
+                        <li><a href="coming_soon.php">Coming Soon</a></li>
+                        <li><a href="current.php">Current Activities</a></li>
+                        <li><a href="past_activities.php">Past Activities</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <div class="footer-quick-links-1">
-                        <h4 class="footer-h4"><a href="joinus.html">JOIN US</a></h4>
-                        <h4 class="footer-h4"><a href="enquiry.html">ENQUIRY FORM</a></h4>
-                        <h4 class="footer-h4"><a href="registration.html">MEMBERSHIP REGISTRATION</a></h4>
-                        <h4 class="footer-h4"><a href="login.html">LOGIN</a></h4>
+                        <h4 class="footer-h4"><a href="joinus.php">JOIN US</a></h4>
+                        <h4 class="footer-h4"><a href="enquiry.php">ENQUIRY FORM</a></h4>
+                        <h4 class="footer-h4"><a href="registration.php">MEMBERSHIP REGISTRATION</a></h4>
+                        <h4 class="footer-h4"><a href="login.php">LOGIN</a></h4>
                     </div>
                 </div>
 
                 <div class="footer-col">
                     <div class="footer-quick-links-1">
-                    <h4 class="footer-h4"><a href="acknowledgement.html">ACKNOWLEDGEMENT</a></h4>
-                    <h4 class="footer-h4"><a href="enhancement.html">ENHANCEMENT</a></h4>
+                    <h4 class="footer-h4"><a href="acknowledgement.php">ACKNOWLEDGEMENT</a></h4>
+                    <h4 class="footer-h4"><a href="enhancement.php">ENHANCEMENT</a></h4>
                     </div>
                 </div>
 
