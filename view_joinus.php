@@ -96,7 +96,8 @@ $result = $mysqli->query($sql);
                         <td data-label="State"><?= htmlspecialchars($row['state']) ?></td>
                         <td class="actions" data-label="Actions">
                             <a href="edit_applicant.php?id=<?= $row['id'] ?>">Edit</a>
-                            <a href="delete_applicant.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this applicant?');">Delete</a>
+                            <a href="delete_applicant.php?id=<?= $row['id'] ?>">Delete</a>
+                        </td>
                         </td>
                     </tr>
                 <?php endwhile; ?>
@@ -113,7 +114,6 @@ $result = $mysqli->query($sql);
 </div>
 
 <?php $mysqli->close(); ?>
-<?php include 'footer.php'; ?>
 </body>
 </html>
 

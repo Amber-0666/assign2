@@ -102,7 +102,7 @@ $result = $mysqli->query($sql);
                         <td data-label="Registered At"><?= htmlspecialchars($row['created_at'], ENT_QUOTES, 'UTF-8') ?></td>
                         <td class="actions" data-label="Actions">
                             <a href="edit.php?id=<?= $row['id'] ?>">Edit</a>
-                            <a href="delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this record?');">Delete</a>
+                            <a href="delete.php?id=<?= $row['id'] ?>">Delete</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>

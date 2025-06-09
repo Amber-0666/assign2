@@ -113,7 +113,7 @@ $result = $conn->query($sql);
                         <td data-label="Message"><?= nl2br(htmlspecialchars($row['message'], ENT_QUOTES, 'UTF-8')) ?></td>
                         <td class="actions" data-label="Actions">
                             <a href="edit_enquiry.php?id=<?= $row['id'] ?>">Edit</a>
-                            <a href="delete_enquiry.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this enquiry?');">Delete</a>
+                            <a href="delete_enquiry.php?id=<?= $row['id'] ?>">Delete</a>
                         </td>
                     </tr>
                     <?php endwhile; ?>
@@ -130,7 +130,6 @@ $result = $conn->query($sql);
 </div>
 
 <?php $conn->close(); ?>
-<?php include 'footer.php'; ?>
 
 </body>
 </html>
