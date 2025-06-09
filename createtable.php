@@ -63,6 +63,9 @@ $sql_topup = "CREATE TABLE IF NOT EXISTS topup_history (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     register_ID VARCHAR(10) NOT NULL,
     amount DECIMAL(10,2) NOT NULL,
+    `e-wallet` VARCHAR(50),
+    ref_no VARCHAR(50),
+    status ENUM('pending','success','failed') DEFAULT 'pending',
     topup_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 

@@ -96,7 +96,7 @@ $conn->close();
     <a href="enquiry.php">Back to Enquiry Page</a>
 </main>
 
-<?php include 'footer.php'; ?>
+
 
 </body>
 </html>
