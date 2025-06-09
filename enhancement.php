@@ -329,8 +329,6 @@
             </div>
     </div>
 
-        <div class="enhancement-container">
-    <h1 class="enhancement-title">ENHANCEMENTS 2</h1>
 
     <div class="enhancement-content">
         <div class="title-enhancement-content">Product Search Bar</div>
@@ -363,6 +361,42 @@
             <a href="https://www.youtube.com/watch?v=0yhetysnDRI" target="_blank" class="enhancement-button">Source</a>
         </div>
     </div>
+
+
+    <div class="enhancement-content">
+         <div class="title-enhancement-content">Anti-Spam Feature</div>
+
+         <div class="enhancement-info">
+             <p>
+                  The anti-spam feature prevents users from submitting the enquiry form repeatedly within a short period. 
+                 It uses session-based timing logic to enforce a cooldown period, ensuring fair use of the form and protecting the website from spam or abuse.
+            </p>
+    
+             <h2><strong>Benefits:</strong></h2>
+             <ul>
+                <li>Reduces spam by limiting repeated form submissions</li>
+                <li>Improves server performance by controlling request frequency</li>
+                <li>Enhances security and integrity of collected data</li>
+                <li>Provides user feedback when cooldown is active</li>
+            </ul>
+
+            <h2><strong>Where it's used:</strong></h2>
+            <a href="enquiry.php" class="enhancement-button">Anti-Spam Form</a>
+        </div>
+
+        <div class="enhancement-video">
+            <p>Here is a video demonstrating the enhancements in action:</p>
+            <video class="demo-video" width="560" height="315" controls>
+                <source src="styles/images/AntiSpam.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <br>
+            <a href="https://www.youtube.com/watch?v=17rwPcuKY70" target="_blank" class="enhancement-button">Source</a>
+        </div>
+        </div>
+
+
+    
 </div>
 
     
