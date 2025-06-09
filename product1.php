@@ -1,4 +1,3 @@
-
 <?php
 // Start session and enable error reporting
 session_start();
@@ -12,9 +11,32 @@ $host = 'localhost';
 $username = 'root';
 $password = '';
 $database = 'brewngo';
+
 $conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+}
+
+// Ensure products table exists
+$createTableSQL = "CREATE TABLE IF NOT EXISTS products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    price_mp DECIMAL(5,2) NOT NULL,
+    price_np DECIMAL(5,2) NOT NULL,
+    image VARCHAR(255),
+    description TEXT,
+    UNIQUE KEY name_category (name, category)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+
+if (!$conn->query($createTableSQL)) {
+    die("Error creating products table: " . $conn->error);
+}
+
+// Verify we can access the table
+$table_check = $conn->query("SELECT 1 FROM products LIMIT 1");
+if ($table_check === false) {
+    die("Products table access error: " . $conn->error);
 }
 
 // Get search filter
