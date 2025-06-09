@@ -12,7 +12,7 @@
     <?php include 'navbar.php'; ?>
 
     <div class="enhancement-container">
-        <h1 class="enhancement-title">ENHANCEMENTS</h1>
+        <h1 class="enhancement-title">ENHANCEMENTS  1</h1>
 
             <div class="enhancement-content">
                 <div class="title-enhancement-content">Automatic Typing</div>
@@ -283,6 +283,43 @@
             </div>
             <!--Others continue here-->
 
+    </div>
+
+    <div class="enhancement-container">
+        <h1 class="enhancement-title">ENHANCEMENTS 2</h1>
+
+            <div class="enhancement-content">
+                <div class="title-enhancement-content">User Management Module</div>
+
+                <div class="enhancement-info">
+                    <p>
+                        The user management module allows the website administrator or business owner to securely authenticate and manage users. 
+                        It enables viewing and handling public enquiries, as well as creating, editing, and deleting user accounts. 
+                        This ensures efficient control over user access and enquiry oversight.
+                    </p>
+                
+                    <h2><strong>Benefits:</strong></h2>
+                    <ul>
+                        <li>Improves security by restricting access to authorized users</li>
+                        <li>Allows easy user management (add, edit, remove)</li>
+                        <li>Speeds up handling of public enquiries</li>
+                        <li>Tracks user activities for accountability</li>
+                    </ul>
+            
+                    <h2><strong>Where it's used:</strong></h2>
+                    <a href="admin_dashboard.php" class="enhancement-button">Admin Dashboard</a>
+                </div>
+            
+                <div class="enhancement-video">
+                    <p>Here is a video demonstrating the enhancements in action:</p>
+                    <video class="demo-video" width="560" height="315" controls>
+                        <source src="styles/images/User-management-module.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <br>
+                    <a href="https://youtu.be/72U5Af8KUpA?si=j0b2SP2kWZbp2VsT" target="_blank" class="enhancement-button">Source</a>
+                </div>
+            </div>
     </div>
     
     <?php include 'footer.php'; ?>

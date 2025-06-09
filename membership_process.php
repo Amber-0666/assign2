@@ -68,6 +68,7 @@ $mysqli->close();
     <meta charset="utf-8">
     <title>Registration Confirmation</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="website icon" href="styles/images/websitelogo.png">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
