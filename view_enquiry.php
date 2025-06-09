@@ -42,6 +42,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>View Enquiries</title>
+    <link rel="website icon" href="styles/images/websitelogo.png">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
@@ -59,7 +60,7 @@ $result = $conn->query($sql);
     <h1>Customer Enquiries</h1>
 
     <!-- Search and Filter Form -->
-    <form method="GET" class="view_search" style="text-align:center; margin-bottom:20px;">
+    <form method="GET" class="view_search">
         <input
             type="text"
             name="search"

@@ -52,26 +52,52 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <title>Products</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="website icon" href="styles/images/websitelogo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
-        .products-container { max-width: 1200px; margin: 50px auto; padding: 20px; }
-        .search-form input[type="text"], .search-form select {
-            padding: 10px; width: 250px; border-radius: 5px; border: 1px solid #aaa;
+        .products-container { 
+            max-width: 1200px; 
+            margin: 50px auto; 
+            padding: 20px; 
         }
+
+        .search-form input[type="text"], 
+        .search-form select {
+            padding: 10px; 
+            width: 250px; 
+            border-radius: 
+            5px; border: 
+            1px solid #aaa;
+        }
+
         .search-form button {
-            padding: 10px 20px; background-color: #7a3e3e; color: white;
-            border: none; border-radius: 5px; margin-left: 10px; cursor: pointer;
+            padding: 10px 20px; 
+            background-color: #7a3e3e; 
+            color: white;
+            border: none; 
+            border-radius: 5px; 
+            margin-left: 10px; 
+            cursor: pointer;
         }
         .products-grid {
             margin-top: 30px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+            display: grid; 
+            grid-template-columns: 
+            repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px;
         }
         .product-card {
-            border: 1px solid #ddd; padding: 15px; border-radius: 10px;
-            box-shadow: 0 0 10px #ccc; text-align: center;
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc; 
+            text-align: center;
         }
         .product-card img {
-            width: 100%; height: 200px; object-fit: cover; margin-bottom: 10px;
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+            margin-bottom: 10px;
             border-radius: 5px;
         }
     </style>

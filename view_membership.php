@@ -38,6 +38,7 @@ $result = $mysqli->query($sql);
 <head>
     <meta charset="UTF-8" />
     <title>View Memberships</title>
+    <link rel="website icon" href="styles/images/websitelogo.png">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>

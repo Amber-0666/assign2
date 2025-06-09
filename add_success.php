@@ -17,6 +17,7 @@ if (isset($_GET['type'])) {
     <meta charset="UTF-8" />
     <title>Update Successful</title>
     <meta http-equiv="refresh" content="3;url=<?= $redirectTo ?>" />
+    <link rel="website icon" href="styles/images/websitelogo.png">
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
