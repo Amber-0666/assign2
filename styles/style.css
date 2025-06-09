@@ -3688,7 +3688,7 @@ text-decoration: none;
     font-size: 220%;
     font-weight: bold;
     color: rgb(165, 42, 42);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     text-shadow: 1px 1px 0 #fff, 2px 2px 0 #e0c8a4;
     letter-spacing: 1px;
     border-bottom: 4px double brown;
@@ -3798,6 +3798,88 @@ text-decoration: none;
     background-color: #a0522d;
     transform: scale(1.05);
 }
+
+@media (max-width: 1500px) {
+  .View-page table,
+  .View-page thead,
+  .View-page tbody,
+  .View-page th,
+  .View-page td,
+  .View-page tr {
+    display: block;
+    width: 100%;
+  }
+
+  .View-page thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .View-page tr {
+    border: 2px solid brown;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fff8ef;
+    box-shadow: 0 0 6px rgba(139, 69, 19, 0.2);
+  }
+
+  .View-page td {
+    border: none;
+    border-bottom: 1px dashed #b08864;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .View-page td:last-child {
+    border-bottom: none;
+  }
+
+  .View-page td:before {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    content: attr(data-label);
+    color: brown;
+  }
+
+  /* Adjust action buttons */
+  .View-page td.actions {
+    padding-left: 12px;
+    text-align: center;
+  }
+}
+/* End of view Page CSS */
+
+/* Add Member Button */
+.add-member-btn {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #3f51b5;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.add-member-btn:hover {
+    background-color: #303f9f;
+}
+
+/* No data message */
+.no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+}
+
 /* End of view Page CSS */
 
 /* Login Profile CSS */
@@ -4209,6 +4291,30 @@ text-decoration: none;
     max-width: 600px;
 }
 
+@media (max-width: 1500px) {
+    #admin_dashboard-aside {
+        width: 100%;
+        position: static;
+        box-shadow: none;
+        min-height: auto;
+        text-align: center;
+        margin: 0;
+    }
+
+    #admin_dashboard-aside h1 {
+        margin-bottom: 0;
+    }
+
+    .View-page {
+        margin-left: 0;
+    }
+
+    #admin_dashboard-aside p {
+        display: inline-block;
+        margin: 0.2em 1em;
+    }
+}
+
 /* End of Admin UI Page CSS */
 
 /* Product search  CSS */
@@ -4249,3 +4355,77 @@ text-decoration: none;
     margin: 20px 0;
 }
 /* End of Product Search CSS */
+
+/* View search and filter feature CSS*/
+.view_search {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Target only the search input by its class */
+.view_search_input {
+    width: 400px !important;
+    padding: 8px 12px !important;
+    font-family: 'Georgia', serif !important;
+    font-size: 1rem !important;
+    border: 2px solid brown !important;
+    border-radius: 6px !important;
+    margin-right: 20px !important;
+    max-width: 90vw !important;
+    background-color: #fff8ef !important;
+    transition: border-color 0.3s ease !important;
+}
+
+.view_search_input:focus {
+    border-color: #a0522d !important;
+    outline: none !important;
+}
+
+/* Target select elements inside the form with class view_search */
+.view_search select {
+    padding: 8px 12px;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    border: 2px solid brown;
+    border-radius: 6px;
+    margin-right: 20px;
+    width: 180px;
+    max-width: 90vw;
+    background-color: #fff8ef;
+    transition: border-color 0.3s ease;
+}
+
+.view_search select:focus {
+    border-color: #a0522d;
+    outline: none;
+}
+
+/* Target button inside the form */
+.view_search button {
+    padding: 8px 16px;
+    background-color: brown;
+    color: #fff;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view_search button:hover {
+    background-color: #a0522d;
+    transform: scale(1.05);
+}
+/* End of View search and filter feature CSS */
+
+/* Joinus Error CSS */
+
+.error-messages p {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+/* End of Joinus Error CSS */

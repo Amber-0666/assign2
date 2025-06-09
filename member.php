@@ -11,6 +11,7 @@ unset($_SESSION['login_success'], $_SESSION['login_error']);
     <meta charset="UTF-8">
     <title>Login Status</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="website icon" href="styles/images/websitelogo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>

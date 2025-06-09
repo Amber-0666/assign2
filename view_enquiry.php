@@ -14,8 +14,26 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve enquiry records without street and postcode
-$sql = "SELECT id, first_name, last_name, email, phone, city, state, enquiry_type, message FROM enquiry ORDER BY id DESC";
+$conn->set_charset("utf8");
+
+// Handle search and sorting inputs
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$sort_by_allowed = ['id', 'first_name'];
+$order_allowed = ['ASC', 'DESC'];
+
+$sort_by = (isset($_GET['sort_by']) && in_array($_GET['sort_by'], $sort_by_allowed)) ? $_GET['sort_by'] : 'id';
+$order = (isset($_GET['order']) && in_array($_GET['order'], $order_allowed)) ? $_GET['order'] : 'DESC';
+
+// Prepare SQL with search and sort
+$sql = "SELECT id, first_name, last_name, email, phone, city, state, enquiry_type, message FROM enquiry";
+
+if ($search !== '') {
+    $search_esc = $conn->real_escape_string($search);
+    $sql .= " WHERE first_name LIKE '%$search_esc%'";
+}
+
+$sql .= " ORDER BY $sort_by $order";
+
 $result = $conn->query($sql);
 ?>
 
@@ -24,6 +42,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>View Enquiries</title>
+    <link rel="website icon" href="styles/images/websitelogo.png">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
@@ -39,6 +58,29 @@ $result = $conn->query($sql);
 
 <div class="View-page">
     <h1>Customer Enquiries</h1>
+
+    <!-- Search and Filter Form -->
+    <form method="GET" class="view_search">
+        <input
+            type="text"
+            name="search"
+            class="view_search_input"
+            placeholder="Search by First Name..."
+            value="<?= htmlspecialchars($search, ENT_QUOTES, 'UTF-8') ?>"
+            />
+
+        <select name="sort_by" class="view_sortby">
+            <option value="id" <?= $sort_by === 'id' ? 'selected' : '' ?>>Sort by ID</option>
+            <option value="first_name" <?= $sort_by === 'first_name' ? 'selected' : '' ?>>Sort by First Name</option>
+        </select>
+
+        <select name="order" class="view_order">
+            <option value="ASC" <?= $order === 'ASC' ? 'selected' : '' ?>>Ascending</option>
+            <option value="DESC" <?= $order === 'DESC' ? 'selected' : '' ?>>Descending</option>
+        </select>
+
+        <button type="submit" class="view_apply">Apply</button>
+    </form>
 
     <?php if ($result && $result->num_rows > 0): ?>
         <div class="table-container">
@@ -74,8 +116,7 @@ $result = $conn->query($sql);
                             <a href="delete_enquiry.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this enquiry?');">Delete</a>
                         </td>
                     </tr>
-                <?php endwhile; ?>
-
+                    <?php endwhile; ?>
                 </tbody>
             </table>
         </div>
@@ -89,7 +130,6 @@ $result = $conn->query($sql);
 </div>
 
 <?php $conn->close(); ?>
-<?php include 'footer.php'; ?>
 
 </body>
 </html>

@@ -56,6 +56,7 @@ $mysqli->close();
 <head>
     <meta charset="UTF-8" />
     <title>Edit Applicant</title>
+    <link rel="website icon" href="styles/images/websitelogo.png">
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
