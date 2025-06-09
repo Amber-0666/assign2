@@ -341,7 +341,8 @@
 
             <h2><strong>Basic Implementation Idea:</strong></h2>
                         <p>
-                            To implement the product search bar, a programmer creates a MySQL query that uses the `LIKE` operator to match user input with product names. 
+                            To implement the product search bar, a programmer creates a MySQL query that uses the `LIKE` operator 
+                            to match user input with product names. 
                             The search form submits the keyword via GET, and the PHP script filters and displays matching results dynamically. 
                             Input is sanitized to prevent SQL injection, and fallback messages are shown when no results are found.
                         </p>
@@ -382,7 +383,8 @@
             <h2><strong>Basic Implementation Idea:</strong></h2>
                         <p>
                             To implement the anti-spam feature, a programmer uses PHP sessions to track the time of the last form submission. 
-                            If a user submits the enquiry form, the script checks the session timestamp and enforces a cooldown period (e.g., 60 seconds) before allowing another submission. 
+                            If a user submits the enquiry form, the script checks the session timestamp and enforces a cooldown period (e.g., 60 seconds) 
+                            before allowing another submission. 
                             Input validation and user feedback are included to guide user behavior during this cooldown.
                         </p>
 
