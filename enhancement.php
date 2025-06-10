@@ -413,7 +413,48 @@
         </div>
 
 
+        <div class="enhancement-content">
+         <div class="title-enhancement-content">Top-Up Modules</div>
+
+         <div class="enhancement-info">
+             <p>
+                 This top-up module enables login user to top-up their account with certain amount into their balance.
+                 It allows users to securely increase their wallet balance using multiple supported e-wallet platforms such as Touch 'n Go, GrabPay, and Boost.
+                 After each top-up transaction, the user can check records of transaction through the top-up history page.
+            </p>
+
+            <h2><strong>Basic Implementation Idea:</strong></h2>
+                        <p>
+                            To enable the top-up module, a column at the user table in the database named "balance" is created to store top-up balance.
+                            Upon making a successful top-up transaction, the top-up amount will be stored into the user's balance and the transaction 
+                            details will be stored in a different table called "topup_history" 
+                            Details stored include date and time of top-up, amount topped-up, the e-wallet platform used and the status of transaction.
+                        </p>
+
     
+             <h2><strong>Benefits:</strong></h2>
+             <ul>
+                <li>Allows user to top-up their account</li>
+                <li>Supports multiple e-wallets (Touch 'n Go, GrabPay, Boost)</li>
+                <li>Makes future transactions faster and easier</li>
+                <li>Enables users to track all past top-ups, including date, amount, e-wallet used, and status </li>
+            </ul>
+
+            <h2><strong>Where it's used:</strong></h2>
+            <a href="login_profile.php" class="enhancement-button">User profile ( Require login )</a>
+        </div>
+
+        <div class="enhancement-video">
+            <p>Here is a video demonstrating the enhancements in action:</p>
+            <video class="demo-video" width="500" height="315" controls>
+                <source src="styles/images/Top-Up.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <br>
+            <a href="https://www.php.net/manual/en/book.pdo.php" target="_blank" class="enhancement-button">Source</a>
+        </div>
+        </div>
+
 </div>
 
     
