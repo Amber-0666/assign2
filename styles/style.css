@@ -3530,6 +3530,13 @@ iframe {
         width: 100%;
     }
 }
+
+.enhancement-button.disabled,
+.enhancement-button[disabled] {
+    background-color: #7e6b50; 
+    cursor: not-allowed;
+    pointer-events: none;
+}
 /*End of enhancement css file*/
 
 /*Start of acknowledgement css file*/

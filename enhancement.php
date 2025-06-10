@@ -314,13 +314,19 @@
                     </ul>
             
                     <h2><strong>Where it's used:</strong></h2>
-                    <a href="admin_dashboard.php" class="enhancement-button">Admin Dashboard</a>
+                    <?php
+                    if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+                        echo '<a href="admin_dashboard.php" class="enhancement-button">Admin Dashboard</a>';
+                    } else {
+                        echo '<span class="enhancement-button disabled">Admin Dashboard (only admin)</span>';
+                    }
+                    ?>
                 </div>
             
                 <div class="enhancement-video">
                     <p>Here is a video demonstrating the enhancements in action:</p>
                     <video class="demo-video" width="560" height="315" controls>
-                        <source src="styles/images/User-management-module.mp4" type="video/mp4">
+                        <source src="styles/images/User_management_module.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <br>

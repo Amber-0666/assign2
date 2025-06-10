@@ -61,6 +61,7 @@ if ($stmt->num_rows > 0) {
         $_SESSION['user_id'] = $admin_id;
         $_SESSION['admin-ID'] = $admin_id;
         $_SESSION['is_admin'] = true;
+        $_SESSION['role'] = 'admin';
         unset($_SESSION['login_error']);
         header("Location: admin_dashboard.php");
         exit();
