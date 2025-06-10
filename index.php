@@ -179,7 +179,8 @@
                 <div class="footer-col">
                     <h4 class="footer-h5">WATCH OUR VIDEO</h4>
                     <div class="footer-youtube">
-                        <a href="https://youtu.be/u86NYtirztY?si=w6qQGdWtdbXLqTXp"><i class='bx bxl-youtube'></i></a>
+                        <a href="https://youtu.be/u86NYtirztY?si=w6qQGdWtdbXLqTXp" title="Assignment 1"><i class='bx bxl-youtube'></i></a>
+                        <a href="https://youtu.be/sIg9S8BaUHY?si=zBZG_9w2N354QCBZ" title="Assignment 2"><i class='bx bxl-youtube'></i></a>
                     </div>
                 </div>
             </div>
